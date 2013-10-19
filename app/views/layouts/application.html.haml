@@ -1,0 +1,24 @@
+!!!
+%html
+	%head
+		%title TeaTracker
+		= stylesheet_link_tag    "application", :media => "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+		%div#wrapper
+			%div#main.container
+				%div#logo
+				%a#login Intern Login
+				%nav
+					%ul
+						%li
+							%a Farms
+							%a Graphs
+							%a Inventory
+							%a Users
+				%div.content
+					= yield
+			%div#footer
+				%div.container &copy; 2013 &ndash; Lujeri Tea Co.
