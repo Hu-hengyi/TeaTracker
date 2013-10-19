@@ -9,20 +9,16 @@
     %th= sortable_header('Latitude', @sort_by)
     %th= sortable_header('Notes', @sort_by)
     %th= sortable_header('Report Date', @sort_by)
-    %th 
-    %th 
     %th
   -@farms.each do |farm|
     %tr
-      %td= farm.name
-      %td= farm.bushes
-      %td= farm.workers
-      %td= farm.longitude
-      %td= farm.latitude
-      %td= farm.notes
-      %td= farm.updated_at
-      %td= link_to 'Show', farm
-      %td= link_to 'Edit', edit_farm_path(farm)
-      %td= link_to 'Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to farm.name, farm
+      %td= link_to farm.bushes, farm
+      %td= link_to farm.workers, farm
+      %td= link_to farm.longitude, farm
+      %td= link_to farm.latitude, farm
+      %td= link_to farm.notes, farm
+      %td= link_to farm.updated_at, farm
+      %td= link_to('Edit', edit_farm_path(farm)) + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
 = link_to 'New Farm', new_farm_path
