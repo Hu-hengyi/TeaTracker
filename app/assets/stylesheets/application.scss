@@ -143,3 +143,37 @@ nav a {
 	color: #bababa;
 	text-align: right;
 }
+
+/* __Tables__ */
+table {
+  border-collapse: collapse;
+  border: 1px solid #222;
+  font: normal 80%/140% arial, helvetica, sans-serif;
+  color: #555;
+  background: #fff;
+}
+
+td, th {
+  border: 1px dotted #bbb;
+  padding: .5em;
+}
+
+th {
+  border: 2px solid #000;
+  background-color: #666666;
+  text-align: center;
+}
+th span, th a:link, th a:visited {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+th a:hover {
+  color: #b2f7b5;
+  text-decoration: underline;
+}
+
+table .odd {background: #fcfcfc;}
+
+tr:hover {background: #fafafa;}
