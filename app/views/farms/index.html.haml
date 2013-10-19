@@ -1,0 +1,28 @@
+%h1 Farms
+
+%table
+  %tr
+    %th= sortable_header('Name', @sort_by)
+    %th= sortable_header('Bushes', @sort_by)
+    %th= sortable_header('Workers', @sort_by)
+    %th= sortable_header('Longitude', @sort_by)
+    %th= sortable_header('Latitude', @sort_by)
+    %th= sortable_header('Notes', @sort_by)
+    %th= sortable_header('Report Date', @sort_by)
+    %th 
+    %th 
+    %th
+  -@farms.each do |farm|
+    %tr
+      %td= farm.name
+      %td= farm.bushes
+      %td= farm.workers
+      %td= farm.longitude
+      %td= farm.latitude
+      %td= farm.notes
+      %td= farm.updated_at
+      %td= link_to 'Show', farm
+      %td= link_to 'Edit', edit_farm_path(farm)
+      %td= link_to 'Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+= link_to 'New Farm', new_farm_path
