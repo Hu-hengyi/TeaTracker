@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b7faaba-46f2-4765-ad34-9eff23690f46" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/farms/index.html.haml" afterPath="$PROJECT_DIR$/app/views/farms/index.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
     </list>
     <ignored path="TeaTracker.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382218567433" ignored="false" />
     <file path="/farms_controller.rb" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382218715257" ignored="false" />
     <file path="/index.html.haml" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382221171492" ignored="false" />
-    <file path="/application.html.haml" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382220044731" ignored="false" />
+    <file path="/application.html.haml" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382222851813" ignored="false" />
     <file path="/farms.css.scss" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382220588522" ignored="false" />
-    <file path="/application.scss" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382221581687" ignored="false" />
+    <file path="/application.scss" changelist="8b7faaba-46f2-4765-ad34-9eff23690f46" time="1382222877278" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +45,7 @@
       <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="27" selection-start="3253" selection-end="3253" vertical-scroll-proportion="0.59398496">
+            <state line="120" column="23" selection-start="2567" selection-end="2567" vertical-scroll-proportion="0.32330826">
               <folding />
             </state>
           </provider>
@@ -53,7 +54,7 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="48" selection-start="137" selection-end="137" vertical-scroll-proportion="-3.4615386">
+            <state line="18" column="52" selection-start="398" selection-end="398" vertical-scroll-proportion="-12.461538">
               <folding />
             </state>
           </provider>
@@ -87,9 +88,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/controllers/farms_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/farms.css.scss" />
         <option value="$PROJECT_DIR$/app/views/farms/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       </list>
     </option>
@@ -503,6 +504,23 @@
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8b7faaba-46f2-4765-ad34-9eff23690f46" name="Default" comment="" />
@@ -616,6 +634,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/farms/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="21" selection-start="675" selection-end="675" vertical-scroll-proportion="-14.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/farms_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="55" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
@@ -625,21 +650,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="48" selection-start="137" selection-end="137" vertical-scroll-proportion="-3.4615386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/farms/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="21" selection-start="675" selection-end="675" vertical-scroll-proportion="-14.538462">
+        <state line="18" column="52" selection-start="398" selection-end="398" vertical-scroll-proportion="-12.461538">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="27" selection-start="3253" selection-end="3253" vertical-scroll-proportion="0.59398496">
+        <state line="120" column="23" selection-start="2567" selection-end="2567" vertical-scroll-proportion="0.32330826">
           <folding />
         </state>
       </provider>

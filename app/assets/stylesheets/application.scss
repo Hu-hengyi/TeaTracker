@@ -118,7 +118,7 @@ nav ul {
 nav li {
 	display: inline;
 }
-nav a {
+nav a, nav span.current {
 	display: inline-block;
 	padding-left: 30px;
 	font: 19px/19px gandhi_sansbold, arial, sans-serif;

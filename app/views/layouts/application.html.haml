@@ -15,9 +15,13 @@
 				%nav
 					%ul
 						%li
-							%a Farms
+							= link_to_unless_current "Farms", farms_path() do
+								<span class="current">Farms<span>
+						%li
 							%a Graphs
+						%li
 							%a Inventory
+						%li
 							%a Users
 				%div.content
 					= yield
