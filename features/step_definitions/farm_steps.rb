@@ -10,7 +10,7 @@ When /I enter in basic farm data/ do
 end
 
 Then /I will see the basic farm/ do
-  Then I should see "Basic Farm"
+  step 'Then I should see "Basic Farm"'
 end
 
 Then /I should see "(.*)"/ do |item|
