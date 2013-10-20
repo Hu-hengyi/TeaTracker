@@ -37,3 +37,11 @@ gem 'haml-rails'
 
 # To use debugger
 # gem 'debugger'
+
+#Gems for Cuke and Capybara Tests
+group :development, :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+end
