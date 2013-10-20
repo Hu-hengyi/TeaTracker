@@ -6,9 +6,9 @@ Feature: add a farm with its inputted data
 
 Scenario: add a new farm and its info
   Given I am on the FarmList home page
-  When I follow "Add new farm"
+  When I follow "create_farm"
   Then I should be on the Create New Farm page
   When I enter in basic farm data
-  And I press "Create farm"
+  And I press "commit"
   Then I will see the basic farm
 

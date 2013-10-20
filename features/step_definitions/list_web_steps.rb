@@ -21,7 +21,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 Then /^I should be on (.+)$/ do |page_name|
-  current_path.should == path_to(page_name)
+  assert_equal(current_path, path_to(page_name))
 end
 
 
