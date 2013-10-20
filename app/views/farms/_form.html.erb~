@@ -42,7 +42,11 @@
   </div>
   <br>
   <div class="actions">
-    <%= f.submit class="make_farm" %>
+<<<<<<< HEAD
+    <%= f.submit%>
+=======
+    <%= f.submit :id => "create_farm" %>
+>>>>>>> 520ed5194c3aad9ba72e2719b8e623b798fe8915
   </div>
   <br>
 <% end %>
