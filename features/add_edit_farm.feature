@@ -9,6 +9,6 @@ Scenario: add a new farm and its info
   When I follow "create_farm"
   Then I should be on the Create New Farm page
   When I enter in basic farm data
-  And I press "commit"
+  And I press "create_farm"
   Then I will see the basic farm
 
