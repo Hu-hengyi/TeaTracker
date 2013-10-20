@@ -154,7 +154,7 @@ table#main{
   background: #ffffff;
 }
 
-td#main, th#main {
+td, th {
   border: 1px dotted #bbbbbb;
   padding: .5em;
 }

@@ -1,0 +1,49 @@
+%h1
+  = @farm.name
+
+%br
+
+%div
+
+  %p
+    Bushes: 
+    = @farm.bushes
+  
+  %br
+
+    %p
+    Workers: 
+    = @farm.workers
+
+%div
+  %br
+
+    %p
+    Latitude: 
+    = @farm.latitude
+  
+  %br
+   
+    %p
+    Longitude:
+    = @farm.longitude
+
+  %br
+
+%table
+  %tr
+    %td Bushes
+    %td #{@farm.bushes}
+  %tr
+    %td Workers
+    %td #{@farm.workers}
+  %tr
+    %td Latitude
+    %td #{@farm.latitude}
+  %tr
+    %td Longitude
+    %td #{@farm.longitude}
+
+%br
+
+%td= link_to('Edit', edit_farm_path(@farm)) + '     |     ' + link_to('Back to farms', farms_path)

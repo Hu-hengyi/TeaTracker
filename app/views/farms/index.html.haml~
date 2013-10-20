@@ -14,11 +14,11 @@
     %tr
       %td#main= link_to farm.name, farm
       %td#main= link_to farm.bushes, farm
-      %td#main= link_to farm.workers, farm
-      %td#main= link_to farm.longitude, farm
-      %td#main= link_to farm.latitude, farm
-      %td#main= link_to farm.notes, farm
-      %td#main= link_to farm.updated_at, farm
-      %td#main= link_to('Edit', edit_farm_path(farm)) + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+      %td= link_to farm.workers, farm
+      %td= link_to farm.longitude, farm
+      %td= link_to farm.latitude, farm
+      %td= link_to farm.notes, farm
+      %td= link_to farm.updated_at, farm
+      %td= link_to('Edit', edit_farm_path(farm)) + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"

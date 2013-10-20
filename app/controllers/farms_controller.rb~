@@ -18,10 +18,10 @@ class FarmsController < ApplicationController
   def show
     @farm = Farm.find(params[:id])
 
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render json: @farm }
-    #end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @farm }
+    end
   end
 
   # GET /farms/new
