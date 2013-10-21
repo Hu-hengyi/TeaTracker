@@ -147,7 +147,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   launchy
-  pg
+  pg (= 0.17.0)
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
   sqlite3
