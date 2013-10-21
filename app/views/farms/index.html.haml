@@ -19,6 +19,6 @@
       %td#main= link_to farm.latitude, farm
       %td#main= link_to farm.notes, farm
       %td#main= link_to farm.updated_at, farm
-      %td#main= link_to('Edit', edit_farm_path(farm)) + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+      %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"
