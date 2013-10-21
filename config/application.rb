@@ -58,5 +58,10 @@ module TeaTracker
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+<<<<<<< HEAD
+=======
+
+    config.assets.initialize_on_precompile = false
+>>>>>>> ff16f598bc1171f36aa9905d9c5aae278474ec46
   end
 end
