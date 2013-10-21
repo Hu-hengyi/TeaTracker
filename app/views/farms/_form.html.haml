@@ -1,0 +1,43 @@
+= form_for(@farm) do |f|
+  - if @farm.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@farm.errors.count, "error")
+        prohibited this farm from being saved:
+      %ul
+        - @farm.errors.full_messages.each do |msg|
+          %li= msg
+  %br/
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %br/
+  .field
+    = f.label :bushes
+    %br/
+    = f.number_field :bushes
+  %br/
+  .field
+    = f.label :workers
+    %br/
+    = f.number_field :workers
+  %br/
+  .field
+    = f.label :longitude
+    %br/
+    = f.text_field :longitude
+  %br/
+  .field
+    = f.label :latitude
+    %br/
+    = f.text_field :latitude
+  %br/
+  .field
+    = f.label :notes
+    %br/
+    = f.text_area :notes
+  %br/
+  .actions
+    = f.submit
+  %br/
