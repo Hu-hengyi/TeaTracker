@@ -18,4 +18,9 @@ Then /I should see "(.*)"/ do |item|
   assert myPage.index(item.to_s) != nil
 end
 
+Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+  myPage = page.body.to_s
+  assert myPage.index(e1.to_s) < myPage.index(e2.to_s)
+end
+
 

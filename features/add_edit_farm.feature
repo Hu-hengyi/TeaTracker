@@ -2,7 +2,7 @@ Feature: add a farm with its inputted data
 
   As an intern
   So that I can fulfill my data entry tasks
-  I want to be able the gathered data of a farm online
+  I want to be able input the gathered data of a farm online
 
 Scenario: add a new farm and its info
   Given I am on the FarmList home page

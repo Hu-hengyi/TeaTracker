@@ -5,7 +5,7 @@ module FarmsHelper
 				haml_tag 'span.sort', name
 			end
 		else
-			link_to name, farms_path(:sort_by => name)
+			link_to name, farms_path(:sort_by => name), :id=> "sort #{name}"
 		end
 	end
 end
