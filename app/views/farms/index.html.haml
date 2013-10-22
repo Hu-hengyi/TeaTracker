@@ -22,3 +22,11 @@
       %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"
+
+= link_to "CSV", farms_path(format: "csv")
+
+
+%h2 Import Products
+= form_tag import_farms_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import"

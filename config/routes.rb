@@ -1,7 +1,9 @@
 TeaTracker::Application.routes.draw do
 
 
-  resources :farms
+  resources :farms do
+    collection { post :import}
+  end
 
 
   # The priority is based upon order of creation:

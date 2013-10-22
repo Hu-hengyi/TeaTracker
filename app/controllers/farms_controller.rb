@@ -6,10 +6,12 @@ class FarmsController < ApplicationController
     order_by = @sort_by.downcase
     order_by = "updated_at" if order_by == 'report date'
     @farms = Farm.all(:order => order_by)
+    @csv_farms = Farm.order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @farms }
+      format.csv { send_data @csv_farms.to_csv }
     end
   end
 
@@ -18,10 +20,12 @@ class FarmsController < ApplicationController
   def show
     @farm = Farm.find(params[:id])
 
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render json: @farm }
-    #end
+    respond_to do |format|
+      #  format.html
+      #  format.json { render json: @farm }
+      format.csv { render text: @farms.to_csv }
+    end
+    
   end
 
   # GET /farms/new
@@ -83,4 +87,10 @@ class FarmsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def import
+    Farm.import(params[:file])
+    redirect_to root_url, notice: "Products imported."
+  end
+
 end
