@@ -1,10 +1,14 @@
 $background-color: #fbfbfb;
 $tea-green: #a4cb38;
+$dark-gray: #515254;
+$light-gray: #dedfe0;
 
 /* LAYOUT */
 html, 
 body {
 	height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
 	background: $background-color;
@@ -15,10 +19,67 @@ h1 {
   font-size: 1.3em;
   text-transform: uppercase;
   font-family: league-gothic, helvetica, sans-serif;
-  font-weight: bold;
-  color: $tea-green;
-  padding: .4em 0;
+  color: white;
 }
+
+/* RIGHT NAVIGATION */
+.right-side-nav {
+  position: fixed;
+  background: $dark-gray;
+  padding: 35px 0 20px 0;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  text-transform: uppercase;
+  width: 150px;
+  z-index: 1;
+  .logo {
+    margin: 0 auto 20px auto;
+    padding: 0;
+  }
+}
+.right-navigation-item {
+  padding: 10px 25px;
+  display: block;
+  color: white;
+  font-family: league-gothic, helvetica, open-sans;
+  font-size: 29px;
+  &.active,
+  &:hover {
+    color: $dark-gray;
+    cursor: pointer;
+  }
+  &.active {
+    background: $background-color;
+  }
+  &:hover {
+    background: $light-gray;
+  }
+}
+
+/* LEFT SIDE CONTENT */
+.left-side-bar {
+  height: 100%;
+  width: 150px;
+  background: $dark-gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  h1 {
+    padding-top: 80px;
+    color: white;
+    display: block;
+    background: $tea-green;
+    text-align: center;
+    font-size: 52px;
+  }
+}
+
+/* CONTAINER */
+.content {
+  padding: 0 200px;
+}
+
 #wrapper {
 	position: relative;
 	min-height: 100%;
@@ -31,14 +92,14 @@ h1 {
 	position: relative;
 	padding: 131px 0 60px;
 }
+
 .logo {
 	height: 60px;
-	width: 230px;
-	position: absolute;
-	top: 60px;
-	left: 0;
-	background: url(image_path('tea-tracker-logo.png')) no-repeat;
+	width: 60px;
+	background: url(image_path('tea-tracker-logo.png'));
+  background-size: cover;
 }
+
 #login {
 	display: block;
 	position: absolute;
@@ -55,34 +116,15 @@ h1 {
 	-moz-box-shadow:    0 2px 3px rgba(50, 50, 50, 0.4);
 	box-shadow:         0 2px 3px rgba(50, 50, 50, 0.4);
 }
-nav {
-	position: absolute;
-	top: 105px;
-	right: 2px;
-	height: 19px;
-	max-width: 710px;
-}
-nav ul {
-	list-style: none;
-}
-nav li {
-	display: inline;
-}
-nav a, nav span.current {
-	display: inline-block;
-	padding-left: 30px;
-	font: 19px/19px gandhi_sansbold, arial, sans-serif;
-	color: #8e613d;
-	text-decoration: none;
-}
-#main .content {
-	background-color: white;
-	min-height: 500px;
-	padding: 70px;
-	-webkit-box-shadow: 0 2px 12px rgba(50, 50, 50, 0.93);
-	-moz-box-shadow:    0 2px 12px rgba(50, 50, 50, 0.93);
-	box-shadow:         0 2px 12px rgba(50, 50, 50, 0.93);
-}
+
+// #main .content {
+// 	background-color: white;
+// 	min-height: 500px;
+// 	padding: 70px;
+// 	-webkit-box-shadow: 0 2px 12px rgba(50, 50, 50, 0.93);
+// 	-moz-box-shadow:    0 2px 12px rgba(50, 50, 50, 0.93);
+// 	box-shadow:         0 2px 12px rgba(50, 50, 50, 0.93);
+// }
 #footer {
 	position: absolute;
 	bottom: 0;
