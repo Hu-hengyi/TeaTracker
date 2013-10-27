@@ -1,6 +1,7 @@
 $background-color: #fbfbfb;
 $tea-green: #a4cb38;
 $dark-gray: #515254;
+$medium-gray: #999;
 $light-gray: #dedfe0;
 
 /* LAYOUT */
@@ -22,11 +23,17 @@ h1 {
   color: white;
 }
 
+p,
+table {
+  font-family: "Open Sans", helvetica, sans-serif;
+  font-weight: 300;
+}
+
 /* RIGHT NAVIGATION */
 .right-side-nav {
   position: fixed;
   background: $dark-gray;
-  padding: 35px 0 20px 0;
+  padding: 35px 0 0px 0;
   right: 0;
   top: 0;
   overflow: hidden;
@@ -55,8 +62,19 @@ h1 {
     background: $background-color;
   }
   &:hover {
-    background: $light-gray;
+    background: $medium-gray;
     cursor: pointer;
+  }
+  &.logout {
+    text-align: right;
+    color: $dark-gray;
+    background: $light-gray;
+    font-size: 18px;
+    &:hover {
+      color: $light-gray;
+      background: $medium-gray;
+      cursor: pointer;
+    }
   }
 }
 
@@ -80,7 +98,7 @@ h1 {
 
 /* CONTAINER */
 .content {
-  padding: 0 200px;
+  padding: 25px 175px;
 }
 
 #wrapper {
@@ -120,14 +138,6 @@ h1 {
 	box-shadow:         0 2px 3px rgba(50, 50, 50, 0.4);
 }
 
-// #main .content {
-// 	background-color: white;
-// 	min-height: 500px;
-// 	padding: 70px;
-// 	-webkit-box-shadow: 0 2px 12px rgba(50, 50, 50, 0.93);
-// 	-moz-box-shadow:    0 2px 12px rgba(50, 50, 50, 0.93);
-// 	box-shadow:         0 2px 12px rgba(50, 50, 50, 0.93);
-// }
 #footer {
 	position: absolute;
 	bottom: 0;
@@ -144,7 +154,6 @@ table#main{
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #222222;
-  font: normal 80%/140% arial, helvetica, sans-serif;
   color: #555555;
   background: #ffffff;
 }
