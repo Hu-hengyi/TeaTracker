@@ -7,7 +7,6 @@
     %th= sortable_header('Latitude', @sort_by)
     %th= sortable_header('Notes', @sort_by)
     %th= sortable_header('Report Date', @sort_by)
-    %th
   -@farms.each do |farm|
     %tr
       %td#main= link_to farm.name, farm
