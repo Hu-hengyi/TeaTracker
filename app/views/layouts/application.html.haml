@@ -15,7 +15,8 @@
 			%ul
 				%li.logo.right-navigation-item
 				%li.right-navigation-item.active
-					Review
+					= link_to_unless_current "Review", farms_path() do
+						Review
 				%li.right-navigation-item
 					Visualize
 				%li.right-navigation-item
@@ -24,7 +25,7 @@
 
 		%div.left-side-bar
 			%h1 Review
-				
+
 		%div.content
 			= yield
 
@@ -35,8 +36,6 @@
 		/ 		%nav
 		/ 			%ul
 		/ 				%li
-		/ 					= link_to_unless_current "Farms", farms_path() do
-		/ 						<span class="current">Farms<span>
 		/ 				%li
 		/ 					%a Graphs
 		/ 				%li

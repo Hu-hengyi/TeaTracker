@@ -47,13 +47,16 @@ h1 {
   &.active,
   &:hover {
     color: $dark-gray;
-    cursor: pointer;
   }
-  &.active {
+  &.active,
+  &.active:hover {
+    cursor: default;
+    background: $background-color;
     background: $background-color;
   }
   &:hover {
     background: $light-gray;
+    cursor: pointer;
   }
 }
 
