@@ -30,6 +30,10 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 
+
+#used for import/export:
+gem 'selenium-webdriver'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
