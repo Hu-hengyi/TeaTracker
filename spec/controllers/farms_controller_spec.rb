@@ -7,11 +7,17 @@ describe FarmsController do
         get :new
         response.should render_template("new")
      end
-     #it "should try to create farm in database when user tries to create a new farm" do 
-     #   fake_farm = double('farm', :name => "Fake Name")
-     #   Farm.should_receive(:create!).and_return(fake_farm)
-     #   post :create, {:farm=>fake_farm}   
-     #end  
+     it "should try to create farm in database when user tries to create a new farm" do 
+        fake_farm = double('farm', :name => "Fake Name")
+        Farm.should_receive(:create!).and_return(fake_farm)
+        post :create, {:farm => fake_farm}   
+     end  
+     it "should try to create farm in database when user tries to create a new farm" do 
+        fake_farm = double('farm', :name => "Fake Name")
+        Farm.stub(:create!).and_return(fake_farm)
+        post :create, {:farm => fake_farm}  
+        response.should redirect_to(farms_path) 
+     end 
    end
 
    describe "Deleting Farms" do
@@ -69,6 +75,26 @@ describe FarmsController do
         Farm.should_receive(:all).with(:order => 'bushes')
         get :index, {:sort_by => 'bushes'}
      end
+     it "should order by bushes when passed as param" do
+        Farm.should_receive(:all).with(:order => 'workers')
+        get :index, {:sort_by => 'workers'}
+     end
+     it "should order by report date when no sorting criteria" do
+        Farm.should_receive(:all).with(:order => 'updated_at')
+        get :index, {}
+     end
+  end
+
+  describe "Importing CSV" do
+    it "should import in database" do 
+      Farm.should_receive(:import)
+      get :import
+    end
+    it "should import in database" do 
+      Farm.stub(:import)
+      get :import
+      response.should redirect_to root_url
+    end
   end
 
 end
