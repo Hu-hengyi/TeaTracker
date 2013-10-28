@@ -63,17 +63,10 @@ class FarmsController < ApplicationController
   # PUT /farms/1
   # PUT /farms/1.json
   def update
-    @farm = Farm.find(params[:id])
-
-    respond_to do |format|
-      if @farm.update_attributes(params[:farm])
-        format.html { redirect_to @farm, notice: 'Farm was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @farm.errors, status: :unprocessable_entity }
-      end
-    end
+    @farm = Farm.find params[:id]
+    @farm.update_attributes!(params[:farm])
+    flash[:notice] = "#{@farm.name} was successfully updated."
+    redirect_to farm_path(@farm)
   end
 
   # DELETE /farms/1

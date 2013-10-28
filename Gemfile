@@ -8,6 +8,13 @@ gem 'rails', '3.2.14'
 
 group :development,:test do
   gem 'sqlite3'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 group :production do
   gem 'pg', '0.17.0'
