@@ -21,8 +21,8 @@ class FarmsController < ApplicationController
     @farm = Farm.find(params[:id])
 
     respond_to do |format|
-      #  format.html
-      #  format.json { render json: @farm }
+        format.html
+        format.json { render json: @farm }
       format.csv { render text: @farms.to_csv }
     end
     
