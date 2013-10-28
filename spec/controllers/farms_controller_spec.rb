@@ -60,4 +60,15 @@ describe FarmsController do
      end
    end
 
+  describe "Sorting By Column Name" do 
+     it "should order by name when passed as param" do
+        Farm.should_receive(:all).with(:order => 'name')
+        get :index, {:sort_by => 'name'}
+     end
+     it "should order by bushes when passed as param" do
+        Farm.should_receive(:all).with(:order => 'bushes')
+        get :index, {:sort_by => 'bushes'}
+     end
+  end
+
 end
