@@ -8,4 +8,4 @@ Scenario: sort farms by name
   Given I am on the FarmList home page
   When I create basic farms
   And I follow "sort Name"
-  Then I should see "Basic Farm A" before "Basic Farm B"
+  Then I should see both "Basic Farm A" before "Basic Farm B"

@@ -8,7 +8,7 @@ Scenario: edit a basic farm
   Given I am on the Create New Farm page
   When I enter in basic farm data A
   And I press "create_farm"
-  And I follow "edit Basic Farm A"
+  And I edit "Basic Farm A"
   And I fill in "farm_name" with "New Farm A"
-  And I press "update_farm"
+  And I press "create_farm"
   Then I should see "New Farm A"

@@ -23,14 +23,17 @@ When /I enter in basic farm data B/ do
   })
 end
 
-When /I create basic farms/ do
-  step 'Given I am on the FarmList home page'
-  step 'When I follow "create_farm"'
-  step 'And I enter in basic farm data A'
-  step 'And I press "create_farm"'
-  step 'And I follow "create_farm"'
-  step 'And I enter in basic farm data B'
-  step 'And I press "create_farm"'
+When /^I create basic farms$/ do
+  visit farms_path
+#  step 'Given I am on the home page'
+  When 'I follow "create_farm"'
+  And 'I enter in basic farm data A'
+  And 'I press "create_farm"'
+  visit farms_path
+  And 'I follow "create_farm"'
+  And 'I enter in basic farm data B'
+  And 'I press "create_farm"'
+  visit farms_path
 end
 
 Then /I will see the basic farm/ do
@@ -42,7 +45,7 @@ Then /I should see "(.*)"/ do |item|
   assert myPage.index(item.to_s) != nil
 end
 
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+Then /I should see both "(.*)" before "(.*)"/ do |e1, e2|
   myPage = page.body.to_s
   assert myPage.index(e1.to_s) < myPage.index(e2.to_s)
 end
@@ -73,4 +76,8 @@ When /^I confirm the dialog box/ do
 #    a.accept
 #  end
 #  page.driver.browser.switch_to.alert.accept
+end
+
+When /^I edit "(.*)"$/ do |name|
+  visit edit_farm_path(Farm.find_by_name(name))
 end
