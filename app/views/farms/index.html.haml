@@ -1,5 +1,3 @@
-%h1 Farms
-
 %table#main
   %tr
     %th= sortable_header('Name', @sort_by)
@@ -9,7 +7,6 @@
     %th= sortable_header('Latitude', @sort_by)
     %th= sortable_header('Notes', @sort_by)
     %th= sortable_header('Report Date', @sort_by)
-    %th
   -@farms.each do |farm|
     %tr
       %td#main= link_to farm.name, farm
@@ -23,7 +20,7 @@
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"
 
-= link_to "CSV", farms_path(format: "csv")
+= link_to "CSV", farms_path(format: "csv"), :id => "export_csv"
 
 
 %h2 Import Products

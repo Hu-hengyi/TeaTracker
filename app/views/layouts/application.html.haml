@@ -2,28 +2,31 @@
 %html
 	%head
 		%title TeaTracker
+		= stylesheet_link_tag 	 "reset", :media => "all"
 		= stylesheet_link_tag    "application", :media => "all"
-		= stylesheet_link_tag params[:controller]
+		= stylesheet_link_tag    params[:controller]
 		= javascript_include_tag "application"
 		= csrf_meta_tags
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<script src="//use.edgefonts.net/league-gothic.js"></script>
 
 	%body
-		%div#wrapper
-			%div#main.container
-				%div#logo
-				%a#login Intern Login
-				%nav
-					%ul
-						%li
-							= link_to_unless_current "Farms", farms_path() do
-								<span class="current">Farms<span>
-						%li
-							%a Graphs
-						%li
-							%a Inventory
-						%li
-							%a Users
-				%div.content{:style=> "backgroundr-color:yellow"}
-					= yield
-			%div#footer
-				%div.container &copy; 2013 &ndash; Lujeri Tea Co.
+		%nav.right-side-nav
+			%ul
+				%li.logo.right-navigation-item
+				%li.right-navigation-item.active
+					= link_to_unless_current "Review", farms_path() do
+						Review
+				%li.right-navigation-item
+					Visualize
+				%li.right-navigation-item
+					Manage
+				%li.right-navigation-item.logout
+					Logout
+
+
+		%div.left-side-bar
+			%h1 Review
+
+		%div.content
+			= yield

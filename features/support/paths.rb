@@ -8,9 +8,12 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (FarmList )?home\s?page$/ then '/farms'
-    when /^the farms page$/ then '/farms'
-    when /^the Create New Farm page$/ then '/farms/new'
+    when /^the (FarmList )?home page$/
+      '/farms'
+    when /^the farms page$/
+      '/farms'
+    when /^the Create New Farm page$/
+      '/farms/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
