@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe FarmsController do
 
+   describe "Displaying farm list" do
+     it "should render the index page" do
+       get :index
+       expect(response).to render_template("index")
+     end
+   end
+
    describe "Adding new farms" do
      it "should render the create new farm form" do
         get :new
