@@ -7,6 +7,10 @@ describe FarmsController do
        get :index
        expect(response).to render_template("index")
      end
+     it "should be able to render a JSON response" do
+       get :index, :format => :json
+       response.header['Content-Type'].should include 'application/json'
+     end
    end
 
    describe "Adding new farms" do
