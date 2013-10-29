@@ -1,9 +1,9 @@
 class Farm < ActiveRecord::Base
   attr_accessible :bushes, :latitude, :longitude, :name, :notes, :workers
-   def self.to_csv
+   def self.to_csv(farms = all)
     CSV.generate do |csv|
       csv << column_names
-      all.each do |farm|
+      farms.each do |farm|
         csv << farm.attributes.values_at(*column_names)
       end
     end

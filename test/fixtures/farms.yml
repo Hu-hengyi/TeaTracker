@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: FooFarm
   bushes: 1
-  workers: 1
+  workers: 2
   longitude: 1.5
   latitude: 1.5
-  notes: MyText
+  notes: They grow tea
 
 two:
-  name: MyString
+  name: BazBar
   bushes: 1
   workers: 1
   longitude: 1.5
   latitude: 1.5
-  notes: MyText
+  notes: They drink tea†
