@@ -13,6 +13,14 @@ describe FarmsController do
      end
    end
 
+   describe "Show farm data" do
+     it "should display farm data" do
+       Farm.stub(:find)
+       get :show, :id => 3
+       response.should render_template('show')
+     end
+   end
+
    describe "Adding new farms" do
      it "should render the create new farm form" do
         get :new
