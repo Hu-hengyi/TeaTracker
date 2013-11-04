@@ -14,6 +14,10 @@ module NavigationHelpers
       '/farms'
     when /^the Create New Farm page$/
       '/farms/new'
+    when /^the Create New Pickup page$/
+      '/pickup/new'
+    when /^the Create New Collection Point page$/
+      '/cp/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
