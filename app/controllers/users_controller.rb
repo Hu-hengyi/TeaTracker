@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter do
+    unless current_user && current_user.admin?
+      flash[:alert] = "This area is restricted to users with administrator privileges"
+      redirect_to new_user_session_path
+    end
+  end
+
+
   # GET /users
   # GET /users.json
   def index

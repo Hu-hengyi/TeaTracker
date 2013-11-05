@@ -8,7 +8,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (FarmList )?home page$/
+    when /^the home page$/
+      '/'
+    when /^the FarmList$/
       '/farms'
     when /^the farms page$/
       '/farms'
@@ -18,6 +20,8 @@ module NavigationHelpers
       '/pickup/new'
     when /^the Create New Collection Point page$/
       '/cp/new'
+    when /^the login page$/
+      new_user_session_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

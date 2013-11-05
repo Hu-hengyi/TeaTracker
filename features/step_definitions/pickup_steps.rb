@@ -15,6 +15,6 @@ When /I enter in basic pickup data B/ do
 end
 
 When /I edit the pickup named "(.*)"/ do |name|
-  temp = Pickup.find_by_title("#{name}").id)}
+  temp = Pickup.find_by_title("#{name}").id
   visit "/pickup/#{temp}/edit"
 end

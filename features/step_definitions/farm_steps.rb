@@ -40,10 +40,11 @@ Then /I will see the basic farm/ do
   Then 'I should see "Basic Farm A"'
 end
 
-Then /I should see "(.*)"/ do |item|
-  myPage = page.body.to_s
-  assert myPage.index(item.to_s) != nil
-end
+# Removed due to redundancy
+#Then /I should see "(.*)"/ do |item|
+#  myPage = page.body.to_s
+#  assert myPage.index(item.to_s) != nil
+#end
 
 Then /I should see both "(.*)" before "(.*)"/ do |e1, e2|
   myPage = page.body.to_s

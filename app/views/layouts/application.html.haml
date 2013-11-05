@@ -22,7 +22,7 @@
 				%li.right-navigation-item
 					Manage
 				%li.right-navigation-item.logout
-					Logout
+					=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
 
 
 		%div.left-side-bar
