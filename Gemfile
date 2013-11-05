@@ -36,6 +36,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'devise'
 
 
 #used for import/export:

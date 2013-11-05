@@ -1,6 +1,8 @@
 TeaTracker::Application.routes.draw do
 
 
+  devise_for :users
+
   resources :farms do
     collection { post :import}
   end

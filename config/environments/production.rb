@@ -64,4 +64,9 @@ TeaTracker::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Mailer url for Devise gem
+  # TODO Update to reflect final production server
+  config.action_mailer.default_url_options = { :host => 'herokuapp.com' }
+
 end
