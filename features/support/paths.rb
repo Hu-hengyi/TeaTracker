@@ -22,6 +22,16 @@ module NavigationHelpers
       '/cp/new'
     when /^the login page$/
       new_user_session_path
+    when /^the user management page$/
+      users_path
+    when /^the edit user page for "([^"]*)"$/
+      edit_user_path(User.find_by_real_name($1))
+    when /^the show user page for "([^"]*)"$/
+      user_path(User.find_by_real_name($1))
+    when /^the new user page$/
+      new_user_path()
+
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

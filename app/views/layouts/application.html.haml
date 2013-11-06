@@ -21,8 +21,11 @@
 					Visualize
 				%li.right-navigation-item
 					Manage
-				%li.right-navigation-item.logout
-					=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
+				%li.right-navigation-item.Logout
+					-if user_signed_in?
+						=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
+					-else
+						=link_to 'Sign In', new_user_session_path, id: 'login'
 
 
 		%div.left-side-bar

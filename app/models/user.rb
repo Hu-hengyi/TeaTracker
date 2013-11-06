@@ -7,8 +7,11 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :user_type, :real_name, :user_type_id
   # attr_accessible :title, :body
+
+  validates_presence_of :real_name, :email, :password
+  validates_associated :user_type
 
   def admin?
     self.user_type == UserType.find_by_name('admin')

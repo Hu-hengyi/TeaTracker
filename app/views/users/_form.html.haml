@@ -1,4 +1,24 @@
 = form_for @user do |f|
+  .field
+    = label_tag 'user[real_name]', "Name"
+    %br/
+    = f.text_field :real_name
+
+  .field
+    = f.label :email, 'Email Address'
+    %br/
+    = f.text_field :email
+
+  .field
+    = f.label :password, 'Password'
+    %br/
+    = f.text_field :password
+
+  .field
+    = f.label :user_type_id, 'User Type'
+    %br/
+    = collection_select :user, :user_type_id, UserType.all, :id, :formatted_name, {selected: UserType.find_by_name('intern').id}
+
   - if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
@@ -7,4 +27,4 @@
           %li= msg
 
   .actions
-    = f.submit 'Save'
+    = f.submit (params[:action] == 'new') ? 'Create User' : 'Save Changes'
