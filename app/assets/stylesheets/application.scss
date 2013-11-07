@@ -25,7 +25,8 @@ h1 {
 .side {
   font-family: league-gothic, helvetica, sans-serif;
   vertical-align:absbottom;
-  display:inline
+  display:inline;
+  color: white;
 }
 
 
@@ -44,8 +45,12 @@ h1 {
   outline: none;
   width: 195px
 }
-#LogInBox {
+.LogInBox {
   background-color: $dark-gray;
+  padding: 10px 20px 20px 20px;
+  width: 240px;
+  margin: 0 auto;
+  text-align:center;
 
 }
 
@@ -227,6 +232,8 @@ div.submit {
   background: $tea-green;
   font-size: 1.1em;
   font-color: #FFFFFF;
+  font-weight: bold;
+  text-align:center;
   font-family: league-gothic, helvetica, sans-serif;
   padding: 0;
   margin: 0;

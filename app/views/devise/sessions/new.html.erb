@@ -1,17 +1,21 @@
 <div id="container" class="LogInBox">
-<br>
-<h2 class="side" id="small">Tea</h2>
-<h2 class="side" class="LogIn" id="large">Tracker</h2>
-<br>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div>
   <br>
-  <%= f.email_field :email, :class=>"field",:autofocus => true, :placeholder=>"Email" %></div>
+  <img src=url(assets/images/tea-tracker-logo.png)>
+  <h2 class="side" id="small">TEA</h2>
+  <h2 class="side" class="LogIn" id="large">TRACKER</h2>
   <br>
 
-  <div>
-  <%= f.password_field :password, :class=>"field", :placeholder=>"Password" %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div>
+    <br>
+    <%= f.email_field :email, :class=>"field",:autofocus => true, :placeholder=>"Email" %></div>
+    <br>
+
+    <div>
+    <%= f.password_field :password, :class=>"field", :placeholder=>"Password" %></div>
+
+  <%= render "devise/shared/links" %>
+
   <br>
 
   <% if devise_mapping.rememberable? -%>
@@ -22,6 +26,5 @@
 
   <div><%= f.submit "LOGIN", :id=>"SignIn" %></div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
-</div"
