@@ -22,6 +22,32 @@ h1 {
   font-family: league-gothic, helvetica, sans-serif;
   color: white;
 }
+.side {
+  font-family: league-gothic, helvetica, sans-serif;
+  vertical-align:absbottom;
+  display:inline
+}
+
+
+#small{
+  top: 0;
+  font-size: 1.4em;
+}
+
+#large{
+  font-size: 2.5em;
+}
+
+.field {
+  border: 1px solid #DDD;
+  padding: 7px 10px;
+  outline: none;
+  width: 195px
+}
+#LogInBox {
+  background-color: $dark-gray;
+
+}
 
 p,
 table {
@@ -107,6 +133,7 @@ table {
 }
 .container {
 	width: 960px;
+  background-color: yellow;
 	margin: 0 auto;
 }
 #main {
@@ -194,4 +221,16 @@ tr:hover {background: #fafafa;}
 
 div.submit {
   background-color: #336600;
+}
+
+#SignIn {
+  background: $tea-green;
+  font-size: 1.1em;
+  font-color: #FFFFFF;
+  font-family: league-gothic, helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  width: 50px;
+  right: 10px;
 }
