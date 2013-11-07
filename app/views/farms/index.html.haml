@@ -9,12 +9,30 @@
     %th= sortable_header('Report Date', @sort_by)
   -@farms.each do |farm|
     %tr
-      %td#main= link_to farm.name, farm
-      %td#main= link_to farm.bushes, farm
-      %td#main= link_to farm.workers, farm
-      %td#main= link_to farm.longitude, farm
-      %td#main= link_to farm.latitude, farm
-      %td#main= link_to farm.notes, farm
+      -if farm.name
+        %td#main= link_to farm.name, farm
+      -else
+        %td#main
+      -if farm.bushes
+        %td#main= link_to farm.bushes, farm
+      -else
+        %td#main
+      -if farm.workers      
+        %td#main= link_to farm.workers, farm
+      -else
+        %td#main
+      -if farm.longitude
+        %td#main= link_to farm.longitude, farm
+      -else
+        %td#main
+      -if farm.latitude
+        %td#main= link_to farm.latitude, farm
+      -else
+        %td#main
+      -if farm.notes
+        %td#main= link_to farm.notes, farm
+      -else
+        %td#main
       %td#main= link_to farm.updated_at, farm
       %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
