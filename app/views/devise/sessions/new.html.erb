@@ -1,5 +1,11 @@
 <div id="container" class="LogInBox">
   <br>
+  <%  if flash[:notice].blank?
+      else
+        flash[:notice]
+      end
+  %>
+  <%= flash[:notice] %>
   <img src=url(assets/images/tea-tracker-logo.png)>
   <h2 class="side" id="small">TEA</h2>
   <h2 class="side" class="LogIn" id="large">TRACKER</h2>
@@ -8,7 +14,7 @@
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div>
     <br>
-    <%= f.email_field :email, :class=>"field",:autofocus => true, :placeholder=>"Email" %></div>
+    <%= f.email_field :email, :class=>"field", :placeholder=>"Email" %></div>
     <br>
 
     <div>

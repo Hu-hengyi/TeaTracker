@@ -11,27 +11,31 @@
 		<script src="//use.edgefonts.net/league-gothic.js"></script>
 
 	%body
-		%nav.right-side-nav
-			%ul
-				%li.logo.right-navigation-item
-				%li.right-navigation-item.active
-					= link_to_unless_current "Review", farms_path() do
-						Review
-				%li.right-navigation-item
-					Visualize
-				%li.right-navigation-item
-					Manage
-				%li.right-navigation-item.Logout
-					-if user_signed_in?
-						=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
-					-else
-						=link_to 'Sign In', new_user_session_path, id: 'login'
+		-if user_signed_in?
+			%nav.right-side-nav
+				%ul
+					%li.logo.right-navigation-item
+					%li.right-navigation-item.active
+						= link_to_unless_current "Review", farms_path() do
+							Review
+					%li.right-navigation-item
+						Visualize
+					%li.right-navigation-item
+						Manage
+					%li.right-navigation-item.Logout
+						-if user_signed_in?
+							=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
+						-else
+							=link_to 'Sign In', new_user_session_path, id: 'login'
+
+		-if user_signed_in?
+			%div.left-side-bar
+				%h1 Review
 
 
-		%div.left-side-bar
-			%h1 Review
-
+                
 		%div.content
-			%p.notice= flash[:notice] unless flash[:notice].blank?
-			%p.error= flash[:alert] unless flash[:alert].blank?
+			-if user_signed_in?
+				%p.notice= flash[:notice] unless flash[:notice].blank?
+				%p.error= flash[:alert] unless flash[:alert].blank?
 			= yield
