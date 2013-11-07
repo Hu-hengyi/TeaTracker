@@ -37,11 +37,19 @@
       %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"
-
-= link_to "CSV", farms_path(format: "csv"), :id => "export_csv"
-
-
-%h2 Import Products
+%br
+%br
+= link_to "Export Farms as CSV", farms_path(format: "csv"), :id => "export_csv"
+%br
+%br
+%h2 Import Farms
 = form_tag import_farms_path, multipart: true do
-  = file_field_tag :file
-  = submit_tag "Import"
+  = file_field_tag :file, :id=>"file"
+  = submit_tag "Import", :id=>"Import", :disabled=>true
+
+:javascript
+$document.ready(function() {
+  $('#file').change(function() {
+    $('#Import').removeAttr('disabled');
+  });
+});

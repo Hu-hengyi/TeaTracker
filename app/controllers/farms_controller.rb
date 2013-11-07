@@ -48,7 +48,12 @@ class FarmsController < ApplicationController
   end
 
   def import
-    Farm.import(params[:file])
-    redirect_to root_url, notice: "Products imported."
+    if params[:file]
+      Farm.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    else
+      flash[:notice] = "No file selected to import"
+      redirect_to farms_path
+    end
   end
 end
