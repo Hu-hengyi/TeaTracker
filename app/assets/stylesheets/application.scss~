@@ -1,94 +1,165 @@
-/* 
-   RESET CSS
-   http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+$background-color: #fbfbfb;
+$tea-green: #a4cb38;
+$dark-gray: #515254;
+$medium-gray: #999;
+$light-gray: #dedfe0;
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+/* LAYOUT */
+html, 
 body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* __EMBEDDED FONTS__ */
-@font-face {
-    font-family: 'gandhi_sansbold';
-    src: url('GandhiSans-Bold-webfont.eot');
-    src: url('GandhiSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('GandhiSans-Bold-webfont.woff') format('woff'),
-         url('GandhiSans-Bold-webfont.ttf') format('truetype'),
-         url('GandhiSans-Bold-webfont.svg#gandhi_sansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-/* __LAYOUT__ */
-html, body {
 	height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
-	background: #474747 url(image_path('bg.png')) top left repeat-x;
+	background: $background-color;
 }
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  font-family: league-gothic, helvetica, sans-serif;
+  color: white;
+}
+.side {
+  font-family: league-gothic, helvetica, sans-serif;
+  vertical-align:absbottom;
+  display:inline;
+  color: white;
+}
+
+
+#small{
+  top: 0;
+  font-size: 1.6em;
+  vertical-align: super;
+}
+
+#large{
+  font-size: 2.5em;
+  vertical-align: sub;
+}
+
+.field {
+  border: 1px solid #DDD;
+  padding: 7px 10px;
+  outline: none;
+  width: 195px
+}
+.LogInBox {
+  background-color: $dark-gray;
+  padding: 10px 20px 20px 20px;
+  width: 240px;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 
+
+}
+
+.green-text {
+  color: $tea-green;
+}
+
+p,
+table {
+  font-family: "Open Sans", helvetica, sans-serif;
+  font-weight: 300;
+}
+
+/* RIGHT NAVIGATION */
+.right-side-nav {
+  position: fixed;
+  background: $dark-gray;
+  padding: 35px 0 0px 0;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  text-transform: uppercase;
+  width: 150px;
+  z-index: 1;
+  .logo {
+    margin: 0 auto 20px auto;
+    padding: 0;
+  }
+}
+.right-navigation-item {
+  padding: 10px 25px;
+  display: block;
+  color: white;
+  font-family: league-gothic, helvetica, open-sans;
+  font-size: 29px;
+  &.active,
+  &:hover {
+    color: $dark-gray;
+  }
+  &.active,
+  &.active:hover {
+    cursor: default;
+    background: $background-color;
+    background: $background-color;
+  }
+  &:hover {
+    background: $medium-gray;
+    cursor: pointer;
+  }
+  &.logout {
+    text-align: right;
+    color: $dark-gray;
+    background: $light-gray;
+    font-size: 18px;
+    &:hover {
+      color: $light-gray;
+      background: $medium-gray;
+      cursor: pointer;
+    }
+  }
+}
+
+/* LEFT SIDE CONTENT */
+.left-side-bar {
+  height: 100%;
+  width: 175px;
+  background: $dark-gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  h1 {
+    padding-top: 80px;
+    color: white;
+    display: block;
+    background: $tea-green;
+    text-align: center;
+    font-size: 52px;
+  }
+}
+
+/* CONTAINER */
+.content {
+  padding: 25px 200px;
+}
+
 #wrapper {
 	position: relative;
 	min-height: 100%;
 }
 .container {
 	width: 960px;
+  background-color: yellow;
 	margin: 0 auto;
 }
 #main {
 	position: relative;
 	padding: 131px 0 60px;
 }
-#logo {
+
+.logo {
 	height: 60px;
-	width: 230px;
-	position: absolute;
-	top: 60px;
-	left: 0;
-	background: url(image_path('tracker_logo.png')) no-repeat;
+	width: 60px;
+	background: url(image_path('tea-tracker-logo.png'));
+  background-size: cover;
 }
+
 #login {
 	display: block;
 	position: absolute;
@@ -105,34 +176,7 @@ body {
 	-moz-box-shadow:    0 2px 3px rgba(50, 50, 50, 0.4);
 	box-shadow:         0 2px 3px rgba(50, 50, 50, 0.4);
 }
-nav {
-	position: absolute;
-	top: 105px;
-	right: 2px;
-	height: 19px;
-	max-width: 710px;
-}
-nav ul {
-	list-style: none;
-}
-nav li {
-	display: inline;
-}
-nav a, nav span.current {
-	display: inline-block;
-	padding-left: 30px;
-	font: 19px/19px gandhi_sansbold, arial, sans-serif;
-	color: #8e613d;
-	text-decoration: none;
-}
-#main .content {
-	background-color: white;
-	min-height: 500px;
-	padding: 70px;
-	-webkit-box-shadow: 0 2px 12px rgba(50, 50, 50, 0.93);
-	-moz-box-shadow:    0 2px 12px rgba(50, 50, 50, 0.93);
-	box-shadow:         0 2px 12px rgba(50, 50, 50, 0.93);
-}
+
 #footer {
 	position: absolute;
 	bottom: 0;
@@ -149,12 +193,11 @@ table#main{
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #222222;
-  font: normal 80%/140% arial, helvetica, sans-serif;
   color: #555555;
   background: #ffffff;
 }
 
-td, th {
+td#main, th#main {
   border: 1px dotted #bbbbbb;
   padding: .5em;
 }
@@ -187,18 +230,19 @@ table .odd {background: #fcfcfc;}
 tr:hover {background: #fafafa;}
 
 /* __Misc__ */
-h1 {
-  font-size: 1.3em;
-  text-transform: uppercase;
-  font-family: arial, helvetica, sans-serif;
-  font-weight: bold;
-  color: #336600;
-  padding: .4em 0;
-}
 
 div.submit {
   background-color: #336600;
 }
 
-
-
+#SignIn {
+  background: $tea-green;
+  font-size: 1.1em;
+  font-color: #FFFFFF;
+  font-weight: bold;
+  font-family: league-gothic, helvetica, sans-serif;
+  padding: 2px 2px 2px 2px;
+  margin: 0;
+  height: auto;
+  width: auto;
+}

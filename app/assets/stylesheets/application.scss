@@ -33,10 +33,12 @@ h1 {
 #small{
   top: 0;
   font-size: 1.4em;
+  vertical-align: super;
 }
 
 #large{
   font-size: 2.5em;
+  vertical-align: sub;
 }
 
 .field {
@@ -52,6 +54,10 @@ h1 {
   margin: 0 auto;
   text-align:center;
 
+}
+
+.green-text {
+  color: $tea-green;
 }
 
 p,
@@ -233,11 +239,10 @@ div.submit {
   font-size: 1.1em;
   font-color: #FFFFFF;
   font-weight: bold;
-  text-align:center;
+
   font-family: league-gothic, helvetica, sans-serif;
-  padding: 0;
+  padding: 2px 2px 2px 2px;
   margin: 0;
-  height: 30px;
-  width: 50px;
-  right: 10px;
+  height: auto;
+  width: auto;
 }
