@@ -12,22 +12,22 @@ Feature: User authentication
     Given I am not logged in
     When I go to the login page
     And I fill in the credentials for "JohnDoe"
-    And I press "Sign in"
+    And I press "LOGIN"
     Then I should be on the home page
-    And I should not see "Sign In"
+    And I should not see "LOGIN"
 
   Scenario: John Doe is already logged in and tries to visit the farms page
     Given I am logged in as "JohnDoe"
     And that there exists a farm named "FooFarm"
     And I go to the farms page
     Then I should see "FooFarm"
-    And I should not see "Sign In"
+    And I should not see "LOGIN"
 
   Scenario: John doe is logged in and decides to log out
     Given I am logged in as "JohnDoe"
     And I follow "Logout"
     Then I should be on the login page
-    And I should not see "JohnDoe"
+    And I should not see "LOGIN"
 
   # Sad Paths =(
   Scenario: John Doe tries to log in, but mistypes his password
@@ -35,7 +35,7 @@ Feature: User authentication
     And I am on the login page
     When I fill in "Email" with "John Doe"
     And I fill in "Password" with "Oops"
-    And I press "Sign in"
+    And I press "LOGIN"
     Then I should be on the login page
     And I should see "Invalid email or password."
 
@@ -44,7 +44,7 @@ Feature: User authentication
     And I am on the login page
     When I fill in "Email" with "Don Joe"
     And I fill in "Password" with "FooBar5"
-    And I press "Sign in"
+    And I press "LOGIN"
     Then I should be on the login page
     And I should see "Invalid email or password."
 

@@ -35,7 +35,6 @@
 
                 
 		%div.content
-			-if user_signed_in?
-				%p.notice= flash[:notice] unless flash[:notice].blank?
-				%p.error= flash[:alert] unless flash[:alert].blank?
+			%p.notice= flash[:notice] unless flash[:notice].blank?
+			%p.error= flash[:alert] unless flash[:alert].blank?
 			= yield

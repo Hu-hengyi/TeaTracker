@@ -20,7 +20,7 @@ Given(/^I am logged in as an "([^"]*)"/) do |type|
     Given I am on the login page
     And I fill in "Email" with "#{testEmail}"
     And I fill in "Password" with "#{testPass}"
-    And I press "Sign in"
+    And I press "LOGIN"
   }
 end
 
@@ -29,7 +29,7 @@ Given(/^I am logged in as "([^"]*)"$/) do |name|
     Given I am on the login page
     And I fill in "Email" with "#{name}@lujeri.com"
     And I fill in "Password" with "#{pass}"
-    And I press "Sign in"
+    And I press "LOGIN"
   }
 end
 
