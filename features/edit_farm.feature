@@ -1,4 +1,4 @@
-Feature: add a farm with its inputted data
+Feature: edit a farm's inputted data
 
   As an intern
   So that I can fix a mistake in my entry

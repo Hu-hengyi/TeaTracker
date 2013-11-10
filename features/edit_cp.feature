@@ -1,10 +1,10 @@
-Feature: add a farm with its inputted data
+Feature: edit a cp's inputted data
 
   As an administrator
   So that I can alter the location or name of a collection point
   I want to be able to change a piece of entered data of a collection point
 
-Scenario: edit a basic farm
+Scenario: edit a basic cp
   Given I am logged in
   And I am on the Create New Collection Point page
   When I enter in basic collection point data A

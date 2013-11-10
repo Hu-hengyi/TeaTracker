@@ -1,4 +1,4 @@
-Feature: add a farm with its inputted data
+Feature: add a cp with its inputted data
 
   As an administrator
   So that I can assign drivers and farms collection points to go to

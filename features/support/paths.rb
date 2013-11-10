@@ -16,8 +16,8 @@ module NavigationHelpers
       '/farms'
     when /^the Create New Farm page$/
       '/farms/new'
-    when /^the Create New Pickup page$/
-      '/pickup/new'
+    when /^the Create New Tea Deposit page$/
+      '/teadeposit/new'
     when /^the Create New Collection Point page$/
       '/cp/new'
     when /^the login page$/
