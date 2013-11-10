@@ -18,7 +18,7 @@ When /I enter in basic tea deposit data B/ do
   })
 end
 
-When /I edit the pickup named "(.*)"/ do |name|
+When /I edit the tea deposit named "(.*)"/ do |name|
   temp = TeaDeposit.find_by_title("#{name}").id
   visit "/teadeposit/#{temp}/edit"
 end
