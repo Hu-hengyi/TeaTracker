@@ -15,3 +15,4 @@ Scenario: add a new farm and its info
   And I press "create_farm"
   Then I will see the basic farm
 
+#there are no sad paths at this time but if after talking with client we find out there are variables which must be required, such as farm name, then we'll validate them and add them below

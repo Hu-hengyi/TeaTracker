@@ -1,6 +1,8 @@
 When /I enter in basic pickup data A/ do
   When %{I fill in the following:}, table(%{
-    | Farm      | Basic Pickup A   |
+    | Name      | Basic Pickup A   |
+    | CP        | Basic CP A       |
+    | Farm      | Basic Farm A     |
     | Weight    | 1000             |
     | Notes     | None             |
   })
@@ -8,7 +10,9 @@ end
 
 When /I enter in basic pickup data B/ do
   When %{I fill in the following:}, table(%{
-    | Farm      | Basic Pickup B   |
+    | Name      | Basic Pickup B   |
+    | CP        | Basic CP B       |
+    | Farm      | Basic Farm B     |
     | Weight    | 200              |
     | Notes     | Good Quality     |
   })

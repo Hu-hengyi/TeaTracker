@@ -11,3 +11,4 @@ Scenario: add a new collection point and add its info
   And I press "create_collection_point"
   Then I should see "Basic Collection Point A"
 
+#there are no sad paths as missing any of the fields is still an acceptable cp entry, if after discussing with the client we discover that certain fields should be mandatory, we'll add them below.

@@ -1,5 +1,7 @@
 class Farm < ActiveRecord::Base
   attr_accessible :bushes, :latitude, :longitude, :name, :notes, :workers
+#validates_presence_of :name
+
    def self.to_csv(farms = all)
     CSV.generate do |csv|
       csv << column_names
