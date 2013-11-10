@@ -6,14 +6,15 @@ Given(/^I am not logged in$/) do
 end
 
 Given(/^I am logged in$/) do
-  step 'Given I am logged in as an "admin"'
+  step 'I am logged in as an "admin"'
 end
 
 Given(/^I am logged in as an "([^"]*)"/) do |type|
   testEmail = 'testuser@lujeri.com'
   testPass = 'testpassword'
+  testName = 'test#{type}'
 
-  user = User.create!(email: testEmail, password: testPass, password_confirmation: testPass)
+  user = User.create!(real_name: testName, email: testEmail, password: testPass, password_confirmation: testPass)
   user.user_type = UserType.find_by_name'type'
   user.save!
   steps %{
