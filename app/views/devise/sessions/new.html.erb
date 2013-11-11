@@ -7,8 +7,9 @@
 
   <%= flash[:notice] %>
     <div class="logo"></div>
-    <h2 class="side" id="small">TEA</h2>
-    <h2 class="side" class="LogIn" id="large">TRACKER</h2>
+    <h1 class="teatracker">
+      <sup>Tea</sup>Tracker
+    </h1>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.email_field :email, :class=>"field", :placeholder=>"Email" %>

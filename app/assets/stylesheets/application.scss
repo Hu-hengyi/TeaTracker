@@ -24,18 +24,18 @@ h1 {
   color: white;
 }
 
-/* Wtf is this */
-.side {
-  font-family: league-gothic, helvetica, sans-serif;
-  vertical-align:absbottom;
-  display:inline;
-  color: white;
+.teatracker {
+  font-size: 2.7em;
+  sup {
+    font-size: 0.5em;
+    vertical-align: super;
+  }
 }
 
 /* LOG IN */
 .login {
   background-color: $dark-gray;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
   padding: 20px;
   width: 240px;
   text-align:center;
@@ -43,6 +43,26 @@ h1 {
   overflow: hidden;
   .logo {
     margin: 0 auto 10px auto;
+  }
+}
+
+.field {
+  margin-top: 10px;
+  font-family: 'Open Sans', helvetica, sans-serif;
+  border: none;
+  padding: 7px 10px;
+  outline: none;
+  width: 220px;
+}
+
+fieldset.checkbox-label {
+  display: block;
+  float: left;
+  margin-top: 10px;
+  label {
+    font-size: 14px;
+    color: white;
+    font-family: 'Open Sans', helvetica, sans-serif;
   }
 }
 
@@ -63,41 +83,9 @@ h1 {
   }
 }
 
-
-#small{
-  top: 0;
-  font-size: 1.4em;
-  vertical-align: super;
-}
-
-#large{
-  font-size: 2.5em;
-  vertical-align: sub;
-}
-
-.field {
-  margin-top: 10px;
-  font-family: 'Open Sans', helvetica, sans-serif;
-  border: none;
-  padding: 7px 10px;
-  outline: none;
-  width: 220px;
-}
-
-fieldset.checkbox-label {
-  display: block;
-  float: left;
-  margin-top: 10px;
-  label {
-    font-size: 16px;
-    color: white;
-    font-family: 'Open Sans', helvetica, sans-serif;
-  }
-}
-
 /* ANNOTATIONS */
 .helper-text {
-  font-size: 16px;
+  font-size: 14px;
   display: block;
   margin: 10px 0;
   float: left;
