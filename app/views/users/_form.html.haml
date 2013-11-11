@@ -1,8 +1,8 @@
 = form_for @user do |f|
   .field
-    = label_tag 'user[real_name]', "Name"
+    = label_tag 'user[name]', "Name"
     %br/
-    = f.text_field :real_name
+    = f.text_field :name
 
   .field
     = f.label :email, 'Email Address'

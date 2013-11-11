@@ -10,6 +10,6 @@ admin = UserType.create!(name: 'admin')
 analyst = UserType.create!(name: 'analyst')
 intern = UserType.create!(name: 'intern')
 
-testUser = User.create!(real_name: 'Tea Master', email: 'admin@lujeri.com', password: 'foobarbaz', password_confirmation: 'foobarbaz')
+testUser = User.create!(name: 'Tea Master', email: 'admin@lujeri.com', password: 'foobarbaz', password_confirmation: 'foobarbaz')
 testUser.user_type = admin
 testUser.save!

@@ -10,7 +10,7 @@
 
   - @users.each do |user|
     %tr
-      %td= link_to user.real_name, user_path(user)
+      %td= link_to user.name, user_path(user)
       %td= link_to user.email, user_path(user)
       %td= link_to user.user_type.name.capitalize, user_path(user)
       %td= link_to 'Edit', edit_user_path(user)

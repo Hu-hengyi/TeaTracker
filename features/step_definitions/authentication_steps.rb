@@ -14,7 +14,7 @@ Given(/^I am logged in as an "([^"]*)"/) do |type|
   testPass = 'testpassword'
   testName = 'test#{type}'
 
-  user = User.create!(real_name: testName, email: testEmail, password: testPass, password_confirmation: testPass)
+  user = User.create!(name: testName, email: testEmail, password: testPass, password_confirmation: testPass)
   user.user_type = UserType.find_by_name'type'
   user.save!
   steps %{
@@ -39,19 +39,19 @@ Given (/^(?:that )?there exists a farm named "([^"]*)"$/) do |name|
 end
 
 Given(/^there is an administrator named "([^"]*)"$/) do |name|
-  admin = User.create!(real_name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
+  admin = User.create!(name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
   admin.user_type = UserType.find_by_name('admin')
   admin.save!
 end
 
 Given(/^there is an analyst named "([^"]*)"$/) do |name|
-  analyst = User.create!(real_name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
+  analyst = User.create!(name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
   analyst.user_type = UserType.find_by_name('analyst')
   analyst.save!
 end
 
 Given(/^there is an intern named "([^"]*)"$/) do |name|
-  intern = User.create!(real_name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
+  intern = User.create!(name: name, email: name + "@lujeri.com", password: pass, password_confirmation: pass)
   intern.user_type = UserType.find_by_name('intern')
   intern.save!
 end
