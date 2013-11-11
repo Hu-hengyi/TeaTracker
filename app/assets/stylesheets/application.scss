@@ -3,6 +3,7 @@ $tea-green: #a4cb38;
 $dark-gray: #515254;
 $medium-gray: #999;
 $light-gray: #dedfe0;
+$dark-green: #82852c;
 
 /* LAYOUT */
 html, 
@@ -22,11 +23,44 @@ h1 {
   font-family: league-gothic, helvetica, sans-serif;
   color: white;
 }
+
+/* Wtf is this */
 .side {
   font-family: league-gothic, helvetica, sans-serif;
   vertical-align:absbottom;
   display:inline;
   color: white;
+}
+
+/* LOG IN */
+.login {
+  background-color: $dark-gray;
+  margin: 0 auto;
+  padding: 20px;
+  width: 240px;
+  text-align:center;
+  border-radius: 25px;
+  overflow: hidden;
+  .logo {
+    margin: 0 auto 10px auto;
+  }
+}
+
+/* BUTTONS */
+.green-btn {
+  font-family: league-gothic, helvetica, sans-serif;
+  font-size: 1.4em;
+  float: right;
+  background: $tea-green;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 8px;
+  &:hover {
+    border-left: 2px solid $dark-green;
+    border-bottom: 2px solid $dark-green;
+    cursor: pointer;
+  }
 }
 
 
@@ -42,22 +76,33 @@ h1 {
 }
 
 .field {
-  border: 1px solid #DDD;
+  margin-top: 10px;
+  font-family: 'Open Sans', helvetica, sans-serif;
+  border: none;
   padding: 7px 10px;
   outline: none;
-  width: 195px
-}
-.LogInBox {
-  background-color: $dark-gray;
-  padding: 10px 20px 20px 20px;
-  width: 240px;
-  margin: 0 auto;
-  text-align:center;
-
+  width: 220px;
 }
 
-.green-text {
+fieldset.checkbox-label {
+  display: block;
+  float: left;
+  margin-top: 10px;
+  label {
+    font-size: 16px;
+    color: white;
+    font-family: 'Open Sans', helvetica, sans-serif;
+  }
+}
+
+/* ANNOTATIONS */
+.helper-text {
+  font-size: 16px;
+  display: block;
+  margin: 10px 0;
+  float: left;
   color: $tea-green;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 p,
@@ -230,21 +275,8 @@ table .odd {background: #fcfcfc;}
 
 tr:hover {background: #fafafa;}
 
-/* __Misc__ */
+/* SIGN IN */
 
 div.submit {
   background-color: #336600;
-}
-
-#SignIn {
-  background: $tea-green;
-  font-size: 1.1em;
-  font-color: #FFFFFF;
-  font-weight: bold;
-
-  font-family: league-gothic, helvetica, sans-serif;
-  padding: 2px 2px 2px 2px;
-  margin: 0;
-  height: auto;
-  width: auto;
 }

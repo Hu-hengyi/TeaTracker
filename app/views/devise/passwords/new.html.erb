@@ -1,22 +1,15 @@
 <div id="container" class="LogInBox">
-<br>
 <h2 class="side" id="small">TEA</h2>
 <h2 class="side" class="LogIn" id="large">TRACKER</h2>
-<br/>
-<br>
 <h2>Forgot your password?</h2>
 <br>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div>
   <%= f.email_field :email, :autofocus => true, :class=>"field", :placeholder=>"Email" %></div>
-  <br>
-
   <div><%= f.submit "Send me reset\npassword instructions" %></div>
 <% end %>
-<br>
+
 <%= render "devise/shared/links" %>
 
 </div>

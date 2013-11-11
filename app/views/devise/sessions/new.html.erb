@@ -1,36 +1,28 @@
-<div id="container" class="LogInBox">
-  <br>
+<div class="login">
   <%  if flash[:notice].blank?
       else
         flash[:notice]
       end
   %>
+
   <%= flash[:notice] %>
-  <img src=url(assets/images/tea-tracker-logo.png)>
-  <h2 class="side" id="small">TEA</h2>
-  <h2 class="side" class="LogIn" id="large">TRACKER</h2>
-  <br>
+    <div class="logo"></div>
+    <h2 class="side" id="small">TEA</h2>
+    <h2 class="side" class="LogIn" id="large">TRACKER</h2>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div>
-    <br>
-    <%= f.email_field :email, :class=>"field", :placeholder=>"Email" %></div>
-    <br>
-
-    <div>
-    <%= f.password_field :password, :class=>"field", :placeholder=>"Password" %></div>
-  <br>
-  <%= render "devise/shared/links" %>
-
-  <br>
+    <%= f.email_field :email, :class=>"field", :placeholder=>"Email" %>
+    <%= f.password_field :password, :class=>"field", :placeholder=>"Password" %>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <fieldset class="checkbox-label">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </fieldset>
   <% end -%>
+  <%= render "devise/shared/links" %>
 
-  <br>
-
-  <div><%= f.submit "LOGIN", :id=>"SignIn" %></div>
+  <%= f.submit "LOGIN", :class => "green-btn", :id=>"SignIn" %>
 <% end %>
 </div>
 
