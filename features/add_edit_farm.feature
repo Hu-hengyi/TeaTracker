@@ -16,3 +16,10 @@ Scenario: add a new farm and its info
   Then I will see the basic farm
 
 #there are no sad paths at this time but if after talking with client we find out there are variables which must be required, such as farm name, then we'll validate them and add them below
+#Scenario: add a new farm without a name
+#  And I am on the FarmList
+#  When I follow "create_farm"
+#  Then I should be on the Create New Farm page
+#  When I press "create_farm"
+#  Then I should see "Farms must have a name"
+
