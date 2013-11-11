@@ -5,8 +5,13 @@ class FarmsController < ApplicationController
     @sort_by = params[:sort_by] || 'Report Date'
     order_by = @sort_by.downcase
     order_by = "updated_at" if order_by == 'report date'
-    @farms = Farm.all(:order => order_by)
     @csv_farms = Farm.order(:name)
+
+    if params[:search]
+      @farms = Farm.where(name: params[:search])
+    else
+      @farms = Farm.all(:order => order_by)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
