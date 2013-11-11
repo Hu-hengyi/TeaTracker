@@ -1,15 +1,13 @@
-<div id="container" class="LogInBox">
-<h2 class="side" id="small">TEA</h2>
-<h2 class="side" class="LogIn" id="large">TRACKER</h2>
-<h2>Forgot your password?</h2>
-<br>
+<div class="login">
+  <div class="logo"></div>
+  <h1 class="teatracker">
+    <sup>Tea</sup>Tracker
+  </h1>
+  <h2>Forgot your password?</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.email_field :email, :autofocus => true, :class=>"field", :placeholder=>"Email" %></div>
-  <div><%= f.submit "Send me reset\npassword instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.email_field :email, :autofocus => true, :class=>"field", :placeholder=>"Email" %>
+    <%= f.submit "Reset Password", :class => 'green-btn' %>
+  <% end %>
 </div>

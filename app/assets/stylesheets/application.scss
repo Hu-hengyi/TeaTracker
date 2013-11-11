@@ -17,15 +17,25 @@ body {
 }
 
 /* TYPOGRAPHY */
-h1 {
-  font-size: 1.3em;
+h1,
+h2 {
   text-transform: uppercase;
   font-family: league-gothic, helvetica, sans-serif;
   color: white;
 }
 
+h1 {
+  font-size: 1.3em;
+}
+
+h2 {
+  color: $tea-green;
+  font-size: 1.3em;
+}
+
 .teatracker {
   font-size: 2.7em;
+  margin-bottom: 5px;
   sup {
     font-size: 0.5em;
     vertical-align: super;
@@ -41,7 +51,6 @@ h1 {
   text-align:center;
   border-radius: 25px;
   overflow: hidden;
-  height: 308px;
   .logo {
     margin: 0 auto 10px auto;
   }
@@ -69,6 +78,7 @@ fieldset.checkbox-label {
 
 /* BUTTONS */
 .green-btn {
+  margin-top: 10px;
   font-family: league-gothic, helvetica, sans-serif;
   font-size: 1.4em;
   float: right;
