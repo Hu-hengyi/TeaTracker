@@ -41,6 +41,7 @@ h1 {
   text-align:center;
   border-radius: 25px;
   overflow: hidden;
+  height: 308px;
   .logo {
     margin: 0 auto 10px auto;
   }
@@ -75,9 +76,11 @@ fieldset.checkbox-label {
   color: white;
   padding: 5px 30px;
   border: none;
+  border-left: 3px solid $dark-green;
+  border-bottom: 4px solid $dark-green;
   border-radius: 8px;
   &:hover {
-    border-left: 2px solid $dark-green;
+    border-left: 1px solid $dark-green;
     border-bottom: 2px solid $dark-green;
     cursor: pointer;
   }
