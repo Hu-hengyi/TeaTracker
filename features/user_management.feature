@@ -5,17 +5,16 @@ Feature: User management
   I want to be able to be able to add, remove, and update user accounts and access priviledges
 
   Background:
-    Given seed data is loaded
-    And there is an administrator named "JohnDoe"
-    And there is an intern named "IanTurn"
-    And there is an intern named "IvanAgruduate"
+    Given there is an administrator named "JohnDoe"
+    And there is an intern named "Ian Turn"
+    And there is an intern named "Ivan Agruduate"
 
-# Happy Paths =)
+#Happy Paths =)
   Scenario: John Doe wants to review the list of interns
-    Given I am logged in as "JohnDoe"
+    Given I am logged in as an "admin"
     And I am on the user management page
-    Then I should see "IanTurn"
-    And I should see "IvanAgruduate"
+    Then I should see "Ian Turn"
+    And I should see "Ivan Agruduate"
 
   Scenario: John Doe adds a new intern to the database
     Given I am logged in as "JohnDoe"
@@ -48,18 +47,18 @@ Feature: User management
 
   Scenario: John Doe changes a user's privileges
     Given I am logged in as "JohnDoe"
-    And I am on the edit user page for "IanTurn"
+    And I am on the edit user page for "Ian Turn"
     And I select "Admin" from "User Type"
     And I press "Save Changes"
-    Then I should be on the show user page for "IanTurn"
+    Then I should be on the show user page for "Ian Turn"
     And I should see "Admin"
 
   Scenario: John Doe deletes a user from the database
     Given I am logged in as "JohnDoe"
     And I am on the user management page
-    And I follow "Remove User" in the row containing "IanTurn"
+    And I follow "Remove User" in the row containing "Ian Turn"
     Then I should be on the user management page
-    And I should not see "IanTurn"
+    And I should not see "Ian Turn"
 
 # Sad Paths =(
   Scenario: John Doe wants to create a new user, but doesn't submit all of \
@@ -75,7 +74,7 @@ Feature: User management
   Scenario: John Doe wants to edit an existing user, but doesn't submit all of \
   the necessary data.
     Given I am logged in as "JohnDoe"
-    When am on the edit user page for "IanTurn"
+    When am on the edit user page for "Ian Turn"
     And fill in "Name" with "At least he has a name..."
     And fill in "foo@bar.com" for "Email"
     And leave the "Password" field blank
