@@ -35,4 +35,8 @@ RSpec.configure do |config|
   # Added by daniel
   # Shortens the syntax from Factory.build/create to just create or build
   config.include FactoryGirl::Syntax::Methods
+
+  # Allows rspec to test as logged in user
+  config.include Devise::TestHelpers, type: :controller
+  config.extend AuthHelpers, type: :controller
 end

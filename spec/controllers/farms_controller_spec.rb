@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe FarmsController do
+  login_admin
 
-   describe "Displaying farm list" do
+  describe "Displaying farm list" do
      it "should render the index page" do
        get :index
        expect(response).to render_template("index")
