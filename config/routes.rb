@@ -10,6 +10,9 @@ TeaTracker::Application.routes.draw do
     collection { post :import}
   end
 
+  resources :cps do
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
