@@ -35,6 +35,14 @@
         %td#main
       %td#main= link_to farm.updated_at, farm
       %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+  %tr
+    %td
+    %td= @bush_sum
+    %td
+    %td
+    %td
+    %td
+    %td
 %br
 = link_to 'New Farm', new_farm_path, :id => "create_farm"
 %br
