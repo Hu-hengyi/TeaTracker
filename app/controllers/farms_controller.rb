@@ -8,6 +8,9 @@ class FarmsController < ApplicationController
     @farms = Farm.all(:order => order_by)
     @csv_farms = Farm.order(:name)
 
+    @bush_sum = 0
+    @farms.all.each { |farm| @bush_sum += (farm.bushes || 0) }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @farms }

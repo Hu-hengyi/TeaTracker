@@ -16,6 +16,7 @@ group :development,:test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'factory_girl_rails'
+  gem 'ZenTest'
 end
 group :production do
   gem 'pg', '0.17.0'
