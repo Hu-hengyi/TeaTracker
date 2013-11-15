@@ -5,7 +5,7 @@ Feature: import a set of data
   I want to be able to import new farms or data in a csv format
 
 Scenario: import from csv
-  Given I am logged in
+  Given Pending Given I am logged in
   And I am on the FarmList home page
 #  When I press "browse"
 #  When I upload a file
