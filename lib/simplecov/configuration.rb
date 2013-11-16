@@ -1,0 +1,1 @@
+SimpleCov.root(Rails.root)

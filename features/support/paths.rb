@@ -25,9 +25,9 @@ module NavigationHelpers
     when /^the user management page$/
       users_path
     when /^the edit user page for "([^"]*)"$/
-      edit_user_path(User.find_by_real_name($1))
+      edit_user_path(User.find_by_name($1))
     when /^the show user page for "([^"]*)"$/
-      user_path(User.find_by_real_name($1))
+      user_path(User.find_by_name($1))
     when /^the new user page$/
       new_user_path()
 

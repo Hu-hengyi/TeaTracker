@@ -1,4 +1,4 @@
-%h1 = @user.real_name
+%h1 = @user.name
 %p#notice= notice
 
 %div
@@ -8,7 +8,7 @@
 
   %p
     User Type
-    = @user.user_type.name.capitalize
+    = @user.type.capitalize
 
   %p
     Password

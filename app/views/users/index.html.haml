@@ -10,11 +10,11 @@
 
   - @users.each do |user|
     %tr
-      %td= link_to user.real_name, user_path(user)
+      %td= link_to user.name, user_path(user)
       %td= link_to user.email, user_path(user)
-      %td= link_to user.user_type.name.capitalize, user_path(user)
+      %td= link_to user.type.capitalize, user_path(user)
       %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Remove User', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Remove User', user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

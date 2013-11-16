@@ -1,6 +1,23 @@
+GIT
+  remote: https://github.com/colszowka/simplecov-html.git
+  revision: 0b5371667d0700291c89163654fb4cd959e529e3
+  specs:
+    simplecov-html (0.8.0)
+
+GIT
+  remote: https://github.com/colszowka/simplecov.git
+  revision: 0d8069279ad49d7016ab0409be8728a55464ae2e
+  specs:
+    simplecov (0.8.1)
+      docile (~> 1.1.0)
+      lockfile (>= 2.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.9.5)
     actionmailer (3.2.14)
       actionpack (= 3.2.14)
       mail (~> 2.5.4)
@@ -69,8 +86,14 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
+    docile (1.1.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     ffi (1.9.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
@@ -90,6 +113,7 @@ GEM
     json (1.8.1)
     launchy (2.3.0)
       addressable (~> 2.3)
+    lockfile (2.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -149,10 +173,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.7.1)
-    simplecov-html (0.7.1)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -180,12 +200,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   capybara
   coffee-rails (~> 3.2.1)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  factory_girl_rails
   haml-rails
   jquery-rails
   launchy
@@ -194,6 +216,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   selenium-webdriver
-  simplecov
+  simplecov!
+  simplecov-html!
   sqlite3
   uglifier (>= 1.0.3)

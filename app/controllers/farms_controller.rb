@@ -7,11 +7,16 @@ class FarmsController < ApplicationController
     order_by = "updated_at" if order_by == 'report date'
     @csv_farms = Farm.order(:name)
 
+<<<<<<< HEAD
     if params[:search]
       @farms = Farm.where(name: params[:search])
     else
       @farms = Farm.all(:order => order_by)
     end
+=======
+    @bush_sum = 0
+    #@farms.each { |farm| @bush_sum += (farm.bushes || 0) }
+>>>>>>> 6f2028d4182e15a704cf89f70ef9aa247dd579c6
 
     respond_to do |format|
       format.html # index.html.erb

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105194938) do
+ActiveRecord::Schema.define(:version => 20131114213300) do
+
+  create_table "collections", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cps", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "farms", :force => true do |t|
     t.string   "name"
@@ -20,12 +32,6 @@ ActiveRecord::Schema.define(:version => 20131105194938) do
     t.float    "longitude"
     t.float    "latitude"
     t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_types", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -43,8 +49,9 @@ ActiveRecord::Schema.define(:version => 20131105194938) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "user_type_id"
-    t.string   "real_name"
+    t.string   "name"
+    t.string   "type"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

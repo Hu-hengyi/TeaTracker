@@ -264,3 +264,7 @@ end
 When /^(?:|I )leave the "([^"]*)" field blank?/ do |field|
   fill_in(field, :with => '')
 end
+
+Given /^PENDING/ do
+  pending
+end

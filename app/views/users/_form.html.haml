@@ -1,8 +1,8 @@
-= form_for @user do |f|
+= form_for @user.becomes(User) do |f|
   .field
-    = label_tag 'user[real_name]', "Name"
+    = label_tag 'user[name]', "Name"
     %br/
-    = f.text_field :real_name
+    = f.text_field :name
 
   .field
     = f.label :email, 'Email Address'
@@ -15,9 +15,10 @@
     = f.text_field :password
 
   .field
-    = f.label :user_type_id, 'User Type'
+    = f.label :type, 'User Type'
     %br/
-    = collection_select :user, :user_type_id, UserType.all, :id, :formatted_name, {selected: UserType.find_by_name('intern').id}
+    -#= collection_select :user_type, nil, User.subclasses, :name, :name, {selected: Intern}
+    = select_tag(:user_type, options_for_select(user_types))
 
   - if @user.errors.any?
     #error_explanation

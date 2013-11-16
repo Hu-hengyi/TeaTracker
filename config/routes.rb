@@ -6,8 +6,15 @@ TeaTracker::Application.routes.draw do
     resources :users
   end
 
+  namespace 'api' do
+    resources :tokens, :only => [:create, :destroy]
+  end
+
   resources :farms do
     collection { post :import}
+  end
+
+  resources :cps do
   end
 
 

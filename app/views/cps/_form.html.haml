@@ -1,0 +1,9 @@
+= form_for(@cp) do |f|
+  %br/
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %br/
+  .actions
+    = f.submit :id => :create_cp

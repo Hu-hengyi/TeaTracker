@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter do
-    unless current_user && current_user.admin?
+    unless current_user && current_user.type == "Admin"
       flash[:alert] = "This area is restricted to users with administrator privileges"
       redirect_to new_user_session_path
     end
@@ -49,11 +49,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = params[:user_type].constantize.new(params[:user])
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to user_path(@user), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -68,8 +68,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @user.update_attributes(params[:user]) && @user.type = params[:user_type]
+        format.html { redirect_to user_path(@user), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
