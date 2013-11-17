@@ -5,7 +5,7 @@ Feature: add a cp with its inputted data
   I want to be able to add new collection points
 
 Scenario: add a new collection point and add its info
-  Given Pending Given I am logged in
+  Given I am logged in
   And I am on the Create New Collection Point page
   When I enter in basic collection point data A
   And I press "create_collection_point"

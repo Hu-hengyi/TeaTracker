@@ -5,7 +5,7 @@ Feature: edit a cp's inputted data
   I want to be able to change a piece of entered data of a collection point
 
 Scenario: edit a basic cp
-  Given Pending Given I am logged in
+  Given I am logged in
   And I am on the Create New Collection Point page
   When I enter in basic collection point data A
   And I press "create_collection_point"
