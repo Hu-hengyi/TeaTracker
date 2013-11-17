@@ -1,6 +1,3 @@
-Given /^PENDING/ do
-  pending
-end
 
 Given(/^I am not logged in$/) do
   visit('/')

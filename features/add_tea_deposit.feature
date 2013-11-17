@@ -5,7 +5,7 @@ Feature: add a tea deposit with its inputted data
   I want to be able input the weight and name of a tea deposit
 
 Scenario: add a new tea deposit and its info
-  Given Pending Given I am logged in
+  Given I am logged in
   And I am on the Create New Tea Deposit page
   When I enter in basic tea deposit data A
   And I press "create_tea_deposit"

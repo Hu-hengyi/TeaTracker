@@ -14,7 +14,7 @@ class FarmsController < ApplicationController
     end
 
     @bush_sum = 0
-    #@farms.each { |farm| @bush_sum += (farm.bushes || 0) }
+    @farms.each { |farm| @bush_sum += (farm.bushes || 0) }
 
     respond_to do |format|
       format.html # index.html.erb
