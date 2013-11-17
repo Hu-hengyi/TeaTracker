@@ -88,7 +88,7 @@ describe FarmsController do
 
   describe "Sorting By Column Name" do 
      it "should order by name when passed as param" do
-        Farm.should_receive(:all).with(:order => 'name')
+        Farm.should_receive(:all).with(:order => 'name').and_return(@fake_farms)
         get :index, {:sort_by => 'name'}
      end
      it "should order by bushes when passed as param" do
@@ -105,16 +105,16 @@ describe FarmsController do
      end
   end
 
-  describe "Importing CSV" do
-    it "should import in database" do 
-      Farm.should_receive(:import)
-      get :import
-    end
-    it "should import in database" do 
-      Farm.stub(:import)
-      get :import
-      response.should redirect_to root_url
-    end
-  end
+#  describe "Importing CSV" do
+#    it "should import in database" do 
+#      Farm.should_receive(:import)
+#      get :import
+#    end
+#    it "should import in database" do 
+#      Farm.stub(:import)
+#      get :import
+#      response.should redirect_to root_url
+#    end
+#  end
 
 end

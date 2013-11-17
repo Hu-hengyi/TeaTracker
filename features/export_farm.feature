@@ -6,7 +6,7 @@ Feature: export the list of farms
 
 #@javascript
 Scenario: export to csv
-  Given I am logged in
+  Given Pending Given I am logged in
   And I am on the FarmList home page
   When I follow "export_csv"
 #  When I confirm the dialog box
