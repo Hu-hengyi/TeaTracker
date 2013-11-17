@@ -6,7 +6,7 @@ describe "Access with valid token" do
     @user.ensure_authentication_token!
 
     get farms_path, { auth_token: @user.authentication_token }
-    response.status.should eq(200)
+    response.to be_success
   end
 
   it "does not allow users to access pages without a token" do
