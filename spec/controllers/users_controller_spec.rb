@@ -15,6 +15,14 @@ describe UsersController do
       get :index, {}
       assigns(:users).should eq([user])
     end
+
+    it "doesn't allow unauthorized users" do
+      @request.env["devise.mapping"] = Devise.mappings[:intern]
+      sign_in FactoryGirl.create(:intern, email: "intern@lujeri.com")
+
+      get :index
+      response.status.should eq(302)
+    end
   end
 
   describe "GET show" do
