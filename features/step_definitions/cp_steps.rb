@@ -18,3 +18,12 @@ When /I edit the collection point named "(.*)"/ do |name|
   temp = CollectionPoint.find_by_title("#{name}").id
   visit "/cp/#{temp}/edit"
 end
+
+When /^I create basic collection points$/ do
+  When 'I go to the Create New Collection Point page'
+  And 'I enter in basic collection point data A'
+  And 'I press "create_collection_point"'
+  And 'I go to the Create New Collection Point page'
+  And 'I enter in basic collection point data B'
+  And 'I press "create_collection_point"'
+end

@@ -4,9 +4,30 @@ Feature: add a tea deposit with its inputted data
   So that I can keep a record of the bushels received from each farm
   I want to be able input the weight and name of a tea deposit
 
-Scenario: add a new tea deposit and its info
+Background:
   Given I am logged in
-  And I am on the Create New Tea Deposit page
+  When I initialize farms and cps
+
+Scenario: add a new tea deposit and its info
+  Given I am on the Create New Tea Deposit page
+  When I enter in basic tea deposit data A
+  And I press "create_tea_deposit"
+  Then I should see "Basic Tea Deposit A"
+
+Scenario: add a new tea deposit from the farms page
+  Given I am on the farms page
+  When I follow "Basic Farm A"
+  And I follow "new_tea_deposit"
+  Then I should see "Basic Farm A"
+  When I enter in basic tea deposit data A
+  And I press "create_tea_deposit"
+  Then I should see "Basic Tea Deposit A"
+
+Scenario: add a new tea deposit from the collection points page
+  Given I am on the collection points page
+  When I follow "Basic CP A"
+  And I follow "new_tea_deposit"
+  Then I should see "Basic CP A"
   When I enter in basic tea deposit data A
   And I press "create_tea_deposit"
   Then I should see "Basic Tea Deposit A"
