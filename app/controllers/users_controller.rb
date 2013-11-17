@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter do
-    unless current_user && current_user.type == "Admin"
+    unless current_user.type == "Admin"
       flash[:alert] = "This area is restricted to users with administrator privileges"
-      redirect_to new_user_session_path
+      redirect_to farms_path
     end
   end
 
@@ -65,13 +65,16 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).becomes(User)
+    original_type = @user.type
+    @user.type = params[:user_type]
 
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @user.type = params[:user_type]
+      if @user.save! && @user.update_attributes(params[:user])
         format.html { redirect_to user_path(@user), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
+        @user.type = original_type
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

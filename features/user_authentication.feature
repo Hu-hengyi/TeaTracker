@@ -54,3 +54,8 @@ Feature: User authentication
     When I go to the farms page
     Then I should see "You need to sign in or sign up before continuing"
     And I should not see "FooFarm"
+
+  Scenario: An intern tries to view an admin page without the proper credentials
+    Given I am logged in as an "intern"
+    When I go to the user management page
+    Then I should see "This area is restricted to users with administrator privileges"

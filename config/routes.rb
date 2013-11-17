@@ -7,7 +7,8 @@ TeaTracker::Application.routes.draw do
   end
 
   namespace 'api' do
-    resources :tokens, :only => [:create, :destroy]
+    match "tokens" => 'tokens#create', :via => :post
+    match "tokens" => 'tokens#destroy', :via => :delete
   end
 
   resources :farms do

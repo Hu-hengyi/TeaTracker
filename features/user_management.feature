@@ -51,6 +51,7 @@ Feature: User management
     And I select "Admin" from "User Type"
     And I press "Save Changes"
     Then I should be on the show user page for "Ian Turn"
+    And I should see "User was successfully updated"
     And I should see "Admin"
 
   Scenario: John Doe deletes a user from the database
@@ -66,17 +67,27 @@ Feature: User management
     Given I am logged in as "JohnDoe"
     And am on the new user page
     When fill in "Name" with "A name"
-    And fill in "Email" with "me@myself.com"
-    And leave the "Password" field blank
+    And leave the "Email" field blank
     And press "Create User"
-    Then I should see "Password can't be blank"
+    Then I should see "Email can't be blank"
 
   Scenario: John Doe wants to edit an existing user, but doesn't submit all of \
   the necessary data.
     Given I am logged in as "JohnDoe"
     When am on the edit user page for "Ian Turn"
     And fill in "Name" with "At least he has a name..."
-    And fill in "foo@bar.com" for "Email"
-    And leave the "Password" field blank
+    And leave the "Email" field blank
     And press "Save Changes"
-    And I should see "Password can't be blank"
+    And I should see "Email can't be blank"
+
+  Scenario: Someone tries to view an admin page without being logged in at all
+    Given I am not logged in
+    When I go to the user management page
+    Then I should be on the login page
+
+  Scenario: Admin tries to give a user an invalid email address
+    Given I am logged in as an "admin"
+    When I go to the edit user page for "Ian Turn"
+    And I fill in "Email Address" with "foo"
+    And I press "Save Changes"
+    Then I should see "Email is invalid"
