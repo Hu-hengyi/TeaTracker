@@ -7,11 +7,14 @@ FactoryGirl.define do
 
   factory :admin, class: Admin, parent: :user do |user|
     user.type { "Admin" }
+    user.confirmed_at  {1.day.ago }
   end
   factory :analyst, class: Analyst, parent: :user do |user|
     user.type { "Analyst" }
+    user.confirmed_at  {1.day.ago }
   end
   factory :intern, class: Intern, parent: :user do |user|
     user.type { "Intern" }
+    user.confirmed_at  {1.day.ago }
   end
 end

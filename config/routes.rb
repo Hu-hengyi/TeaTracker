@@ -1,9 +1,9 @@
 TeaTracker::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {:confirmations => 'confirmations'}, skip: [:registrations]
 
-  scope 'admin/' do
-    resources :users
+  devise_scope :user do
+    put "user/confirm" => "confirmations#confirm"
   end
 
   namespace 'api' do
@@ -17,6 +17,11 @@ TeaTracker::Application.routes.draw do
 
   resources :cps do
   end
+
+  scope 'admin/' do
+    resources :users
+  end
+
 
 
   # The priority is based upon order of creation:

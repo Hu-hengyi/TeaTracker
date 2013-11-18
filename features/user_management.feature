@@ -24,7 +24,8 @@ Feature: User management
     And I fill in "Email" with "intrn@lujeri.com"
     And fill in "Password" with "n3W p@s$W0rD"
     And select "Intern" from "User Type"
-    And press "Create User"
+    And show me the page
+    And press "Register User"
     When I am on the user management page
     Then I should see "Intern"
     And I should see "intrn@lujeri.com"
@@ -38,7 +39,7 @@ Feature: User management
     And fill in "Name" with "admnstrtr"
     And fill in "Email" with "thebossman@lujeri.com"
     And fill in "Password" with "administastic"
-    And press "Create User"
+    And press "Register User"
     And I am on the user management page
     And I should see "Admin"
     And I should see "admnstrtr"

@@ -7,4 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-testUser = Admin.create!(name: 'Tea Master', email: 'admin@lujeri.com', password: 'foobarbaz', password_confirmation: 'foobarbaz')
+testUser = Admin.new(name: 'Tea Master', email: 'admin@lujeri.com', password: 'foobarbaz')
+testUser.skip_confirmation!
+testUser.save!
