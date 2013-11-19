@@ -22,14 +22,11 @@ Feature: User management
     And follow "New User"
     And fill in "Name" with "Ivan Turn"
     And I fill in "Email" with "intrn@lujeri.com"
-    And fill in "Password" with "n3W p@s$W0rD"
     And select "Intern" from "User Type"
-    And show me the page
     And press "Register User"
     When I am on the user management page
     Then I should see "Intern"
     And I should see "intrn@lujeri.com"
-    And I should not see "n3W p@s$W0rD"
 
   Scenario: John Doe adds a new administrator to the database
     Given I am logged in as "JohnDoe"
@@ -38,13 +35,11 @@ Feature: User management
     And select "Admin" from "User Type"
     And fill in "Name" with "admnstrtr"
     And fill in "Email" with "thebossman@lujeri.com"
-    And fill in "Password" with "administastic"
     And press "Register User"
     And I am on the user management page
     And I should see "Admin"
     And I should see "admnstrtr"
     And I should see "thebossman@lujeri.com"
-    And I should not see "administastic"
 
   Scenario: John Doe changes a user's privileges
     Given I am logged in as "JohnDoe"
@@ -69,7 +64,7 @@ Feature: User management
     And am on the new user page
     When fill in "Name" with "A name"
     And leave the "Email" field blank
-    And press "Create User"
+    And press "Register User"
     Then I should see "Email can't be blank"
 
   Scenario: John Doe wants to edit an existing user, but doesn't submit all of \

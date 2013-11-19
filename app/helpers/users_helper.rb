@@ -10,7 +10,7 @@ module UsersHelper
   end
 
   def resource
-    @resource ||= User.new
+    @resource ||= @user || User.new
   end
 
   def devise_mapping

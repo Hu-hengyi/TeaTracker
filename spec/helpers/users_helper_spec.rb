@@ -11,5 +11,19 @@ require 'spec_helper'
 #   end
 # end
 describe UsersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "lists the user types" do
+    expect(helper.user_types).to eq(["Admin", "Analyst", "Intern"])
+  end
+
+  it "returns the right resource name" do
+    helper.resource_name.should be :user
+  end
+
+  it "returns a valid resource" do
+    helper.resource.class.should be User
+  end
+
+  it "returns the right devise mapping" do
+    helper.devise_mapping.class_name.should eq "User"
+  end
 end

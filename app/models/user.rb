@@ -6,14 +6,20 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
   devise :database_authenticatable, :recoverable, :rememberable,
-         :trackable, :token_authenticatable, :confirmable, :registerable
+         :trackable, :token_authenticatable, :confirmable#, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
+  # Overrides default devise behavior.  A password is no longer required for inintial
+  # signup, but is still required if a user wants to change his email address
   def password_required?
-    super if confirmed?
+    if confirmed?
+      !persisted? || !password.nil? || !password_confirmation.nil?
+    else
+      false
+    end
   end
 
   def password_match?
