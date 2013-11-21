@@ -104,6 +104,10 @@ fieldset.checkbox-label {
   float: left;
   color: $tea-green;
   font-family: 'Open Sans', helvetica, sans-serif;
+  text-align: left;
+}
+.helper-text + .helper-text {
+  margin-top: -2px;
 }
 
 p,
