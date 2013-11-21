@@ -4,18 +4,16 @@ require "selenium-webdriver"
 When /I enter in basic farm data A/ do
   When %{I fill in the following:}, table(%{
     | Name      | Basic Farm A     |
-    | Bushes    | 2000             |
     | Workers   | 8                |
     | Longitude | 35.628262        |
     | Latitude  | -15.928978       |
-    | Notes     | Doing great work |
+    | Notes     | Doing great work | #need to add name of owner
   })
 end
 
 When /I enter in basic farm data B/ do
   When %{I fill in the following:}, table(%{
     | Name      | Basic Farm B      |
-    | Bushes    | 1000              |
     | Workers   | 5                 |
     | Longitude | 35.628260         |
     | Latitude  | -15.928970        |
@@ -46,10 +44,7 @@ end
 #  assert myPage.index(item.to_s) != nil
 #end
 
-Then /I should see both "(.*)" before "(.*)"/ do |e1, e2|
-  myPage = page.body.to_s
-  assert myPage.index(e1.to_s) < myPage.index(e2.to_s)
-end
+
 
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")

@@ -261,6 +261,11 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
+Then /I should see both "(.*)" before "(.*)"/ do |e1, e2|
+  myPage = page.body.to_s
+  assert myPage.index(e1.to_s) < myPage.index(e2.to_s)
+end
+
 When /^(?:|I )leave the "([^"]*)" field blank?/ do |field|
   fill_in(field, :with => '')
 end

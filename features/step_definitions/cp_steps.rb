@@ -2,7 +2,7 @@ When /I enter in basic collection point data A/ do
   When %{I fill in the following:}, table(%{
     | Name      | Basic Collection Point A |
     | Latitude  | -35.010                  |
-    | Longitude | 35.010                   |
+    | Longitude | 35.010                   | #need to add in notes
   })
 end
 

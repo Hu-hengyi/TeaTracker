@@ -20,6 +20,8 @@ module NavigationHelpers
       '/cp'
     when /^the Create New Farm page$/
       '/farms/new'
+    when /^the Tea Deposit page$/
+      '/teadeposit'
     when /^the Create New Tea Deposit page$/
       '/teadeposit/new'
     when /^the Create New Collection Point page$/
