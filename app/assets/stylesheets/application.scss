@@ -138,6 +138,10 @@ table {
   color: white;
   font-family: league-gothic, helvetica, open-sans;
   font-size: 29px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
   &.active,
   &:hover {
     color: $dark-gray;
