@@ -4,6 +4,7 @@ $dark-gray: #515254;
 $medium-gray: #999;
 $light-gray: #dedfe0;
 $dark-green: #82a52c;
+$red: #d85127;
 
 /* LAYOUT */
 html, 
@@ -22,15 +23,16 @@ h2 {
   text-transform: uppercase;
   font-family: league-gothic, helvetica, sans-serif;
   color: white;
-}
-
-h1 {
   font-size: 1.3em;
 }
 
 h2 {
   color: $tea-green;
-  font-size: 1.3em;
+}
+
+p {
+  color: $dark-gray;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 .teatracker {
@@ -201,6 +203,9 @@ table {
     text-decoration: none;
     padding: 10px 5%;
     margin-bottom: 1px;
+    &.edit {
+      background: $red;
+    }
     h2 {
       font-size: 23px;
       color: white;

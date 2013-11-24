@@ -1,36 +1,19 @@
-%h2
-  = @farm.name
+-content_for(:left_bar_title, @farm.name)
+-content_for(:left_bar_content) do
+  = link_to 'Edit ' + @farm.name, edit_farm_path(@farm), :class => "left_bar_button edit"
+  = link_to 'Back to farms', farms_path, :class => "left_bar_button"
+%p
+  Bushes: 
+  = @farm.bushes
 
-%br
+%p
+  Workers: 
+  = @farm.workers
 
-%div
+%p
+  Latitude: 
+  = @farm.latitude
 
-  %p
-    Bushes: 
-    = @farm.bushes
-  
-  %br
-
-    %p
-    Workers: 
-    = @farm.workers
-
-%div
-  %br
-
-    %p
-    Latitude: 
-    = @farm.latitude
-  
-  %br
-   
-    %p
-    Longitude:
-    = @farm.longitude
-
-  %br
-
-
-%br
-
-%td= link_to('Edit', edit_farm_path(@farm)) + '     |     ' + link_to('Back to farms', farms_path)
+%p
+  Longitude:
+  = @farm.longitude
