@@ -7,7 +7,7 @@ $(window).load(function() {
     maxZoom: 18
   }).addTo(map);
 
-  /* Drop markers for farms */
+   Drop markers for farms 
   $('.latitude a').each(function(index){
     var lat = parseFloat($(this).html());
     $('.longitude a').each(function(){
