@@ -133,43 +133,42 @@ table {
   }
 }
 .right-navigation-item {
-  padding: 10px 25px;
   display: block;
   color: white;
   font-family: league-gothic, helvetica, open-sans;
   font-size: 29px;
+  a,
+  .active {
+    padding: 10px 25px;
+  }
+  .active {
+    background: $background-color;
+    color: $dark-gray;
+    &:hover {
+      cursor: default;
+    }
+  }
   a {
+    display: block;
+    background: $dark-gray;
     text-decoration: none;
     color: white;
-  }
-  &.active,
-  &:hover {
-    color: $dark-gray;
-  }
-  &.active,
-  &.active:hover {
-    cursor: default;
-    background: $background-color;
-    background: $background-color;
-  }
-  &:hover {
-    background: $medium-gray;
-    cursor: pointer;
+    &:hover {
+      background: $medium-gray;
+      cursor: pointer;
+    }
   }
   &.logout {
     text-align: right;
-    color: $dark-gray;
-    background: $light-gray;
     font-size: 18px;
     a {
       color: $dark-gray;
-    }
-    &:hover {
-      a {
+      background: $light-gray;
+      &:hover {
         color: $light-gray;
+        background: $medium-gray;
+        cursor: pointer;
       }
-      background: $medium-gray;
-      cursor: pointer;
     }
   }
 }

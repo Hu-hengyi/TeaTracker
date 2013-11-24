@@ -19,16 +19,16 @@
       %nav.right-side-nav
         %ul
           %li.logo.right-navigation-item
-          %li.right-navigation-item.active
+          %li.right-navigation-item
             = link_to_unless_current "Farms", farms_path() do
-              Farms
+              %div.active Farms
           %li.right-navigation-item
             = link_to_unless_current "Collection", cps_path() do
-              Collection
+              %div.active Collection
           %li.right-navigation-item
-            Visualize
-          %li.right-navigation-item
-            = link_to_unless_current "Manage", users_path
+            = link_to_unless_current "Manage", users_path do
+              %div.active Manage
+
           %li.right-navigation-item.logout
             -if user_signed_in?
               =link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
