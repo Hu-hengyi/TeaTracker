@@ -16,12 +16,12 @@
   .field
     = f.label :bushes
     %br/
-    = f.number_field :bushes
+    = f.number_field :bushes, :in => 0..10000000000000000000
   %br/
   .field
     = f.label :workers
     %br/
-    = f.number_field :workers
+    = f.number_field :workers, :in => 0..10000000000000000000
   %br/
   .field
     = f.label :longitude
