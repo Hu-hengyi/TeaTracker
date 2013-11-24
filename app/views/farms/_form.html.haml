@@ -12,10 +12,10 @@
     = f.text_field :name
   .field
     = f.label :bushes
-    = f.number_field :bushes
+    = f.number_field :bushes, :in => 0..10000000000000000000
   .field
     = f.label :workers
-    = f.number_field :workers
+    = f.number_field :workers, :in => 0..10000000000000000000
   .field
     = f.label :longitude
     = f.text_field :longitude
