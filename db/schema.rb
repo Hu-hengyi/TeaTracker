@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131117211641) do
+ActiveRecord::Schema.define(:version => 20131124100642) do
 
   create_table "cps", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "deposits", :force => true do |t|
+    t.float    "weight"
+    t.string   "quality"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "farm_id"
   end
 
   create_table "farms", :force => true do |t|
@@ -49,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20131117211641) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token"

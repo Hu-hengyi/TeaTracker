@@ -1,5 +1,8 @@
 TeaTracker::Application.routes.draw do
 
+  resources :deposits
+
+
   devise_for :users, :controllers => {:confirmations => 'confirmations'}, skip: [:registrations]
 
   devise_scope :user do

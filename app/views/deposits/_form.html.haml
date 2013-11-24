@@ -1,0 +1,7 @@
+= semantic_form_for @deposit do |f|
+  = f.inputs do
+    = f.input :weight
+    = f.input :quality
+
+  = f.actions do
+    = f.action :submit, :as => :input
