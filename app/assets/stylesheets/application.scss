@@ -161,8 +161,13 @@ table {
     color: $dark-gray;
     background: $light-gray;
     font-size: 18px;
+    a {
+      color: $dark-gray;
+    }
     &:hover {
-      color: $light-gray;
+      a {
+        color: $light-gray;
+      }
       background: $medium-gray;
       cursor: pointer;
     }
