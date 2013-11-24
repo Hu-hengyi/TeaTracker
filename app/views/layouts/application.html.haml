@@ -25,7 +25,7 @@
 						Visualize
 					%li.right-navigation-item
 						= link_to_unless_current "Manage", users_path
-					%li.right-navigation-item.Logout
+					%li.right-navigation-item.logout
 						-if user_signed_in?
 							=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
 						-else
