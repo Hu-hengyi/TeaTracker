@@ -1,4 +1,7 @@
 -content_for(:left_bar_title, "Farms")
+-content_for(:left_bar_content) do
+  = link_to 'New Farm', new_farm_path, :id => "create_farm", :class => "left_bar_button"
+  = link_to "Export Farms as CSV", farms_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
 
 %table#main
   %tr
@@ -46,10 +49,8 @@
     %td
     %td
 %br
-= link_to 'New Farm', new_farm_path, :id => "create_farm"
 %br
-%br
-= link_to "Export Farms as CSV", farms_path(format: "csv"), :id => "export_csv"
+
 %br
 %br
 %h2 Import Farms

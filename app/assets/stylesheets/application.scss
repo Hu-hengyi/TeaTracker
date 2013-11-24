@@ -3,7 +3,7 @@ $tea-green: #a4cb38;
 $dark-gray: #515254;
 $medium-gray: #999;
 $light-gray: #dedfe0;
-$dark-green: #82852c;
+$dark-green: #82a52c;
 
 /* LAYOUT */
 html, 
@@ -176,18 +176,34 @@ table {
 /* LEFT SIDE CONTENT */
 .left-side-bar {
   height: 100%;
-  width: 175px;
+  width: 200px;
   background: $dark-gray;
   position: fixed;
   top: 0;
   left: 0;
   h1 {
-    padding-top: 80px;
+    padding-top: 70px;
+    padding-bottom: 5px;
     color: white;
     display: block;
     background: $tea-green;
     text-align: center;
     font-size: 38px;
+  }
+  .left_bar_button {
+    color: white;
+    font-family: league-gothic, helvetica, open-sans;
+    font-size: 23px;
+    width: 90%;
+    background: $dark-green;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 5%;
+    margin-bottom: 1px;
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
 

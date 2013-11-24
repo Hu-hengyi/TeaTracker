@@ -38,6 +38,7 @@
     -if user_signed_in?
       %div.left-side-bar
         %h1= yield(:left_bar_title)
+        %div= yield(:left_bar_content)
 
     %div.content
       %p.notice= flash[:notice] unless flash[:notice].blank?
