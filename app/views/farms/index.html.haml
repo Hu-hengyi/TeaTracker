@@ -18,6 +18,7 @@
       %th= sortable_header('Longitude', @sort_by)
       %th= sortable_header('Notes', @sort_by)
       %th= sortable_header('Report Date', @sort_by)
+      %th Options
     -@farms.each do |farm|
       %tr
         -if farm.name

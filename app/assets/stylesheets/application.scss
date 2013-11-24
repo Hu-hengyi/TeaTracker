@@ -289,17 +289,24 @@ table {
       cursor: pointer;
     }
   }
-}
+  tr {
+    td a {
+      color: $dark-gray;
+    }
+    &:nth-child(odd) {
+      background: #ccc;
+      td a {
+        color: #333;
+      }
+    }
 
-td a:link, td a:visited {
-  color: #333333;
-  text-decoration: none;
+  }
+  td {
+    a {
+      text-decoration: none;
+    }
+  }
 }
-td a:hover {
-  text-decoration: underline;
-}
-
-table .odd {background: #fcfcfc;}
 
 tr:hover {background: #fafafa;}
 
