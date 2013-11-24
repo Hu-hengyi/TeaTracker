@@ -9,7 +9,7 @@
       = submit_tag "Import", :id=>"Import", :disabled=>true
 
 -content_for(:content) do
-  %table#main
+  %table.data
     %tr
       %th= sortable_header('Name', @sort_by)
       %th= sortable_header('Bushes', @sort_by)

@@ -2,15 +2,23 @@
 -content_for(:left_bar_content) do
   =link_to "New Collection Point", new_cp_path, :class=> "left_bar_button"
 
-
-%table#main
-  %tr
-    %th Name
-    %th Created
-  -@cps.each do |cp|
+-content_for(:content) do
+  %table#main
     %tr
-      %td#main= link_to cp.name, cp
-      %td#main= link_to cp.updated_at, cp
-      %td#main= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
+      %th Name
+      %th Created
+      %th Latitude
+      %th Longitude
+    -@cps.each do |cp|
+      %tr
+        %td= link_to cp.name, cp
+        %td= link_to cp.updated_at, cp
+        / %td= link_to cp.longitude, cp
+        %td= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
 
-%div#map
+  %div#map
+
+:javascript
+$document.ready(function() {
+  console.log($("#map"));
+});
