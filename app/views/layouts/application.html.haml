@@ -20,8 +20,8 @@
         %ul
           %li.logo.right-navigation-item
           %li.right-navigation-item.active
-            = link_to_unless_current "Review", farms_path() do
-              Review
+            = link_to_unless_current "Farms", farms_path() do
+              Farms
           %li.right-navigation-item
             = link_to_unless_current "Collection", cps_path() do
               Collection
@@ -37,7 +37,7 @@
 
     -if user_signed_in?
       %div.left-side-bar
-        %h1 Review
+        %h1= yield(:left_bar_title)
 
     %div.content
       %p.notice= flash[:notice] unless flash[:notice].blank?
