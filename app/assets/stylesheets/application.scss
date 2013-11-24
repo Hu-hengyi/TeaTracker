@@ -188,7 +188,7 @@ table {
     display: block;
     background: $tea-green;
     text-align: center;
-    font-size: 52px;
+    font-size: 38px;
   }
 }
 
@@ -293,4 +293,10 @@ tr:hover {background: #fafafa;}
 
 div.submit {
   background-color: #336600;
+}
+
+
+/* MAP */
+#map {
+  height: 500px;
 }

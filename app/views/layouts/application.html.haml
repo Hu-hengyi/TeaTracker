@@ -1,41 +1,45 @@
 !!!
 %html
-	%head
-		%title TeaTracker
-		= stylesheet_link_tag 	 "reset", :media => "all"
-		= stylesheet_link_tag    "application", :media => "all"
-		= controller_stylesheet_link_tag
-		= javascript_include_tag "application"
-		= csrf_meta_tags
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		<script src="//use.edgefonts.net/league-gothic.js"></script>
+  %head
+    %title TeaTracker
+    = stylesheet_link_tag    "reset", :media => "all"
+    = stylesheet_link_tag    "application", :media => "all"
+    = controller_stylesheet_link_tag
+    = javascript_include_tag "application"
+    = javascript_include_tag "leaflet"
+    = javascript_include_tag "map"
 
-	%body
-		-if user_signed_in?
-			%nav.right-side-nav
-				%ul
-					%li.logo.right-navigation-item
-					%li.right-navigation-item.active
-						= link_to_unless_current "Review", farms_path() do
-							Review
-					%li.right-navigation-item
-						= link_to_unless_current "Collection", cps_path() do
-							Collection
-					%li.right-navigation-item
-						Visualize
-					%li.right-navigation-item
-						= link_to_unless_current "Manage", users_path
-					%li.right-navigation-item.logout
-						-if user_signed_in?
-							=link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
-						-else
-							=link_to 'Sign In', new_user_session_path, id: 'login'
+    = csrf_meta_tags
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <script src="//use.edgefonts.net/league-gothic.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 
-		-if user_signed_in?
-			%div.left-side-bar
-				%h1 Review
+  %body
+    -if user_signed_in?
+      %nav.right-side-nav
+        %ul
+          %li.logo.right-navigation-item
+          %li.right-navigation-item.active
+            = link_to_unless_current "Farms", farms_path() do
+              Farms
+          %li.right-navigation-item
+            = link_to_unless_current "Collection", cps_path() do
+              Collection
+          %li.right-navigation-item
+            Visualize
+          %li.right-navigation-item
+            = link_to_unless_current "Manage", users_path
+          %li.right-navigation-item.logout
+            -if user_signed_in?
+              =link_to 'Logout', destroy_user_session_path, id: 'logout', method: :delete
+            -else
+              =link_to 'Sign In', new_user_session_path, id: 'login'
 
-		%div.content
-			%p.notice= flash[:notice] unless flash[:notice].blank?
-			%p.error= flash[:alert] unless flash[:alert].blank?
-			= yield
+    -if user_signed_in?
+      %div.left-side-bar
+        %h1= yield(:left_bar_title)
+
+    %div.content
+      %p.notice= flash[:notice] unless flash[:notice].blank?
+      %p.error= flash[:alert] unless flash[:alert].blank?
+      = yield
