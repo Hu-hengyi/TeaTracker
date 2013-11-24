@@ -1,4 +1,7 @@
 -content_for(:left_bar_title, "Collection")
+-content_for(:left_bar_content) do
+  =link_to "New Collection Point", new_cp_path, :class=> "left_bar_button"
+
 
 %table#main
   %tr
@@ -9,7 +12,5 @@
       %td#main= link_to cp.name, cp
       %td#main= link_to cp.updated_at, cp
       %td#main= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
-
-\c#{link_to 'New Collection Point', new_cp_path}
 
 %div#map
