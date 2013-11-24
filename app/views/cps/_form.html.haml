@@ -1,9 +1,6 @@
-= form_for(@cp) do |f|
-  %br/
+= form_for @cp, :html => {:class => "general-form"} do |f|
   .field
     = f.label :name
-    %br/
     = f.text_field :name
-  %br/
   .actions
-    = f.submit :id => :create_cp
+    = f.submit :id => :create_cp, :class => "green-btn"

@@ -76,7 +76,7 @@ textarea,
   outline: none;
 }
 
-.edit-form {
+.general-form {
   label {
     font-weight: bold;
   }
@@ -91,9 +91,6 @@ textarea,
   }
   textarea {
     height: 200px;
-  }
-  input[type='submit'].green-btn {
-    float: left;
   }
 }
 
@@ -113,7 +110,7 @@ fieldset.checkbox-label {
   margin-top: 10px;
   font-family: league-gothic, helvetica, sans-serif;
   font-size: 1.4em;
-  float: right;
+  float: left;
   background: $tea-green;
   color: white;
   padding: 5px 30px;
@@ -126,6 +123,10 @@ fieldset.checkbox-label {
     border-bottom: 2px solid $dark-green;
     cursor: pointer;
   }
+}
+
+#SignIn {
+  float: right;
 }
 
 /* ANNOTATIONS */
