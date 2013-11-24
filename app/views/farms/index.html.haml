@@ -8,38 +8,38 @@
     %th= sortable_header('Name', @sort_by)
     %th= sortable_header('Bushes', @sort_by)
     %th= sortable_header('Workers', @sort_by)
-    %th= sortable_header('Longitude', @sort_by)
     %th= sortable_header('Latitude', @sort_by)
+    %th= sortable_header('Longitude', @sort_by)
     %th= sortable_header('Notes', @sort_by)
     %th= sortable_header('Report Date', @sort_by)
   -@farms.each do |farm|
     %tr
       -if farm.name
-        %td#main= link_to farm.name, farm
+        %td.farm_name= link_to farm.name, farm
       -else
-        %td#main
+        %td
       -if farm.bushes
-        %td#main= link_to farm.bushes, farm
+        %td= link_to farm.bushes, farm
       -else
-        %td#main
+        %td
       -if farm.workers      
-        %td#main= link_to farm.workers, farm
+        %td= link_to farm.workers, farm
       -else
-        %td#main
-      -if farm.longitude
-        %td#main= link_to farm.longitude, farm
-      -else
-        %td#main
+        %td
       -if farm.latitude
-        %td#main= link_to farm.latitude, farm
+        %td.latitude= link_to farm.latitude, farm
       -else
-        %td#main
+        %td
+      -if farm.longitude
+        %td.longitude= link_to farm.longitude, farm
+      -else
+        %td
       -if farm.notes
-        %td#main= link_to farm.notes, farm
+        %td= link_to farm.notes, farm
       -else
-        %td#main
-      %td#main= link_to farm.updated_at, farm
-      %td#main= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+        %td
+      %td= link_to farm.updated_at, farm
+      %td= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
   %tr
     %td
     %td= @bush_sum
@@ -48,15 +48,13 @@
     %td
     %td
     %td
-%br
-%br
 
-%br
-%br
 %h2 Import Farms
 = form_tag import_farms_path, multipart: true do
   = file_field_tag :file, :id=>"file"
   = submit_tag "Import", :id=>"Import", :disabled=>true
+
+%div#map
 
 :javascript
 $document.ready(function() {

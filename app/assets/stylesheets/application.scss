@@ -315,3 +315,11 @@ div.submit {
 #map {
   height: 500px;
 }
+
+.leaflet-marker-icon {
+  background: url(http://leafletjs.com/dist/images/marker-icon.png);
+}
+
+.leaflet-marker-shadow {
+  background: url(http://leafletjs.com/dist/images/marker-shadow.png);
+}
