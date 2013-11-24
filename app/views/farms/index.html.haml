@@ -2,59 +2,60 @@
 -content_for(:left_bar_content) do
   = link_to 'New Farm', new_farm_path, :id => "create_farm", :class => "left_bar_button"
   = link_to "Export Farms as CSV", farms_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
+  %div.left_bar_button
+    %h2 Import Farms
+    = form_tag import_farms_path, multipart: true do
+      = file_field_tag :file, :id=>"file"
+      = submit_tag "Import", :id=>"Import", :disabled=>true
 
-%table#main
-  %tr
-    %th= sortable_header('Name', @sort_by)
-    %th= sortable_header('Bushes', @sort_by)
-    %th= sortable_header('Workers', @sort_by)
-    %th= sortable_header('Latitude', @sort_by)
-    %th= sortable_header('Longitude', @sort_by)
-    %th= sortable_header('Notes', @sort_by)
-    %th= sortable_header('Report Date', @sort_by)
-  -@farms.each do |farm|
+-content_for(:content) do
+  %table#main
     %tr
-      -if farm.name
-        %td.farm_name= link_to farm.name, farm
-      -else
-        %td
-      -if farm.bushes
-        %td= link_to farm.bushes, farm
-      -else
-        %td
-      -if farm.workers      
-        %td= link_to farm.workers, farm
-      -else
-        %td
-      -if farm.latitude
-        %td.latitude= link_to farm.latitude, farm
-      -else
-        %td
-      -if farm.longitude
-        %td.longitude= link_to farm.longitude, farm
-      -else
-        %td
-      -if farm.notes
-        %td= link_to farm.notes, farm
-      -else
-        %td
-      %td= link_to farm.updated_at, farm
-      %td= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
-  %tr
-    %td
-    %td= @bush_sum
-    %td
-    %td
-    %td
-    %td
-    %td
+      %th= sortable_header('Name', @sort_by)
+      %th= sortable_header('Bushes', @sort_by)
+      %th= sortable_header('Workers', @sort_by)
+      %th= sortable_header('Latitude', @sort_by)
+      %th= sortable_header('Longitude', @sort_by)
+      %th= sortable_header('Notes', @sort_by)
+      %th= sortable_header('Report Date', @sort_by)
+    -@farms.each do |farm|
+      %tr
+        -if farm.name
+          %td.farm_name= link_to farm.name, farm
+        -else
+          %td
+        -if farm.bushes
+          %td= link_to farm.bushes, farm
+        -else
+          %td
+        -if farm.workers      
+          %td= link_to farm.workers, farm
+        -else
+          %td
+        -if farm.latitude
+          %td.latitude= link_to farm.latitude, farm
+        -else
+          %td
+        -if farm.longitude
+          %td.longitude= link_to farm.longitude, farm
+        -else
+          %td
+        -if farm.notes
+          %td= link_to farm.notes, farm
+        -else
+          %td
+        %td= link_to farm.updated_at, farm
+        %td= link_to('Edit', edit_farm_path(farm), :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+    %tr
+      %td
+      %td= @bush_sum
+      %td
+      %td
+      %td
+      %td
+      %td
 
-%h2 Import Farms
-= form_tag import_farms_path, multipart: true do
-  = file_field_tag :file, :id=>"file"
-  = submit_tag "Import", :id=>"Import", :disabled=>true
-
-%div#map
+  %div#map
 
 :javascript
 $document.ready(function() {

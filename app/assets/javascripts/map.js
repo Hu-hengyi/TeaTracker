@@ -13,8 +13,7 @@ $(window).load(function() {
     $('.longitude a').each(function(){
       var lon = parseFloat($(this).html());
       L.marker(new L.LatLng(lat, lon)).addTo(map)
-      .bindPopup(index)
-      .openPopup();      
+      .bindPopup(index.toString())      
     });
   });
 

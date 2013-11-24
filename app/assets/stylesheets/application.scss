@@ -201,6 +201,10 @@ table {
     text-decoration: none;
     padding: 10px 5%;
     margin-bottom: 1px;
+    h2 {
+      font-size: 23px;
+      color: white;
+    }
     &:hover {
       opacity: 0.75;
     }
@@ -209,7 +213,7 @@ table {
 
 /* CONTAINER */
 .content {
-  padding: 25px 200px;
+  padding: 25px 180px 25px 230px;
 }
 
 #wrapper {
