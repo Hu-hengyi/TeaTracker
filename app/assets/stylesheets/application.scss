@@ -1,3 +1,4 @@
+/* COLORS */
 $background-color: #fbfbfb;
 $tea-green: #a4cb38;
 $dark-gray: #515254;
@@ -44,7 +45,7 @@ p {
   }
 }
 
-/* LOG IN */
+/* FORMS */
 .login {
   background-color: $dark-gray;
   margin: 100px auto 0 auto;
@@ -58,13 +59,42 @@ p {
   }
 }
 
+input[type='text'],
+input[type='number'],
+.field {
+  width: 220px;
+}
+
+input[type='text'],
+input[type='number'],
+textarea,
 .field {
   margin-top: 10px;
   font-family: 'Open Sans', helvetica, sans-serif;
   border: none;
   padding: 7px 10px;
   outline: none;
-  width: 220px;
+}
+
+.edit-form {
+  label {
+    font-weight: bold;
+  }
+  input[type='text'],
+  input[type='number'],
+  textarea {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    &:focus {
+      border: 1px solid $tea-green;
+    }
+  }
+  textarea {
+    height: 200px;
+  }
+  input[type='submit'] {
+
+  }
 }
 
 fieldset.checkbox-label {
@@ -220,6 +250,7 @@ table {
 
 /* CONTAINER */
 .content {
+  overflow: hidden;
   padding: 25px 180px 25px 230px;
 }
 

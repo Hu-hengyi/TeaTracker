@@ -1,4 +1,4 @@
-= form_for(@farm) do |f|
+= form_for @farm, :html => {:class => "edit-form"} do |f|
   - if @farm.errors.any?
     #error_explanation
       %h2
@@ -7,37 +7,23 @@
       %ul
         - @farm.errors.full_messages.each do |msg|
           %li= msg
-  %br/
   .field
     = f.label :name
-    %br/
     = f.text_field :name
-  %br/
   .field
     = f.label :bushes
-    %br/
     = f.number_field :bushes
-  %br/
   .field
     = f.label :workers
-    %br/
     = f.number_field :workers
-  %br/
   .field
     = f.label :longitude
-    %br/
     = f.text_field :longitude
-  %br/
   .field
     = f.label :latitude
-    %br/
     = f.text_field :latitude
-  %br/
   .field
     = f.label :notes
-    %br/
     = f.text_area :notes
-  %br/
   .actions
-    = f.submit :id => :create_farm
-  %br/
+    = f.submit :id => :create_farm, :class => "green-btn"
