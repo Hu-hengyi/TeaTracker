@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131124100642) do
+ActiveRecord::Schema.define(:version => 20131125064014) do
 
   create_table "cps", :force => true do |t|
     t.string   "name"
-    t.string   "longitude"
     t.string   "latitude"
+    t.string   "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20131124100642) do
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "payments", :force => true do |t|
+    t.float    "amount"
+    t.string   "check_number"
+    t.boolean  "paid"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,38 +1,28 @@
 class DepositsController < ApplicationController
   # GET /deposits
   # GET /deposits.json
+  respond_to :html, :json
   def index
     @sort_by = params[:sort_by] || 'Created'
     order_by = @sort_by.downcase
     order_by = "created_at" if order_by == 'created'
     @deposits = Deposit.all(:order => order_by)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @deposits }
-    end
+    respond_with(@deposits)
   end
 
   # GET /deposits/1
   # GET /deposits/1.json
   def show
     @deposit = Deposit.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @deposit }
-    end
+    respond_with(@deposit)
   end
 
   # GET /deposits/new
   # GET /deposits/new.json
   def new
     @deposit = Deposit.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @deposit }
-    end
+    respond_with(@deposit)
   end
 
   # GET /deposits/1/edit
