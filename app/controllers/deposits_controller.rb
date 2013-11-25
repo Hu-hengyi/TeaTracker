@@ -33,33 +33,19 @@ class DepositsController < ApplicationController
   # POST /deposits
   # POST /deposits.json
   def create
-    @deposit = Deposit.new(params[:deposit])
-
-    respond_to do |format|
-      if @deposit.save
-        format.html { redirect_to @deposit, notice: 'Deposit was successfully created.' }
-        format.json { render json: @deposit, status: :created, location: @deposit }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @deposit.errors, status: :unprocessable_entity }
-      end
-    end
+    @deposit = Deposit.create!(params[:deposit])
+    flash[:notice] = "Deposit was successfully created."
+    redirect_to deposits_path
   end
 
   # PUT /deposits/1
   # PUT /deposits/1.json
   def update
     @deposit = Deposit.find(params[:id])
-
-    respond_to do |format|
-      if @deposit.update_attributes(params[:deposit])
-        format.html { redirect_to @deposit, notice: 'Deposit was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deposit.errors, status: :unprocessable_entity }
-      end
-    end
+    @deposit = Deposit.find params[:id]
+    @deposit.update_attributes!(params[:deposit])
+    flash[:notice] = "Deposit was successfully updated."
+    redirect_to deposit_path(@deposit)
   end
 
   # DELETE /deposits/1
@@ -67,10 +53,7 @@ class DepositsController < ApplicationController
   def destroy
     @deposit = Deposit.find(params[:id])
     @deposit.destroy
-
-    respond_to do |format|
-      format.html { redirect_to deposits_url }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "Deposit deleted."
+    redirect_to deposits_path
   end
 end
