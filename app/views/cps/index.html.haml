@@ -13,8 +13,8 @@
       %tr
         %td= link_to cp.name, cp
         %td= link_to cp.updated_at, cp
-        %td= link_to cp.latitude, cp
-        %td= link_to cp.longitude, cp
+        %td.latitude= link_to cp.latitude, cp
+        %td.longitude= link_to cp.longitude, cp
         %td.edit= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
 
   %div#map
