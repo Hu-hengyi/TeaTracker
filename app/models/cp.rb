@@ -1,3 +1,3 @@
 class Cp < ActiveRecord::Base
-  attr_accessible :name, :latitude, :longitude
+  attr_accessible :latitude, :longitude, :name
 end

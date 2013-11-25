@@ -2,5 +2,11 @@
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
   .actions
     = f.submit :id => :create_cp, :class => "green-btn"
