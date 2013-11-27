@@ -4,25 +4,29 @@
 
 %h1 Listing deposits
 
-%table
-  %tr
-    %th= deposit_header('Weight', @sort_by)
-    %th= deposit_header('Quality', @sort_by)
-    %th= deposit_header('Created', @sort_by)
-    %th Farm
-    %th
-    %th
-    %th
-
-  - @deposits.each do |deposit|
+-content_for(:content) do
+  %table.data
     %tr
-      %td= deposit.weight
-      %td= deposit.quality
-      %td= deposit.created_at
-      %td= deposit.farm
-      %td= link_to 'Show', deposit
-      %td= link_to 'Edit', edit_deposit_path(deposit)
-      %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th= deposit_header('Weight', @sort_by)
+      %th= deposit_header('Quality', @sort_by)
+      %th= deposit_header('Created', @sort_by)
+      %th Farm
+      %th
+      %th
+      %th
 
-%br
+    - @deposits.each do |deposit|
+      %tr
+        %td= deposit.weight
+        %td= deposit.quality
+        %td= deposit.created_at
+        -if deposit.farm
+          %td= deposit.farm.name
+        -else
+          %td
+        %td= link_to 'Show', deposit
+        %td= link_to 'Edit', edit_deposit_path(deposit)
+        %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
 
