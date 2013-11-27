@@ -9,6 +9,7 @@
     %th= deposit_header('Weight', @sort_by)
     %th= deposit_header('Quality', @sort_by)
     %th= deposit_header('Created', @sort_by)
+    %th Farm
     %th
     %th
     %th
@@ -18,6 +19,7 @@
       %td= deposit.weight
       %td= deposit.quality
       %td= deposit.created_at
+      %td= deposit.farm
       %td= link_to 'Show', deposit
       %td= link_to 'Edit', edit_deposit_path(deposit)
       %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
