@@ -33,7 +33,12 @@ class DepositsController < ApplicationController
   # POST /deposits
   # POST /deposits.json
   def create
-    @deposit = Deposit.create!(params[:deposit])
+    weight = params[:deposit][:weight]
+    quality = params[:deposit][:quality]
+    farm_id = params[:deposit][:farm_id]
+    @deposit = Deposit.create!(:weight => weight, :quality=> quality)
+    @deposit.update_column(:farm_id, farm_id)
+    @deposit.save!
     flash[:notice] = "Deposit was successfully created."
     redirect_to deposits_path
   end

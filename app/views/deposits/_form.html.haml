@@ -5,5 +5,8 @@
   .field
     = f.label :quality
     = f.text_field :quality
+  .field
+    = f.label :farm
+    = f.select :farm_id, Farm.all.map {|f| [f.name, f.id] }
   .actions
     = f.submit :id => :create_deposit, :class => "green-btn"
