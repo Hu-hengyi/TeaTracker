@@ -1,3 +1,7 @@
+-content_for(:left_bar_content) do
+  = link_to 'Edit Deposit', edit_deposit_path(@deposit), :class => "left_bar_button edit"
+  = link_to 'Back to tea deposits', deposits_path, :class => "left_bar_button"
+
 %p#notice= notice
 
 %p
@@ -6,7 +10,10 @@
 %p
   %b Quality:
   = @deposit.quality
+%p
+  -if @deposit.farm
+    %b Farm:
+    = @deposit.farm.name
 
-= link_to 'Edit', edit_deposit_path(@deposit)
-\|
-= link_to 'Back', deposits_path
+
+

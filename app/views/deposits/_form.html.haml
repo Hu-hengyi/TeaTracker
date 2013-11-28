@@ -8,5 +8,8 @@
   .field
     = f.label :farm
     = f.select :farm_id, Farm.all.map {|f| [f.name, f.id] }
+  .field
+    = f.label :collection_Point
+    = f.select :farm_id, Cp.all.map {|c| [c.name, c.id] }
   .actions
     = f.submit :id => :create_deposit, :class => "green-btn"
