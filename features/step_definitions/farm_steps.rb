@@ -7,9 +7,11 @@ When /I enter in basic farm data A/ do
     | Workers   | 8                |
     | Longitude | 35.628262        |
     | Latitude  | -15.928978       |
-    | Notes     | Doing great work | #need to add name of owner
+    | Notes     | Doing great work |
   })
 end
+
+#need to add name of owner
 
 When /I enter in basic farm data B/ do
   When %{I fill in the following:}, table(%{

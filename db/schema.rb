@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20131125064014) do
 
   create_table "cps", :force => true do |t|
     t.string   "name"
-    t.string   "latitude"
     t.string   "longitude"
+    t.string   "latitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

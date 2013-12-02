@@ -14,10 +14,12 @@ module NavigationHelpers
       '/farms'
     when /^the farms page$/
       '/farms'
+    when /^the routes page$/
+      '/routes'
     when /^the payments page$/
       '/payments'
     when /^the collection points page$/
-      '/cp'
+      '/cps'
     when /^the Create New Farm page$/
       '/farms/new'
     when /^the Tea Deposit page$/
@@ -25,7 +27,7 @@ module NavigationHelpers
     when /^the Create New Tea Deposit page$/
       '/teadeposit/new'
     when /^the Create New Collection Point page$/
-      '/cp/new'
+      '/cps/new'
     when /^the login page$/
       new_user_session_path
     when /^the user management page$/

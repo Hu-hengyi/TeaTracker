@@ -8,7 +8,7 @@ Scenario: add a new collection point and add its info
   Given I am logged in
   And I am on the Create New Collection Point page
   When I enter in basic collection point data A
-  And I press "create_collection_point"
+  And I press "create_cp"
   Then I should see "Basic Collection Point A"
 
 #there are no sad paths as missing any of the fields is still an acceptable cp entry, if after discussing with the client we discover that certain fields should be mandatory, we'll add them below.
