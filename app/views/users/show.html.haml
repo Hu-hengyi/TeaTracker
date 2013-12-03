@@ -1,3 +1,8 @@
+-content_for(:left_bar_title, @user.name)
+-content_for(:left_bar_content) do
+  = link_to 'Edit User', edit_user_path(@user), :class => "left_bar_button edit"
+  = link_to 'Back to users', user_path, :class => "left_bar_button"
+
 %h1= @user.name
 %p#notice= notice
 
@@ -7,13 +12,10 @@
     = @user.email
 
   %p
-    User Type
+    User Type:
     = @user.type.capitalize
 
   %p
-    Password
+    Password:
     = link_to 'Edit Password', edit_user_password_path(@user)
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
