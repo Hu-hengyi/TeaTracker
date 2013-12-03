@@ -1,6 +1,6 @@
 = form_for @deposit, :html => {:class => "general-form"} do |f|
   .field
-    = f.label :weight
+    = f.label "weight (in kg)"
     = f.number_field :weight, :in => 0..10000000000000000000, :step => 0.01
   .field
     = f.label :quality
