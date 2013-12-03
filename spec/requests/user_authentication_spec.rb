@@ -4,9 +4,9 @@ describe "Access with valid token" do
   it "allows users to access pages with a valid token" do
     @user = create(:user)
     @user.skip_confirmation!
-    @user.ensure_authentication_token!
+    @user.ensure_authentication_token
 
-    get farms_path, { auth_token: @user.authentication_token }
+    get farms_path, { user_id: @user.id, auth_token: @user.authentication_token }
     expect(response).to be_success
   end
 
@@ -22,7 +22,7 @@ describe "Access with valid token" do
     @user = create(:user)
     @user.skip_confirmation!
 
-    get farms_path, { auth_token: "foobar" }
+    get farms_path, { user_id: @user.id, auth_token: "foobar" }
     response.status.should eq(302)
   end
 end
