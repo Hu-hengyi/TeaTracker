@@ -4,19 +4,20 @@
 
 %h1 Listing users
 
-%table
-  %tr
-    %th Name
-    %th Email
-    %th Type
-    %th
-    %th
-
-  - @users.each do |user|
+-content_for(:content) do
+  %table.data
     %tr
-      %td= link_to user.name, user_path(user)
-      %td= link_to user.email, user_path(user)
-      %td= link_to user.type.capitalize, user_path(user)
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Remove User', user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Email
+      %th Type
+      %th
+      %th
+
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, user_path(user)
+        %td= link_to user.email, user_path(user)
+        %td= link_to user.type.capitalize, user_path(user)
+        %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Remove User', user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
