@@ -6,6 +6,8 @@ class DepositsController < ApplicationController
     @sort_by = params[:sort_by] || 'Created'
     order_by = @sort_by.downcase
     order_by = "created_at" if order_by == 'created'
+    order_by = "farm_id" if order_by == "farm"
+    order_by = "cp_id" if order_by == "collection point"
     @deposits = Deposit.all(:order => order_by)
 
     respond_with(@deposits)
@@ -36,8 +38,10 @@ class DepositsController < ApplicationController
     weight = params[:deposit][:weight]
     quality = params[:deposit][:quality]
     farm_id = params[:deposit][:farm_id]
+    cp_id = params[:deposit][:cp_id]
     @deposit = Deposit.create!(:weight => weight, :quality=> quality)
     @deposit.update_column(:farm_id, farm_id)
+    @deposit.update_column(:cp_id, cp_id)
     @deposit.save!
     flash[:notice] = "Deposit was successfully created."
     redirect_to deposits_path

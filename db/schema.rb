@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20131125064014) do
 
   create_table "cps", :force => true do |t|
     t.string   "name"
-    t.string   "longitude"
     t.string   "latitude"
+    t.string   "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20131125064014) do
   create_table "deposits", :force => true do |t|
     t.float    "weight"
     t.string   "quality"
+    t.integer  "farm_id"
+    t.integer  "cp_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "farm_id"
   end
 
   create_table "farms", :force => true do |t|

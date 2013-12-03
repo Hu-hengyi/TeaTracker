@@ -3,7 +3,7 @@ class CreateDeposits < ActiveRecord::Migration
     create_table :deposits do |t|
       t.float :weight
       t.string :quality
-      t.references :farm
+      t.references :farm, :cp
 
       t.timestamps
     end
