@@ -43,8 +43,12 @@ class DepositsController < ApplicationController
     @deposit.update_column(:farm_id, farm_id)
     @deposit.update_column(:cp_id, cp_id)
 
-    if (@deposit.might_be_erroneous)
-
+    if (@duplicates = @deposit.might_be_erroneous)
+      if request.xhr?
+        render :partial => :erroneous
+      else
+        render :erroneous
+      end
     else
       @deposit.save!
       flash[:notice] = "Deposit was successfully created."
