@@ -42,9 +42,14 @@ class DepositsController < ApplicationController
     @deposit = Deposit.create!(:weight => weight, :quality=> quality)
     @deposit.update_column(:farm_id, farm_id)
     @deposit.update_column(:cp_id, cp_id)
-    @deposit.save!
-    flash[:notice] = "Deposit was successfully created."
-    redirect_to deposits_path
+
+    if (@deposit.might_be_erroneous)
+
+    else
+      @deposit.save!
+      flash[:notice] = "Deposit was successfully created."
+      redirect_to deposits_path
+    end
   end
 
   # PUT /deposits/1

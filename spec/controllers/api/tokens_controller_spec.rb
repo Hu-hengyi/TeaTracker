@@ -13,7 +13,7 @@ describe Api::TokensController do
 
   it 'allows users to invalidate their tokens' do
     @user = Admin.create!(name: "FooMan", email: 'foo@lujeri.com', password: 'password')
-    @user.ensure_authentication_token!
+    @user.ensure_authentication_token
     token = @user.authentication_token
     @user.save!
 
@@ -50,7 +50,7 @@ describe Api::TokensController do
 
   it 'does not logout users without a valid token' do
     @user = Admin.create!(name: "FooMan", email: 'foo@lujeri.com', password: 'password')
-    @user.ensure_authentication_token!
+    @user.ensure_authentication_token
     token = @user.authentication_token
     @user.save!
 

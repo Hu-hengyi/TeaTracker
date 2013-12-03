@@ -1,6 +1,4 @@
 class FarmsController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     @sort_by = params[:sort_by] || 'Report Date'
     order_by = @sort_by.downcase

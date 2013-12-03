@@ -1,5 +1,7 @@
 class Api::TokensController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user_from_token
+  skip_before_filter :authenticate_user!
+
   respond_to :json
 
   # Given a legit email and pass, create and return a valid token
@@ -25,7 +27,7 @@ class Api::TokensController < ApplicationController
       return
     end
 
-    @user.ensure_authentication_token!
+    @user.ensure_authentication_token
 
     if @user.valid_password?(password)
       render :status=>200, :json=>{:token=>@user.authentication_token}
@@ -41,7 +43,7 @@ class Api::TokensController < ApplicationController
       logger.info("Tried to delete, token not found.")
       render :status=>404, :json=>{:message=>"Invalid token."}
     else
-      @user.reset_authentication_token!
+      @user.reset_token!
       render :status=>200, :json=>{:token=>params[:id]}
     end
   end
