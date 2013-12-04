@@ -1,6 +1,6 @@
 %h2 New user
 
-=form_for(resource, :as => resource_name, :url => users_path) do |f|
+=form_for(resource, :as => resource_name, :url => users_path, :html => {:class => "general-form"}) do |f|
   = devise_error_messages!
 
   %div
