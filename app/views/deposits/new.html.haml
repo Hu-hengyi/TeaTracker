@@ -1,9 +1,7 @@
 -content_for(:left_bar_title, "New Tea Deposit")
 -content_for(:left_bar_content) do
-  = link_to 'Back to tea deposits', deposits_path, :class => "left_bar_button"
+  = link_to 'Back', deposits_path, :class => "left_bar_button"
 
-
-%h1 New deposit
 
 = render 'form'
 
