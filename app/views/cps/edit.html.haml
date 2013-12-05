@@ -1,5 +1,7 @@
-%h1 Editing collection point
+-content_for(:left_bar_title, "Update " + @cp.name)
+-content_for(:left_bar_content) do
+  = link_to 'Back', cps_path, :class => "left_bar_button"
+  = link_to 'Show collection point', @cp, :class => "left_bar_button"
+
 = render 'form'
-= link_to 'Show', @cp
-|
-\#{link_to 'Back', cps_path}
+
