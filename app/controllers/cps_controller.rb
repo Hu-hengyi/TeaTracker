@@ -6,6 +6,7 @@ class CpsController < ApplicationController
 
   def show
     @cp = Cp.find(params[:id])    
+    @deposits = Deposit.find_all_by_cp_id(@cp.id)  
   end
 
   def new
