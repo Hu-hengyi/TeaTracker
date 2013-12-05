@@ -166,4 +166,13 @@ describe DepositsController do
     end
   end
 
+  describe "PUT resolve" do
+    it "resolves a possible duplicate/error" do
+      deposit = create(:deposit, possible_duplicate: true)
+      put :resolve, {:id => deposit.to_param}, valid_session
+      deposit.reload
+      deposit.possible_duplicate?.should eq(false)
+    end
+  end
+
 end

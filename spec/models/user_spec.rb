@@ -26,4 +26,24 @@ describe User do
     user2.password_required?.should be(true)
   end
 
+  describe "Password Required" do
+    it "doesn't require a password from a new user" do
+      user = build(:user)
+      user.password_required?.should be(false)
+    end
+
+    it "requires a password from an existing user" do
+      user = create(:user)
+      user.password_required?.should be(false)
+    end
+  end
+
+  it "assigns new auth tokens" do
+    user = create(:user)
+    token = user.authentication_token
+
+    user.reset_token!
+    user.authentication_token.should_not eq(token)
+  end
+
 end

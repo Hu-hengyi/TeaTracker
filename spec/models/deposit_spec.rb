@@ -35,4 +35,11 @@ describe Deposit do
     deposit.possible_duplicate.should eq(false)
   end
 
+  it "resolves possible errors" do
+    deposit = create(:deposit, possible_duplicate: true)
+    deposit.possible_duplicate?.should eq(true)
+    deposit.resolve
+    deposit.possible_duplicate?.should eq(false)
+  end
+
 end

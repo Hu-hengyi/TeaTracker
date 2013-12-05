@@ -14,8 +14,9 @@ group :development,:test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ZenTest'
-  gem 'simplecov', :require => false
-  gem 'simplecov-html', :require => false
+  gem 'autotest-rails'
+  gem 'simplecov', :require => false, :git => 'https://github.com/colszowka/simplecov.git'
+  gem 'simplecov-html', :require => false, :git => 'https://github.com/colszowka/simplecov-html.git'
 end
 group :production do
   gem 'pg', '0.17.0'
