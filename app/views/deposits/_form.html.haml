@@ -1,7 +1,11 @@
 = form_for @deposit, :html => {:class => "general-form"} do |f|
+  =render 'shared/error_messages', object: @deposit
   .field
     = f.label "weight (in kg)"
     = f.number_field :weight, :in => 0..10000000000000000000, :step => 0.01
+  .field
+    = f.label "weighed at"
+    =f.datetime_select :weighed_at, {include_seconds: true}
   .field
     = f.label :quality
     = f.select :quality, Deposit.all_qualities

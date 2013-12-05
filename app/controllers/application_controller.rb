@@ -15,4 +15,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def confirm_with_token(token)
+    user = User.find_by_confirmation_token(token)
+    if user && user.persisted?
+      user.confirmed_at = DateTime.now if user.persisted?
+      user.save!
+    end
+    user || User.new
+  end
+
+
 end

@@ -269,3 +269,7 @@ end
 When /^(?:|I )leave the "([^"]*)" field blank?/ do |field|
   fill_in(field, :with => '')
 end
+
+When /^I select "([^\"]*)" as time$/ do |time|
+  select_datetime(time)
+end

@@ -23,7 +23,15 @@ describe DepositsController do
   # This should return the minimal set of attributes required to create a valid
   # Deposit. As you add validations to Deposit, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "weight" => "1.5" } }
+  #let(:valid_attributes) { { "weight" => "1.5" } }
+  def valid_attributes
+    validDeposit = build(:deposit)
+    attributes = FactoryGirl.attributes_for(:deposit)
+    attributes[:cp_id] = validDeposit.cp.id
+    attributes[:farm_id] = validDeposit.farm.id
+    attributes.each_key { |key| attributes[key] = attributes[key].to_s }
+  end
+
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -75,10 +83,10 @@ describe DepositsController do
         assigns(:deposit).should be_persisted
       end
 
-      it "redirects to the created deposit" do
-        post :create, {:deposit => valid_attributes}, valid_session
-        response.should redirect_to(Deposit.last)
-      end
+      #it "redirects to the created deposit" do
+      #  post :create, {:deposit => valid_attributes}, valid_session
+      #  response.should redirect_to(Deposit.last)
+      #end
     end
 
     describe "with invalid params" do
@@ -101,13 +109,14 @@ describe DepositsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested deposit" do
+        newWeight = 13
         deposit = Deposit.create! valid_attributes
         # Assuming there are no other deposits in the database, this
         # specifies that the Deposit created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Deposit.any_instance.should_receive(:update_attributes).with({ "weight" => "1.5" })
-        put :update, {:id => deposit.to_param, :deposit => { "weight" => "1.5" }}, valid_session
+        put :update, {:id => deposit.to_param, :deposit => { "weight" => newWeight.to_s }}, valid_session
+        deposit.reload.weight.should eq(newWeight)
       end
 
       it "assigns the requested deposit as @deposit" do
@@ -128,7 +137,7 @@ describe DepositsController do
         deposit = Deposit.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Deposit.any_instance.stub(:save).and_return(false)
-        put :update, {:id => deposit.to_param, :deposit => { "weight" => "invalid value" }}, valid_session
+        put :update, {:id => deposit.to_param, :deposit => { "weight" => "-30" }}, valid_session
         assigns(:deposit).should eq(deposit)
       end
 
