@@ -14,7 +14,7 @@ describe "deposits/new" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", deposits_path, "post" do
       assert_select "input#deposit_weight[name=?]", "deposit[weight]"
-      assert_select "input#deposit_quality[name=?]", "deposit[quality]"
+      assert_select "select#deposit_quality[name=?]", "deposit[quality]"
     end
   end
 end
