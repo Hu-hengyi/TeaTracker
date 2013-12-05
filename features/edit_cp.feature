@@ -19,7 +19,7 @@ Scenario: edit a basic cp
 #  Given I am logged in
 #  And I am on the Create New Collection Point page
 #  When I enter in basic collection point data A
-#  And I press "create_collection_point"
+#  And I press "create_cp"
 #  And I edit the collection point named "Basic Collection Point A"
 #  And I fill in "cp_name" with ""
 #  And I press "create_collection_point"
