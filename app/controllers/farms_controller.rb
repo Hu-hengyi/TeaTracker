@@ -22,7 +22,8 @@ class FarmsController < ApplicationController
   end
 
   def show
-    @farm = Farm.find(params[:id])    
+    @farm = Farm.find(params[:id])
+    @deposits = Deposit.find_all_by_farm_id(@farm.id)    
   end
 
   def new
