@@ -11,8 +11,13 @@ class DepositsController < ApplicationController
     order_by = "farm_id" if order_by == "farm"
     order_by = "cp_id" if order_by == "collection point"
     @deposits = Deposit.all(:order => order_by)
+    @csv_deposits = Deposit.order(:weighed_at)
 
-    respond_with(@deposits) if request.xhr?
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json {render json: @deposits}
+      format.csv {send_data @csv_deposits.to_csv}
+    end
   end
 
   # GET /deposits/1
@@ -72,5 +77,15 @@ class DepositsController < ApplicationController
     deposit.possible_duplicate = false
     deposit.save!
     redirect_to deposits_path
+  end
+
+  def import
+    if params[:file]
+      Deposit.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    else
+      flash[:notice] = "No file selected to import"
+      redirect_to deposits_path
+    end
   end
 end
