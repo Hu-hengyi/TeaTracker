@@ -37,4 +37,13 @@ class CpsController < ApplicationController
     redirect_to cps_path
   end
 
+  def import
+    if params[:file]
+      Cp.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    else
+      flash[:notice] = "No file selected to import"
+      redirect_to cps_path
+    end
+  end
 end
