@@ -330,10 +330,6 @@ table {
       color: white;
       text-decoration: none;
     }
-    &:hover {
-      background-color: $tea-green;
-      cursor: pointer;
-    }
   }
   tr {
     td a {
@@ -356,10 +352,14 @@ table {
     }
   }
 }
+table.sortable th:hover {
+  background-color: $tea-green;
+  cursor: pointer;
+}
 
 td.sum {
-  text-align: right;
-  padding-right: 1ex;
+  background-color: #97BF0D;
+  color: #fafafa;
 }
 
 tr:hover {background: #fafafa;}

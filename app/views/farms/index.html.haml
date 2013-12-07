@@ -9,7 +9,7 @@
       = submit_tag "Import", :id=>"Import", :disabled=>true
 
 -content_for(:content) do
-  %table.data
+  %table.data.sortable
     %tr
       %th= sortable_header('Name', @sort_by)
       %th= sortable_header('Bushes', @sort_by)
@@ -50,8 +50,7 @@
         %td= link_to('Edit', edit_farm_path(farm), :class=>"edit", :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, :class=> "edit", method: :delete, data: { confirm: 'Are you sure?' })
     %tr
       %td
-      %td.sum= "Total: #{@bush_sum}"
-      %td
+      %td.sum= "#{@bush_sum} (Total)"
       %td
       %td
       %td
