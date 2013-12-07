@@ -2,6 +2,7 @@ class CpsController < ApplicationController
 
   def index
     @cps = Cp.all
+    @cpDetails = Cp.getNumLeaves
   end
 
   def show
