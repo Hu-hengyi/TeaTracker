@@ -16,7 +16,7 @@ describe FarmsController do
 
    describe "Show farm data" do
      it "should display farm data" do
-       Farm.stub(:find)
+       Farm.stub(:find).and_return
        get :show, :id => 3
        response.should render_template('show')
      end
