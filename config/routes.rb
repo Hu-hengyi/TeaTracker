@@ -1,7 +1,7 @@
 TeaTracker::Application.routes.draw do
 
   resources :deposits
-
+  put 'deposits/resolve/:id', to: 'deposits#resolve', as: :resolve
 
   devise_for :users, :controllers => {:confirmations => 'confirmations'}, skip: [:registrations]
 

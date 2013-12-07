@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
   before_filter do
     unless current_user.type == "Admin"
       flash[:alert] = "This area is restricted to users with administrator privileges"

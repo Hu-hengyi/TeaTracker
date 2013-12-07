@@ -1,6 +1,4 @@
 class FarmsController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     @sort_by = params[:sort_by] || 'Report Date'
     order_by = @sort_by.downcase
@@ -24,7 +22,8 @@ class FarmsController < ApplicationController
   end
 
   def show
-    @farm = Farm.find(params[:id])    
+    @farm = Farm.find(params[:id])
+    @deposits = Deposit.find_all_by_farm_id(@farm.id)    
   end
 
   def new

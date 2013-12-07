@@ -2,7 +2,10 @@
 
 FactoryGirl.define do
   factory :deposit do
-    weight 1.5
+    weight 20
+    weighed_at DateTime.now
     quality "MyString"
+    farm
+    cp
   end
 end

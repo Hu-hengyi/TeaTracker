@@ -1,2 +1,40 @@
-%h2
-  = @cp.name
+-content_for(:left_bar_title, @cp.name)
+-content_for(:left_bar_content) do
+  = link_to 'Edit ' + @cp.name, edit_cp_path(@cp), :class => "left_bar_button edit"
+  = link_to 'Back to collection points', cps_path, :class => "left_bar_button"
+%p
+  Latitude: 
+  = @cp.latitude
+
+%p
+  Longitude: 
+  = @cp.longitude
+
+%h3 All Tea Deposits For This Collection Point
+-content_for(:content) do
+  %table.data
+    %tr
+      %th= deposit_header('Weight', @sort_by)
+      %th= deposit_header('Quality', @sort_by)
+      %th= deposit_header('Created', @sort_by)
+      %th= deposit_header('Farm', @sort_by)
+      %th= deposit_header('Collection Point', @sort_by)
+      %th
+      %th
+
+    - @deposits.each do |deposit|
+      %tr
+        %td= deposit.weight
+        %td= deposit.quality
+        %td= deposit.created_at
+        -if deposit.farm
+          %td= deposit.farm.name
+        -else
+          %td
+        -if deposit.cp
+          %td= deposit.cp.name
+        -else
+          %td
+        %td= link_to 'Show', deposit
+        %td= link_to 'Edit', edit_deposit_path(deposit)
+        %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }

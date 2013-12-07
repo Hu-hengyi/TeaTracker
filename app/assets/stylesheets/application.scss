@@ -82,6 +82,8 @@ textarea,
   }
   input[type='text'],
   input[type='number'],
+  input[type='email'],
+  select,
   textarea {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -91,6 +93,13 @@ textarea,
   }
   textarea {
     height: 200px;
+  }
+  select,
+  input[type='email'] {
+    height: 30px;
+  }
+  select {
+    background-color: #ccc;
   }
 }
 
@@ -361,4 +370,9 @@ div.submit {
 #map {
   height: 500px;
   margin-top: 10px;
+}
+
+/* RESOLUTIONS */
+.unresolved {
+  background-color: #FE8B64;
 }

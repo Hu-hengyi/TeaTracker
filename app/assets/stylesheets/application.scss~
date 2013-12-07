@@ -1,8 +1,11 @@
+/* COLORS */
 $background-color: #fbfbfb;
 $tea-green: #a4cb38;
 $dark-gray: #515254;
 $medium-gray: #999;
 $light-gray: #dedfe0;
+$dark-green: #82a52c;
+$red: #d85127;
 
 /* LAYOUT */
 html, 
@@ -16,49 +19,137 @@ body {
 }
 
 /* TYPOGRAPHY */
-h1 {
-  font-size: 1.3em;
+h1,
+h2 {
   text-transform: uppercase;
   font-family: league-gothic, helvetica, sans-serif;
   color: white;
-}
-.side {
-  font-family: league-gothic, helvetica, sans-serif;
-  vertical-align:absbottom;
-  display:inline;
-  color: white;
+  font-size: 1.3em;
 }
 
-
-#small{
-  top: 0;
-  font-size: 1.6em;
-  vertical-align: super;
+h2 {
+  color: $tea-green;
 }
 
-#large{
-  font-size: 2.5em;
-  vertical-align: sub;
+p {
+  color: $dark-gray;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
+.teatracker {
+  font-size: 2.7em;
+  margin-bottom: 5px;
+  sup {
+    font-size: 0.5em;
+    vertical-align: super;
+  }
+}
+
+/* FORMS */
+.login {
+  background-color: $dark-gray;
+  margin: 100px auto 0 auto;
+  padding: 20px;
+  width: 240px;
+  text-align:center;
+  border-radius: 25px;
+  overflow: hidden;
+  .logo {
+    margin: 0 auto 10px auto;
+  }
+}
+
+input[type='text'],
+input[type='number'],
 .field {
-  border: 1px solid #DDD;
+  width: 220px;
+}
+
+input[type='text'],
+input[type='number'],
+textarea,
+.field {
+  margin-top: 10px;
+  font-family: 'Open Sans', helvetica, sans-serif;
+  border: none;
   padding: 7px 10px;
   outline: none;
-  width: 195px
-}
-.LogInBox {
-  background-color: $dark-gray;
-  padding: 10px 20px 20px 20px;
-  width: 240px;
-  margin: 0 auto;
-  text-align:center;
-  border-radius: 
-
 }
 
-.green-text {
+.general-form {
+  label {
+    font-weight: bold;
+  }
+  input[type='text'],
+  input[type='number'],
+  input[type='email'],
+  select,
+  textarea {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    &:focus {
+      border: 1px solid $tea-green;
+    }
+  }
+  textarea {
+    height: 200px;
+  }
+  select,
+  input[type='email'] {
+    height: 30px;
+  }
+  select {
+    backgrounf-color: #ccc;
+  }
+}
+
+fieldset.checkbox-label {
+  display: block;
+  float: left;
+  margin-top: 10px;
+  label {
+    font-size: 14px;
+    color: white;
+    font-family: 'Open Sans', helvetica, sans-serif;
+  }
+}
+
+/* BUTTONS */
+.green-btn {
+  margin-top: 10px;
+  font-family: league-gothic, helvetica, sans-serif;
+  font-size: 1.4em;
+  float: left;
+  background: $tea-green;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  border-left: 3px solid $dark-green;
+  border-bottom: 4px solid $dark-green;
+  border-radius: 8px;
+  &:hover {
+    border-left: 1px solid $dark-green;
+    border-bottom: 2px solid $dark-green;
+    cursor: pointer;
+  }
+}
+
+#SignIn {
+  float: right;
+}
+
+/* ANNOTATIONS */
+.helper-text {
+  font-size: 14px;
+  display: block;
+  margin: 10px 0;
+  float: left;
   color: $tea-green;
+  font-family: 'Open Sans', helvetica, sans-serif;
+  text-align: left;
+}
+.helper-text + .helper-text {
+  margin-top: -2px;
 }
 
 p,
@@ -84,34 +175,42 @@ table {
   }
 }
 .right-navigation-item {
-  padding: 10px 25px;
   display: block;
   color: white;
   font-family: league-gothic, helvetica, open-sans;
   font-size: 29px;
-  &.active,
-  &:hover {
+  a,
+  .active {
+    padding: 10px 25px;
+  }
+  .active {
+    background: $background-color;
     color: $dark-gray;
+    &:hover {
+      cursor: default;
+    }
   }
-  &.active,
-  &.active:hover {
-    cursor: default;
-    background: $background-color;
-    background: $background-color;
-  }
-  &:hover {
-    background: $medium-gray;
-    cursor: pointer;
+  a {
+    display: block;
+    background: $dark-gray;
+    text-decoration: none;
+    color: white;
+    &:hover {
+      background: $medium-gray;
+      cursor: pointer;
+    }
   }
   &.logout {
     text-align: right;
-    color: $dark-gray;
-    background: $light-gray;
     font-size: 18px;
-    &:hover {
-      color: $light-gray;
-      background: $medium-gray;
-      cursor: pointer;
+    a {
+      color: $dark-gray;
+      background: $light-gray;
+      &:hover {
+        color: $light-gray;
+        background: $medium-gray;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -119,24 +218,50 @@ table {
 /* LEFT SIDE CONTENT */
 .left-side-bar {
   height: 100%;
-  width: 175px;
+  width: 200px;
   background: $dark-gray;
   position: fixed;
   top: 0;
   left: 0;
   h1 {
-    padding-top: 80px;
+    padding-top: 70px;
+    padding-bottom: 5px;
     color: white;
     display: block;
     background: $tea-green;
     text-align: center;
-    font-size: 52px;
+    font-size: 38px;
+  }
+  .left_bar_button {
+    color: white;
+    font-family: league-gothic, helvetica, open-sans;
+    font-size: 23px;
+    width: 90%;
+    background: $dark-green;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 5%;
+    margin-bottom: 1px;
+    &.edit {
+      background: $red;
+    }
+    h2 {
+      font-size: 23px;
+      color: white;
+    }
+  }
+  a.left_bar_button {
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
 
 /* CONTAINER */
 .content {
-  padding: 25px 200px;
+  overflow: hidden;
+  padding: 25px 180px 25px 230px;
 }
 
 #wrapper {
@@ -148,17 +273,14 @@ table {
   background-color: yellow;
 	margin: 0 auto;
 }
-#main {
-	position: relative;
-	padding: 131px 0 60px;
-}
-
 .logo {
 	height: 60px;
 	width: 60px;
 	background: url(image_path('tea-tracker-logo.png'));
   background-size: cover;
 }
+
+/* Stuff that needs to be fixed */
 
 #login {
 	display: block;
@@ -189,60 +311,63 @@ table {
 }
 
 /* __Tables__ */
-table#main{
-  width: 100%;
+.data {
+  width: 96%;
   border-collapse: collapse;
-  border: 1px solid #222222;
-  color: #555555;
-  background: #ffffff;
-}
+  border: 1px solid #ddd;
+  th,
+  td {
+    padding: 7px 2%;
+  }
+  th {
+    background-color: $dark-gray;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    a {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+    &:hover {
+      background-color: $tea-green;
+      cursor: pointer;
+    }
+  }
+  tr {
+    td a {
+      color: $dark-gray;
+      &.edit {
+        font-size: 10px;
+      }
+    }
+    &:nth-child(odd) {
+      background: #ccc;
+      td a {
+        color: #333;
+      }
+    }
 
-td#main, th#main {
-  border: 1px dotted #bbbbbb;
-  padding: .5em;
+  }
+  td {
+    a {
+      text-decoration: none;
+    }
+  }
 }
-
-th {
-  border: 1px solid #222222;
-  background-color: #666666;
-  text-align: center;
-}
-th span, th a:link, th a:visited {
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: none;
-}
-th a:hover {
-  color: #b2f7b5;
-  text-decoration: underline;
-}
-td a:link, td a:visited {
-  color: #333333;
-  text-decoration: none;
-}
-td a:hover {
-  text-decoration: underline;
-}
-
-table .odd {background: #fcfcfc;}
 
 tr:hover {background: #fafafa;}
 
-/* __Misc__ */
+/* SIGN IN */
 
 div.submit {
   background-color: #336600;
 }
 
-#SignIn {
-  background: $tea-green;
-  font-size: 1.1em;
-  font-color: #FFFFFF;
-  font-weight: bold;
-  font-family: league-gothic, helvetica, sans-serif;
-  padding: 2px 2px 2px 2px;
-  margin: 0;
-  height: auto;
-  width: auto;
+
+/* MAP */
+#map {
+  height: 500px;
+  margin-top: 10px;
 }

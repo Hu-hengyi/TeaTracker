@@ -17,8 +17,8 @@ When /I enter in basic tea deposit data B/ do
 end
 
 When /I edit the tea deposit weighing "(.*)"/ do |weight|
-  temp = TeaDeposit.find_by_weight("#{weight}").id
-  visit "/teadeposit/#{temp}/edit"
+  temp = Deposit.find_by_weight("#{weight}").id
+  visit "/deposits/#{temp}/edit"
 end
 
 When /^I create basic tea deposits$/ do
@@ -31,7 +31,7 @@ When /^I create basic tea deposits$/ do
 end
 
 When /I change date of tea deposit weighing "(.*)"/ do |weight|
-  temp = TeaDeposit.find_by_weight("#{weight}")
+  temp = Deposit.find_by_weight("#{weight}")
   temp.time = '05-01-1979'
   temp.save!
 end

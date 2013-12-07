@@ -2,27 +2,34 @@
 -content_for(:left_bar_content) do
   = link_to 'New Tea Deposit', new_deposit_path, :id => "create_deposit", :class => "left_bar_button"
 
-%h1 Listing deposits
-
 -content_for(:content) do
   %table.data
     %tr
       %th= deposit_header('Weight', @sort_by)
       %th= deposit_header('Quality', @sort_by)
-      %th= deposit_header('Created', @sort_by)
-      %th Farm
-      %th
+      %th= deposit_header('Weighed At', @sort_by)
+      %th= deposit_header('Farm', @sort_by)
+      %th= deposit_header('Collection Point', @sort_by)
+      %th= deposit_header 'Error?', @sort_by
       %th
       %th
 
     - @deposits.each do |deposit|
-      %tr
+      %tr{class: ("unresolved" if deposit.possible_duplicate?)}
         %td= deposit.weight
         %td= deposit.quality
-        %td= deposit.created_at
+        %td= deposit.weighed_at
         -if deposit.farm
           %td= deposit.farm.name
         -else
+          %td
+        -if deposit.cp
+          %td= deposit.cp.name
+        -else
+          %td
+        - if deposit.possible_duplicate?
+          %td= link_to 'Mark Resolved', resolve_path(deposit), method: :put
+        - else
           %td
         %td= link_to 'Show', deposit
         %td= link_to 'Edit', edit_deposit_path(deposit)

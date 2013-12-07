@@ -22,10 +22,12 @@ module NavigationHelpers
       '/cps'
     when /^the Create New Farm page$/
       '/farms/new'
+    when /^the deposits page/
+      deposits_path
     when /^the Tea Deposit page$/
-      '/teadeposit'
+      '/deposits'
     when /^the Create New Tea Deposit page$/
-      '/teadeposit/new'
+      '/deposits/new'
     when /^the Create New Collection Point page$/
       '/cps/new'
     when /^the login page$/

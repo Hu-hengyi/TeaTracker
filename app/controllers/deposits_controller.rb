@@ -1,4 +1,6 @@
 class DepositsController < ApplicationController
+  skip_before_filter :authenticate_user_from_token! if Rails.env.test?
+
   # GET /deposits
   # GET /deposits.json
   respond_to :html, :json
@@ -6,23 +8,25 @@ class DepositsController < ApplicationController
     @sort_by = params[:sort_by] || 'Created'
     order_by = @sort_by.downcase
     order_by = "created_at" if order_by == 'created'
+    order_by = "farm_id" if order_by == "farm"
+    order_by = "cp_id" if order_by == "collection point"
     @deposits = Deposit.all(:order => order_by)
 
-    respond_with(@deposits)
+    respond_with(@deposits) if request.xhr?
   end
 
   # GET /deposits/1
   # GET /deposits/1.json
   def show
     @deposit = Deposit.find(params[:id])
-    respond_with(@deposit)
+    respond_with(@deposit) if request.xhr?
   end
 
   # GET /deposits/new
   # GET /deposits/new.json
   def new
     @deposit = Deposit.new
-    respond_with(@deposit)
+    respond_with(@deposit) if request.xhr?
   end
 
   # GET /deposits/1/edit
@@ -33,24 +37,25 @@ class DepositsController < ApplicationController
   # POST /deposits
   # POST /deposits.json
   def create
-    weight = params[:deposit][:weight]
-    quality = params[:deposit][:quality]
-    farm_id = params[:deposit][:farm_id]
-    @deposit = Deposit.create!(:weight => weight, :quality=> quality)
-    @deposit.update_column(:farm_id, farm_id)
-    @deposit.save!
-    flash[:notice] = "Deposit was successfully created."
-    redirect_to deposits_path
+    @deposit = Deposit.new(params[:deposit])
+    if @deposit.save
+      flash[:notice] = "Deposit was successfully created."
+      redirect_to deposits_path
+    else
+      render :new
+    end
   end
 
   # PUT /deposits/1
   # PUT /deposits/1.json
   def update
     @deposit = Deposit.find(params[:id])
-    @deposit = Deposit.find params[:id]
-    @deposit.update_attributes!(params[:deposit])
-    flash[:notice] = "Deposit was successfully updated."
-    redirect_to deposit_path(@deposit)
+    if @deposit.update_attributes(params[:deposit])
+      flash[:notice] = "Deposit was successfully updated."
+      redirect_to deposit_path(@deposit)
+    else
+      render action: 'edit'
+    end
   end
 
   # DELETE /deposits/1
@@ -59,6 +64,13 @@ class DepositsController < ApplicationController
     @deposit = Deposit.find(params[:id])
     @deposit.destroy
     flash[:notice] = "Deposit deleted."
+    redirect_to deposits_path
+  end
+
+  def resolve
+    deposit = Deposit.find(params[:id])
+    deposit.possible_duplicate = false
+    deposit.save!
     redirect_to deposits_path
   end
 end
