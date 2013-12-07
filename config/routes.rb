@@ -1,6 +1,8 @@
 TeaTracker::Application.routes.draw do
 
-  resources :deposits
+  resources :deposits do
+    collection { post :import }
+  end
   put 'deposits/resolve/:id', to: 'deposits#resolve', as: :resolve
 
   devise_for :users, :controllers => {:confirmations => 'confirmations'}, skip: [:registrations]
@@ -19,6 +21,7 @@ TeaTracker::Application.routes.draw do
   end
 
   resources :cps do
+    collection { post :import}
   end
 
   scope 'admin/' do

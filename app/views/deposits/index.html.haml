@@ -1,6 +1,13 @@
 -content_for(:left_bar_title, "Tea Deposits")
 -content_for(:left_bar_content) do
   = link_to 'New Tea Deposit', new_deposit_path, :id => "create_deposit", :class => "left_bar_button"
+  = link_to "Export Deposits as CSV", farms_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
+  %div.left_bar_button
+    %h2 Import Deposits
+    = form_tag import_deposits_path, multipart: true do
+      = file_field_tag :file, :id=>"file"
+      = submit_tag "Import", :id=>"Import", :disabled=>true
+
 
 -content_for(:content) do
   %table.data

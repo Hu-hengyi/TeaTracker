@@ -11,11 +11,12 @@ class Farm < ActiveRecord::Base
       end
     end
    end
-   def self.import(file)
+
+  def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
         farm = find_by_id(row["id"]) || new
         farm.attributes = row.to_hash.slice(*accessible_attributes)
         farm.save!
+    end
   end
-end
 end
