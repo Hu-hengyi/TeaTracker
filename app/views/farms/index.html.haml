@@ -52,7 +52,9 @@
         %td= link_to('Edit', edit_farm_path(farm), :class=>"edit", :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, :class=> "edit", method: :delete, data: { confirm: 'Are you sure?' })
     %tr
       %td
-      %td= @bush_sum
+      %td.sum= "Total: #{@bush_sum}"
+      %td
+      %td
       %td
       %td
       %td

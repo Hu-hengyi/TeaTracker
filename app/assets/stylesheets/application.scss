@@ -312,12 +312,12 @@ table {
 
 /* __Tables__ */
 .data {
-  width: 96%;
+  width: 100%;
   border-collapse: collapse;
   border: 1px solid #ddd;
   th,
   td {
-    padding: 7px 2%;
+    padding: 7px 0;
   }
   th {
     background-color: $dark-gray;
@@ -355,6 +355,11 @@ table {
       text-decoration: none;
     }
   }
+}
+
+td.sum {
+  text-align: right;
+  padding-right: 1ex;
 }
 
 tr:hover {background: #fafafa;}
