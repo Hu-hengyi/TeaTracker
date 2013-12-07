@@ -1,3 +1,6 @@
+-content_for(:left_bar_title, "Update " + @user.name)
+-content_for(:left_bar_content) do
+  = link_to 'Back', users_path, :class => "left_bar_button"
 
 = render 'form'
 
