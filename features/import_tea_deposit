@@ -1,6 +1,6 @@
 Feature: import a set of tea deposit data
 
-  As an analyst
+  As an admin
   So that I can enter new tea deposit data en mass into the database
   I want to be able to import new tea deposits or data in a csv format
 
