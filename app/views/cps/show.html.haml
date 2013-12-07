@@ -13,15 +13,14 @@
     Longitude: 
     = @cp.longitude
 
-  %h3 All Tea Deposits For This Collection Point
+  %h3= "All Tea Deposits For " + @cp.name
 
   %table.data
     %tr
-      %th= deposit_header('Weight', @sort_by)
-      %th= deposit_header('Quality', @sort_by)
-      %th= deposit_header('Created', @sort_by)
-      %th= deposit_header('Farm', @sort_by)
-      %th= deposit_header('Collection Point', @sort_by)
+      %th Weight
+      %th Quality
+      %th Created
+      %th Farm
       %th
 
     - @deposits.each do |deposit|
@@ -31,10 +30,6 @@
         %td= deposit.created_at
         -if deposit.farm
           %td= deposit.farm.name
-        -else
-          %td
-        -if deposit.cp
-          %td= deposit.cp.name
         -else
           %td
         %td.edit= link_to('Show', deposit) + ' | ' +  link_to('Edit', edit_deposit_path(deposit), :id => "edit") + ' | ' + link_to('Destroy', deposit, method: :delete, data: { confirm: 'Are you sure?' })
