@@ -13,8 +13,8 @@ $(window).load(function() {
       }
   });
 
-  var oneLeafIcon = new LeafIcon({iconUrl: '../../assets/two-leaf.png'});
-  var twoLeafIcon = new LeafIcon({iconUrl: '../../assets/one-leaves.png'});
+  var oneLeafIcon = new LeafIcon({iconUrl: '../../assets/one-leaf.png'});
+  var twoLeafIcon = new LeafIcon({iconUrl: '../../assets/two-leaves.png'});
   var threeLeafIcon = new LeafIcon({iconUrl: '../../assets/three-leaves.png'});
   L.icon = function (options) {
       return new L.Icon(options);
