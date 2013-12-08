@@ -214,6 +214,7 @@ DEPENDENCIES
   formtastic
   haml-rails
   jquery-rails
+  json
   launchy
   pg (= 0.17.0)
   rails (= 3.2.14)

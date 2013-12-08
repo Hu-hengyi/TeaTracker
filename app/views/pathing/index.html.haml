@@ -1,0 +1,12 @@
+-content_for(:left_bar_title, "Pathing")
+
+
+-content_for(:content) do
+  %table.data
+    %tr
+      %th Tractor
+      %th Route
+    - @tractors.each do |myItem|
+      %tr
+        %td= myItem[0]
+        %td= myItem[1]

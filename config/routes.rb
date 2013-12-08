@@ -25,6 +25,7 @@ TeaTracker::Application.routes.draw do
     resources :users
   end
 
+  get 'admin/pathing', to: 'pathing#index', as: 'pathing'
 
 
   # The priority is based upon order of creation:

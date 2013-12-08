@@ -40,7 +40,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'devise'
 gem 'formtastic'
-
+gem 'json'
 
 #used for import/export:
 gem 'selenium-webdriver'
