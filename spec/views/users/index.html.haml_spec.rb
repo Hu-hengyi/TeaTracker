@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe "users/index" do
   before(:each) do
-    assign(:users, [
-      stub_model(Admin),
-      stub_model(Intern)
-    ])
+    admin = create(:admin)
+    intern = create(:intern, email: "intern@lujeri.com")
+    @users = [admin, intern]
   end
 
   it "renders a list of users" do
