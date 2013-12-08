@@ -8,7 +8,7 @@ class Cp < ActiveRecord::Base
      cps.each do |cp| 
        info = Hash.new
        info["name"] = cp.name 
-       info["latititude"] = cp.latitude 
+       info["latitude"] = cp.latitude 
        info["longitude"] = cp.longitude
        info["leaves"] = self.getNumLeavesForCp(cp)
        cpsInfo << info

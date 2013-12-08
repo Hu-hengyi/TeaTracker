@@ -24,6 +24,19 @@
         %td.longitude= link_to cp.longitude, cp
         %td.edit= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
 
+  %table.data
+    %tr
+      %th Name
+      %th Latitude
+      %th Longitude
+      %th Number of Leaves
+    -@cpDetails.each do |cpDetail|
+      %tr
+        %td= cpDetail['name']
+        %td= cpDetail['latitude']
+        %td= cpDetail['longitude'] 
+        %td= cpDetail['leaves']
+
   %div#map
 
 :javascript
