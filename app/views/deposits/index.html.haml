@@ -17,7 +17,7 @@
       %th= deposit_header('Weighed At', @sort_by)
       %th= deposit_header('Farm', @sort_by)
       %th= deposit_header('Collection Point', @sort_by)
-      %th= deposit_header 'Error?', @sort_by
+      %th= deposit_header 'Duplicate?', @sort_by
       %th
       %th
       %th
@@ -39,6 +39,7 @@
           %td= link_to 'Mark Resolved', resolve_path(deposit), method: :put
         - else
           %td
+            No
         %td= link_to 'Show', deposit
         %td= link_to 'Edit', edit_deposit_path(deposit)
         %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
