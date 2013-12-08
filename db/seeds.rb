@@ -70,3 +70,8 @@ d.farm = unika
 d.cp = east
 d.save!
 
+d = Deposit.new(weight: 7000, quality: Deposit.all_qualities[2],  weighed_at: 2.day.ago)
+d.farm = unika
+d.cp = east
+d.save!
+
