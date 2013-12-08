@@ -3,6 +3,10 @@ require 'spec_helper'
 describe FarmsController do
   login_admin
 
+  before(:each) do
+    @farm = create(:farm)
+  end
+
   describe "Displaying farm list" do
      it "should render the index page" do
        get :index
@@ -16,7 +20,7 @@ describe FarmsController do
 
    describe "Show farm data" do
      it "should display farm data" do
-       Farm.stub(:find).and_return
+       Farm.stub(:find).and_return(@farm)
        get :show, :id => 3
        response.should render_template('show')
      end

@@ -3,6 +3,10 @@ require 'spec_helper'
 describe CpsController do
   login_admin
 
+  before(:each) do
+    @farm = create(:farm)
+  end
+
   describe "Displaying collection points list" do
      it "should render the index page" do
        get :index
@@ -12,7 +16,7 @@ describe CpsController do
 
    describe "Show collection point data" do
      it "should display collection point data" do
-       Cp.stub(:find)
+       Cp.stub(:find).and_return(@farm)
        get :show, :id => 1
        response.should render_template('show')
      end
