@@ -2,6 +2,7 @@ class CpsController < ApplicationController
 
   def index
     @cps = Cp.all
+    @cpDetails = Cp.getNumLeaves
   end
 
   def show
@@ -37,4 +38,13 @@ class CpsController < ApplicationController
     redirect_to cps_path
   end
 
+  def import
+    if params[:file]
+      Cp.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    else
+      flash[:notice] = "No file selected to import"
+      redirect_to cps_path
+    end
+  end
 end

@@ -2,10 +2,8 @@
 -content_for(:left_bar_content) do
   = link_to 'New User', new_user_path, :id => "create_user", :class => "left_bar_button"
 
-%h1 Listing users
-
 -content_for(:content) do
-  %table.data
+  %table.data.sortable
     %tr
       %th Name
       %th Email

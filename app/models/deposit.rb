@@ -37,4 +37,22 @@ class Deposit < ActiveRecord::Base
   def resolve
     self.possible_duplicate = false
   end
+
+  def self.to_csv(deposits = all)
+    CSV.generate do |csv|
+      csv << column_names
+      deposits.each do |deposit|
+        csv << deposit.attributes.values_at(*column_names)
+      end
+    end
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      deposit = find_by_id(row["id"]) || new
+      deposit.attributes = row.to_hash.slice(*accessible_attributes)
+      deposit.save!
+    end
+  end
+
 end

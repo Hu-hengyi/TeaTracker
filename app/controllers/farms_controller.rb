@@ -1,8 +1,8 @@
 class FarmsController < ApplicationController
   def index
-    @sort_by = params[:sort_by] || 'Report Date'
+    @sort_by = params[:sort_by] || 'Name'
     order_by = @sort_by.downcase
-    order_by = "updated_at" if order_by == 'report date'
+    order_by = "bushes" if order_by == 'fertilizer'
     @csv_farms = Farm.order(:name)
 
     if params[:search]
@@ -23,7 +23,10 @@ class FarmsController < ApplicationController
 
   def show
     @farm = Farm.find(params[:id])
-    @deposits = Deposit.find_all_by_farm_id(@farm.id)    
+    @deposits = Deposit.find_all_by_farm_id(@farm.id)
+    @yield = 0
+    @deposits.each { |deposit| @yield += (deposit.weight || 0) }
+    @yield = @yield - (@yield % 0.001)
   end
 
   def new
