@@ -10,12 +10,5 @@ Background:
 
 Scenario: view fertilizer on the farms page
   Given I am on the farms page
-  Then I should see "20"
-  Then I should see "50"
-
-Scenario: view fertilizer from the yield input
-  Given I am on the farms page
-  When I follow "Calculate Fertilizer"
-  When I fill in "yield" with "200"
-  And I press "calculate"
-  Then I should see "20"
+  Then I should see "30"
+  Then I should see "1800"

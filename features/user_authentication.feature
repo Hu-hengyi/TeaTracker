@@ -59,3 +59,38 @@ Feature: User authentication
     Given I am logged in as an "intern"
     When I go to the user management page
     Then I should see "This area is restricted to users with administrator privileges"
+
+  Scenario: Forgot password
+    Given seed data is loaded
+    Given I am not logged in
+    When I go to the login page
+    When I follow "Forgot your password"
+    When I fill in "user_email" with "admin@lujeri.com"
+    When I press "Reset Password"
+    Then I should see "You will receive an email with instructions"
+
+  Scenario: Forgot password and incorrectly typed
+    Given I am not logged in
+    When I go to the login page
+    When I follow "Forgot your password"
+    When I fill in "user_email" with "test@fake.com"
+    When I press "Reset Password"
+    Then I should see "Email not found"
+
+  Scenario: No confirmation
+    Given seed data is loaded
+    Given I am not logged in
+    When I go to the login page
+    When I follow "receive confirmation instructions"
+    When I fill in "user_email" with "admin@lujeri.com"
+    When I press "Resend confirmation instructions"
+    Then I should see "Email was already confirmed"
+
+  Scenario: No confirmation and incorrectly typed
+    Given I am not logged in
+    When I go to the login page
+    When I follow "receive confirmation instructions"
+    When I fill in "user_email" with "test@fake.com"
+    When I press "Resend confirmation instructions"
+    Then I should see "Email not found"
+

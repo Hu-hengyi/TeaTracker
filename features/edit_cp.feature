@@ -9,7 +9,7 @@ Scenario: edit a basic cp
   And I am on the Create New Collection Point page
   When I enter in basic collection point data A
   And I press "create_cp"
-  And I edit the cp named "Basic Collection Point A"
+  And I edit the collection point named "Basic Collection Point A"
   And I fill in "cp_name" with "New Collection Point A"
   And I press "create_cp"
   Then I should see "New Collection Point A"

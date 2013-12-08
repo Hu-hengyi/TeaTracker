@@ -11,26 +11,8 @@ Background:
 Scenario: add a new tea deposit and its info
   Given I am on the Create New Tea Deposit page
   When I enter in basic tea deposit data A
-  And I press "create_tea_deposit"
-  Then I should see "Basic Tea Deposit A"
-
-Scenario: add a new tea deposit from the farms page
-  Given I am on the farms page
-  When I follow "Basic Farm A"
-  And I follow "new_tea_deposit"
-  Then I should see "Basic Farm A"
-  When I enter in basic tea deposit data A
-  And I press "create_tea_deposit"
-  Then I should see "Basic Tea Deposit A"
-
-Scenario: add a new tea deposit from the collection points page
-  Given I am on the collection points page
-  When I follow "Basic CP A"
-  And I follow "new_tea_deposit"
-  Then I should see "Basic CP A"
-  When I enter in basic tea deposit data A
-  And I press "create_tea_deposit"
-  Then I should see "Basic Tea Deposit A"
+  And I press "create_deposit"
+  Then I should see "Basic Collection Point A"
 
 #there are no sad paths at this time but if after talking with client we find out there are variables which must be required, such as TeaDeposit name, then we'll validate them and add them below
 #Scenario: add a new tea deposit and its info

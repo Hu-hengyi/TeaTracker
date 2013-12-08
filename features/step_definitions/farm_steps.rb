@@ -5,6 +5,7 @@ When /I enter in basic farm data A/ do
   When %{I fill in the following:}, table(%{
     | Name      | Basic Farm A     |
     | Workers   | 8                |
+    | Bushes    | 10               |
     | Longitude | 35.628262        |
     | Latitude  | -15.928978       |
     | Notes     | Doing great work |
@@ -17,6 +18,7 @@ When /I enter in basic farm data B/ do
   When %{I fill in the following:}, table(%{
     | Name      | Basic Farm B      |
     | Workers   | 5                 |
+    | Bushes    | 600               |
     | Longitude | 35.628260         |
     | Latitude  | -15.928970        |
     | Notes     | Doing pretty well |

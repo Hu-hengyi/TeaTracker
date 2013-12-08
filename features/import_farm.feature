@@ -14,8 +14,3 @@ Scenario: import from csv
   When I upload a file with valid data for farms
   And I import the csv
   Then I should see "Import Farm A"
-#  When I press "browse"
-#  When I upload a file
-#  When I confirm the dialog box
-#  When I press "import_farms"
-#  Then I should see "Test Farm CSV"

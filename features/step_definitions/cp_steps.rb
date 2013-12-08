@@ -17,7 +17,7 @@ When /I enter in basic collection point data B/ do
 end
 
 When /I edit the collection point named "(.*)"/ do |name|
-  temp = CollectionPoint.find_by_title("#{name}").id
+  temp = Cp.find_by_name("#{name}").id
   visit "/cps/#{temp}/edit"
 end
 
