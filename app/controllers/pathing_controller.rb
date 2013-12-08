@@ -7,14 +7,14 @@ class PathingController < ApplicationController
     end
   end
 
-  @@data = JSON.parse(File.read('/home/saasbook/Lujeri/TeaTracker/config/pathing.json'))
+  @@data = JSON.parse(File.read(Rails.root.to_s + '/config/pathing.json'))
 
   # GET /users
   # GET /users.json
   def index
     @farms = Farm.all
     @users = @@data
-    @data = JSON.parse(File.read('/home/saasbook/Lujeri/TeaTracker/config/pathing.json'))
+    @data = JSON.parse(File.read(Rails.root.to_s + '/config/pathing.json'))
     @tractors = []
     @data["tractors"].each do |tractor|
       temp = ""
