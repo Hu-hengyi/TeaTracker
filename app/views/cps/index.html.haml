@@ -1,7 +1,7 @@
 -content_for(:left_bar_title, "Collection")
 -content_for(:left_bar_content) do
   =link_to "New Collection Point", new_cp_path, :class=> "left_bar_button"
-  = link_to "Export Collection Points as CSV", farms_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
+  = link_to "Export Collection Points as CSV", cps_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
   %div.left_bar_button
     %h2 Import Collection Points
     = form_tag import_cps_path, multipart: true do
