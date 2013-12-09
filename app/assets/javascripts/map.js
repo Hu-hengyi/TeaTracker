@@ -32,23 +32,27 @@ $(window).load(function() {
 //  }).addTo(map);
 
   /* Drop markers for farms */
-  $('table.data tr').each(function(index, row) {
+  $('table.mapdata tr').each(function(index, row) {
       if (index > 0) {
-          var longitude = $(row).find('td.longitude a').text();
-          var latitude  = $(row).find('td.latitude a').text();
-          var bushes    = parseFloat($(row).find('td.bushes a').text());
+          var longitude = $(row).find('td.longitude').text();
+          var latitude  = $(row).find('td.latitude').text();
+          var leaves    = $(row).find('td.numLeaves').text();
+          var name      = $(row).find('td.name').text();
 
           var icon;
-          if (isNaN(bushes) || bushes < 5) {
+          if (isNaN(leaves) || leaves < 5) {
               icon = oneLeafIcon;
-          } else if (bushes < 10) {
+          } else if (leaves < 10) {
               icon = twoLeafIcon;
           } else {
               icon = threeLeafIcon;
           }
 
-          L.marker(new L.LatLng(latitude, longitude), {icon:icon}).addTo(map).
-              bindPopup(bushes.toString());
+          marker = L.marker(new L.LatLng(latitude, longitude), {icon:icon});
+          if (name != "") {
+            marker.bindPopup(name);
+          }
+          marker.addTo(map);
       }
   });
 
