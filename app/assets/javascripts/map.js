@@ -10,7 +10,7 @@ $(window).load(function() {
   var LeafIcon = L.Icon.extend({
       options: {
           shadowUrl: 'leaf-shadow.png',
-          iconSize:     [38, 38],
+          iconSize:     [38, 56],
           shadowSize:   [0, 0],
           iconAnchor:   [22, 94],
           shadowAnchor: [4, 62],
@@ -18,6 +18,7 @@ $(window).load(function() {
       }
   });
 
+  var markerIcon = new LeafIcon({iconUrl: '../../assets/marker-icon.png'});
   var oneLeafIcon = new LeafIcon({iconUrl: '../../assets/one-leaf.png'});
   var twoLeafIcon = new LeafIcon({iconUrl: '../../assets/two-leaves.png'});
   var threeLeafIcon = new LeafIcon({iconUrl: '../../assets/three-leaves.png'});
@@ -40,12 +41,16 @@ $(window).load(function() {
           var name      = $(row).find('td.name').text();
 
           var icon;
-          if (isNaN(leaves) || leaves < 5) {
+          if (isNaN(leaves)) {
+              icon = markerIcon;
+          } else if (leaves == 1) {
               icon = oneLeafIcon;
-          } else if (leaves < 10) {
+          } else if (leaves == 2) {
               icon = twoLeafIcon;
-          } else {
+          } else if (leaves == 3) {
               icon = threeLeafIcon;
+          } else {
+              icon = markerIcon;
           }
 
           marker = L.marker(new L.LatLng(latitude, longitude), {icon:icon});
