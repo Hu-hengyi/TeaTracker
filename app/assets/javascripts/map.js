@@ -2,7 +2,7 @@
 $(window).load(function() {
 
   var map = L.map('map', {
-      layers: MQ.satelliteLayer(),
+      layers: MQ.hybridLayer(),
       center: [-15.97857, 35.65389],
       zoom: 12
   });//.setView(new L.LatLng(-16.026181, 35.645142), 13);
