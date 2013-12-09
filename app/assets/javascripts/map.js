@@ -32,13 +32,24 @@ $(window).load(function() {
 //  }).addTo(map);
 
   /* Drop markers for farms */
-  $('.latitude a').each(function(index){
-    var lat = parseFloat($(this).html());
-    $('.longitude a').each(function(){
-      var lon = parseFloat($(this).html());
-      L.marker(new L.LatLng(lat, lon), {icon:oneLeafIcon}).addTo(map)
-      .bindPopup(index.toString())      
-    });
+  $('table.data tr').each(function(index, row) {
+      if (index > 0) {
+          var longitude = $(row).find('td.longitude a').text();
+          var latitude  = $(row).find('td.latitude a').text();
+          var bushes    = parseFloat($(row).find('td.bushes a').text());
+
+          var icon;
+          if (isNaN(bushes) || bushes < 5) {
+              icon = oneLeafIcon;
+          } else if (bushes < 10) {
+              icon = twoLeafIcon;
+          } else {
+              icon = threeLeafIcon;
+          }
+
+          L.marker(new L.LatLng(latitude, longitude), {icon:icon}).addTo(map).
+              bindPopup(bushes.toString());
+      }
   });
 
 
