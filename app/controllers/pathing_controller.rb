@@ -12,8 +12,6 @@ class PathingController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @farms = Farm.all
-    @users = @@data
     @data = JSON.parse(File.read(Rails.root.to_s + '/config/pathing.json'))
     @tractors = []
     @data["tractors"].each do |tractor|
@@ -27,7 +25,7 @@ class PathingController < ApplicationController
       
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @farms }
+      format.json { render json: @data }
     end
   end
 
