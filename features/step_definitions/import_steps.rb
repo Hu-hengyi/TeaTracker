@@ -1,13 +1,13 @@
 When /^I upload a file with valid data for farms$/ do
-  attach_file("file", '/home/saasbook/Lujeri/TeaTracker/features/upload_files/farms.csv')
+  attach_file("file", File.join(Rails.root, 'features/upload_files/farms.csv'))
 end
 
 When /^I upload a file with valid data for tea deposits$/ do
-  attach_file("file", '/home/saasbook/Lujeri/TeaTracker/features/upload_files/tds.csv')
+  attach_file("file", File.join(Rails.root, 'features/upload_files/tds.csv'))
 end
 
 When /^I upload a file with suspicious data for tea deposits$/ do
-  attach_file("file", '/home/saasbook/Lujeri/TeaTracker/features/upload_files/sus_tds.csv')
+  attach_file("file", File.join(Rails.root, 'features/upload_files/sus_tds.csv'))
 end
 
 

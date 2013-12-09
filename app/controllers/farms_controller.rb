@@ -66,4 +66,8 @@ class FarmsController < ApplicationController
       redirect_to farms_path
     end
   end
+
+  def shadow
+    @image = File.open(File.join(Rails.root, '/app/assets/images/leaf-shadow.png'))
+  end
 end
