@@ -6,6 +6,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = controller_stylesheet_link_tag
     = javascript_include_tag "application"
+    = yield(:head)
 
     = csrf_meta_tags
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
