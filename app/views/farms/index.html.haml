@@ -24,7 +24,7 @@
     -@farms.each do |farm|
       %tr
         -if farm.name
-          %td.farm_name= link_to farm.name, farm
+          %td.name= link_to farm.name, farm
         -else
           %td
         -if farm.bushes
