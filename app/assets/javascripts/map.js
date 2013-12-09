@@ -19,21 +19,24 @@ $(window).load(function() {
   });
 
   var markerIcon = new LeafIcon({
-    iconUrl: '../../assets/marker-icon.png',
-    iconSize: [25, 41],
-    iconAnchor: [12.5, 41]
+      iconUrl: '../../assets/marker-icon.png',
+      iconSize: [25, 41],
+      iconAnchor: [12.5, 41]
   });
   var oneLeafIcon = new LeafIcon({
-    iconUrl: '../../assets/one-leaf.png',
-    iconAnchor: [125, 224]
+      iconUrl: '../../assets/one-leaf.png',
+      iconSize: [45, 45],
+      iconAnchor: [22, 40]
   });
   var twoLeafIcon = new LeafIcon({
-    iconUrl: '../../assets/two-leaves.png',
-    iconAnchor: [135, 224]
+      iconUrl: '../../assets/two-leaves.png',
+      iconSize: [45, 45],
+      iconAnchor: [24, 40]
   });
   var threeLeafIcon = new LeafIcon({
-    iconUrl: '../../assets/three-leaves.png',
-    iconAnchor: [140, 222]
+      iconUrl: '../../assets/three-leaves.png',
+      iconSize: [45, 45],
+      iconAnchor: [25, 40]
   });
 
   L.icon = function (options) {
