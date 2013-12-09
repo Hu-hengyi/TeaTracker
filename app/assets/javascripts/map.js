@@ -18,12 +18,26 @@ $(window).load(function() {
       }
   });
 
-  var markerIcon = new LeafIcon({iconUrl: '../../assets/marker-icon.png'});
-  var oneLeafIcon = new LeafIcon({iconUrl: '../../assets/one-leaf.png'});
-  var twoLeafIcon = new LeafIcon({iconUrl: '../../assets/two-leaves.png'});
-  var threeLeafIcon = new LeafIcon({iconUrl: '../../assets/three-leaves.png'});
+  var markerIcon = new LeafIcon({
+    iconUrl: '../../assets/marker-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12.5, 41]
+  });
+  var oneLeafIcon = new LeafIcon({
+    iconUrl: '../../assets/one-leaf.png',
+    iconAnchor: [125, 224]
+  });
+  var twoLeafIcon = new LeafIcon({
+    iconUrl: '../../assets/two-leaves.png',
+    iconAnchor: [135, 224]
+  });
+  var threeLeafIcon = new LeafIcon({
+    iconUrl: '../../assets/three-leaves.png',
+    iconAnchor: [140, 222]
+  });
+
   L.icon = function (options) {
-      return new L.Icon(options);
+    return new L.Icon(options);
   };
 
   /* Set up map */
@@ -53,10 +67,16 @@ $(window).load(function() {
               icon = markerIcon;
           }
 
-          marker = L.marker(new L.LatLng(latitude, longitude), {icon:icon});
+          marker = L.marker(new L.LatLng(latitude, longitude));
+
+          if (icon != null) {
+              marker.setIcon(icon);
+          }
+
           if (name != "") {
             marker.bindPopup(name);
           }
+
           marker.addTo(map);
       }
   });
