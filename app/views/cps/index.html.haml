@@ -12,10 +12,10 @@
 -content_for(:content) do
   %table.data.sortable
     %tr
-      %th Name
+      %th= sortable_head('Name', @sort_by)
       %th Created
-      %th Latitude
-      %th Longitude
+      %th= sortable_head('Latitude', @sort_by) 
+      %th= sortable_head('Longitude', @sort_by) 
       %th
     -@cps.each do |cp|
       %tr

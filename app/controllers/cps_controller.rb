@@ -1,7 +1,9 @@
 class CpsController < ApplicationController
 
   def index
-    @cps = Cp.all
+    @sort_by = params[:sort_by] || 'Name'
+    order_by = @sort_by.downcase
+    @cps = Cp.all(:order => order_by)
     @cpDetails = Cp.getNumLeaves
   end
 
