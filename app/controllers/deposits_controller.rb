@@ -82,7 +82,7 @@ class DepositsController < ApplicationController
   def import
     if params[:file]
       Deposit.import(params[:file])
-      redirect_to root_url, notice: "Products imported."
+      redirect_to deposits_path, notice: "Products imported."
     else
       flash[:notice] = "No file selected to import"
       redirect_to deposits_path

@@ -40,7 +40,11 @@
 
   %div#map
 
+
 :javascript
 $document.ready(function() {
+  $('#file').change(function() {
+    $('#Import').removeAttr('disabled');
+  });
   console.log($("#map"));
 });

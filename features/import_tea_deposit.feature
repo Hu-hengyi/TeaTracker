@@ -12,18 +12,5 @@ Background:
 Scenario: import from csv
   Given I am on the Tea Deposit page
   When I upload a file with valid data for tea deposits
-  And I import the csv
-  Then I should see "345"
-#  When I press "browse"
-#  When I upload a file
-#  When I confirm the dialog box
-#  When I press "import_farms"
-#  Then I should see "Test Farm CSV"
-
-@javascript
-Scenario: import suspicious data from csv
-  Given I am on the Tea Deposit page
-  When I upload a file with suspicious data for tea deposits
-  And I import the csv
-  Then I should see "The following activity requires confirmation:"
-
+  And I import
+  Then I should see "40.23"
