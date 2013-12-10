@@ -17,4 +17,7 @@ FactoryGirl.define do
     user.type { "Intern" }
     user.confirmed_at  {1.day.ago }
   end
+  factory :unconfirmedUser, class: Intern, parent: :user do |user|
+    user.type { "Intern" }
+  end
 end
