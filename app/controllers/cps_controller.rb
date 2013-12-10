@@ -8,6 +8,13 @@ class CpsController < ApplicationController
 
     @cps = Cp.order(order_by)
     @cpDetails = Cp.getNumLeaves
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @cps }
+      format.csv { send_data Cp.order(:name).to_csv }
+    end
+
   end
 
   def show
