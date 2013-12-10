@@ -55,3 +55,23 @@ end
 When(/^I follow "([^"]*)" in the row containing "([^"]*)"$/) do |link, arg|
   find(:xpath, "//tr[td[contains(.,'#{arg}')]]/td/a", :text => link).click
 end
+
+
+When(/^I fill in the email address for "([^"]*)"$/) do |name|
+  user = User.find_by_name(name)
+  step %{I fill in "Email" with "#{user.email}"}
+end
+
+Given(/^an unconfirmed user with email address "([^"]*)"$/) do |email|
+  user = create(:unconfirmedUser, email: email)
+end
+
+And(/^the user with email address "([^"]*)" should be confirmed$/) do |email|
+  user = User.find_by_email(email)
+  user.confirmed?
+end
+
+And(/^the user with email address "([^"]*)" should be not confirmed$/) do |email|
+  user = User.find_by_email(email)
+  !user.confirmed?
+end

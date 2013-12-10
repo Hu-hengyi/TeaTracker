@@ -3,15 +3,14 @@ When /^I upload a file with valid data for farms$/ do
 end
 
 When /^I upload a file with valid data for tea deposits$/ do
-  attach_file("file", File.join(Rails.root, 'features/upload_files/tds.csv'))
+  attach_file("file", File.join(Rails.root, 'features/upload_files/deposits.csv'))
 end
 
-When /^I upload a file with suspicious data for tea deposits$/ do
-  attach_file("file", File.join(Rails.root, 'features/upload_files/sus_tds.csv'))
+When /^I upload a file with valid data for cps$/ do
+  attach_file("file", File.join(Rails.root, 'features/upload_files/cps.csv'))
 end
 
-
-When /^I import the csv$/ do
+When /^I import$/ do
   click_button "Import"
 end
 

@@ -12,5 +12,5 @@ Background:
 Scenario: import from csv
   Given I am on the FarmList
   When I upload a file with valid data for farms
-  And I import the csv
+  And I import
   Then I should see "Import Farm A"

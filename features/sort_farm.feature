@@ -6,7 +6,8 @@ Feature: sort the list of farms
 
 Scenario: sort farms by name
   Given I am logged in
-  And I am on the FarmList home page
+  And I am on the FarmList
   When I create basic farms
+  And I follow "sort Bushes"
   And I follow "sort Name"
   Then I should see both "Basic Farm A" before "Basic Farm B"

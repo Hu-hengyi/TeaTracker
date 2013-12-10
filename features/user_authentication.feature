@@ -29,6 +29,25 @@ Feature: User authentication
     Then I should be on the login page
     And I should not see "LOGIN"
 
+  Scenario: Unconfirmed user requests password setup email again
+    Given an unconfirmed user with email address "newuser@lujeri.com"
+    And I am on the request confirmation page
+    When I fill in "Email" with "newuser@lujeri.com"
+    And I press "Resend confirmation instructions"
+    Then I should be on the login page
+    And I should see "You will receive an email with instructions about how to confirm your account in a few minutes"
+
+  Scenario: User responds to email to set his password
+    Given an unconfirmed user with email address "newuser@lujeri.com"
+    And I am on the confirmation email link for "newuser@lujeri.com"
+    When I fill in "Password" with "drowssap"
+    And I fill in "Password confirmation" with "drowssap"
+    And I press "Confirm Account"
+    Then I should be on the home page
+    And the user with email address "newuser@lujeri.com" should be confirmed
+
+
+
   # Sad Paths =(
   Scenario: John Doe tries to log in, but mistypes his password
     Given I am not logged in
@@ -93,4 +112,25 @@ Feature: User authentication
     When I fill in "user_email" with "test@fake.com"
     When I press "Resend confirmation instructions"
     Then I should see "Email not found"
+
+  Scenario: Confirmed user requests confirmation
+    Given I am on the request confirmation page
+    When I fill in the email address for "JohnDoe"
+    And I press "Resend confirmation instructions"
+    Then I should see "Email was already confirmed"
+
+  Scenario: User request confirmation for nonexistant user
+    Given I am on the request confirmation page
+    When I fill in "Email" with "not@real.com"
+    And I press "Resend confirmation instructions"
+    Then I should see "Email not found"
+
+  Scenario: User responds to email to set his password, but confirmation password doesn't match
+    Given an unconfirmed user with email address "newuser@lujeri.com"
+    And I am on the confirmation email link for "newuser@lujeri.com"
+    When I fill in "Password" with "password"
+    And I fill in "Password confirmation" with "drowssap"
+    And I press "Confirm Account"
+    Then I should see "Password confirmation does not match password"
+    And the user with email address "newuser@lujeri.com" should be not confirmed
 

@@ -1,8 +1,20 @@
 class CpsController < ApplicationController
 
   def index
-    @cps = Cp.all
+    @sort_by = params[:sort_by] || 'name'
+    order_by = @sort_by.downcase
+    order_by = 'created_at' if order_by == 'created'
+
+
+    @cps = Cp.order(order_by)
     @cpDetails = Cp.getNumLeaves
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @cps }
+      format.csv { send_data Cp.order(:name).to_csv }
+    end
+
   end
 
   def show
@@ -41,7 +53,7 @@ class CpsController < ApplicationController
   def import
     if params[:file]
       Cp.import(params[:file])
-      redirect_to root_url, notice: "Products imported."
+      redirect_to cps_path, notice: "Products imported."
     else
       flash[:notice] = "No file selected to import"
       redirect_to cps_path

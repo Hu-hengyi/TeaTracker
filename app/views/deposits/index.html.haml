@@ -46,3 +46,9 @@
 
   %br
 
+:javascript
+$document.ready(function() {
+  $('#file').change(function() {
+    $('#Import').removeAttr('disabled');
+  });
+});

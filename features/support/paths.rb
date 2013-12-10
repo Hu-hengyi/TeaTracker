@@ -40,6 +40,12 @@ module NavigationHelpers
       user_path(User.find_by_name($1))
     when /^the new user page$/
       new_user_path()
+    when /^the request confirmation page$/
+      "/users/confirmation"
+    when /^the confirmation email link for "([^"]*)"$/
+      user = User.find_by_email($1)
+      confirmation_token = user.confirmation_token
+      "/users/confirmation?confirmation_token=#{confirmation_token}"
 
 
 

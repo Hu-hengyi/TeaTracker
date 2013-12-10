@@ -1,3 +1,4 @@
+=hybridMap
 -content_for(:left_bar_title, "Collection")
 -content_for(:left_bar_content) do
   =link_to "New Collection Point", new_cp_path, :class=> "left_bar_button"
@@ -11,20 +12,20 @@
 -content_for(:content) do
   %table.data.sortable
     %tr
-      %th Name
-      %th Created
-      %th Latitude
-      %th Longitude
+      %th= cp_header('Name', @sort_by)
+      %th= cp_header('Created', @sort_by)
+      %th= cp_header('Latitude', @sort_by)
+      %th= cp_header('Longitude', @sort_by)
       %th
     -@cps.each do |cp|
       %tr
         %td= link_to cp.name, cp
         %td= link_to cp.updated_at, cp
-        %td.latitude= link_to cp.latitude, cp
-        %td.longitude= link_to cp.longitude, cp
+        %td= link_to cp.latitude, cp
+        %td= link_to cp.longitude, cp
         %td.edit= link_to('Edit', edit_cp_path(cp), :id => "edit #{cp.name}") + ' | ' + link_to('Destroy', cp, method: :delete, data: { confirm: 'Are you sure?' })
 
-  %table.data
+  %table.data.mapdata.hidden
     %tr
       %th Name
       %th Latitude
@@ -32,14 +33,18 @@
       %th Number of Leaves
     -@cpDetails.each do |cpDetail|
       %tr
-        %td= cpDetail['name']
-        %td= cpDetail['latitude']
-        %td= cpDetail['longitude'] 
-        %td= cpDetail['leaves']
+        %td.name= cpDetail['name']
+        %td.latitude= cpDetail['latitude']
+        %td.longitude= cpDetail['longitude']
+        %td.numLeaves= cpDetail['leaves']
 
   %div#map
 
+
 :javascript
 $document.ready(function() {
+  $('#file').change(function() {
+    $('#Import').removeAttr('disabled');
+  });
   console.log($("#map"));
 });

@@ -1,3 +1,5 @@
+=hybridMap
+
 -content_for(:left_bar_title, "Farms")
 -content_for(:left_bar_content) do
   = link_to 'New Farm', new_farm_path, :id => "create_farm", :class => "left_bar_button"
@@ -9,7 +11,7 @@
       = submit_tag "Import", :id=>"Import", :disabled=>true
 
 -content_for(:content) do
-  %table.data.sortable
+  %table.data.sortable.mapdata
     %tr
       %th= sortable_header('Name', @sort_by)
       %th= sortable_header('Bushes', @sort_by)
@@ -22,17 +24,17 @@
     -@farms.each do |farm|
       %tr
         -if farm.name
-          %td.farm_name= link_to farm.name, farm
+          %td.name= link_to farm.name, farm
         -else
           %td
         -if farm.bushes
-          %td= link_to farm.bushes, farm
-          %td= link_to fertilizer(farm.bushes), farm
+          %td.bushes= link_to farm.bushes, farm
+          %td.fertilizer= link_to fertilizer(farm.bushes), farm
         -else
           %td
           %td
         -if farm.workers      
-          %td= link_to farm.workers, farm
+          %td.workers= link_to farm.workers, farm
         -else
           %td
         -if farm.latitude
@@ -44,7 +46,7 @@
         -else
           %td
         -if farm.notes
-          %td= link_to farm.notes, farm
+          %td.notes= link_to farm.notes, farm
         -else
           %td
         %td= link_to('Edit', edit_farm_path(farm), :class=>"edit", :id => "edit #{farm.name}") + ' | ' + link_to('Destroy', farm, :class=> "edit", method: :delete, data: { confirm: 'Are you sure?' })
