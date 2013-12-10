@@ -1,10 +1,20 @@
 class CpsController < ApplicationController
 
   def index
-    @sort_by = params[:sort_by] || 'Name'
+    @sort_by = params[:sort_by] || 'name'
     order_by = @sort_by.downcase
-    @cps = Cp.all(:order => order_by)
+    order_by = 'created_at' if order_by == 'created'
+
+
+    @cps = Cp.order(order_by)
     @cpDetails = Cp.getNumLeaves
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @cps }
+      format.csv { send_data Cp.order(:name).to_csv }
+    end
+
   end
 
   def show
