@@ -1,0 +1,34 @@
+-content_for(:left_bar_title, @pg.name)
+-content_for(:left_bar_content) do
+  = link_to 'Edit ' + @pg.name, edit_pay_group_path(@pg), :class => "left_bar_button edit"
+  = link_to 'Back to pay groups', pay_groups_path, :class => "left_bar_button"
+
+-content_for(:content) do
+
+  %p
+    Notes: 
+    = @pg.notes
+
+  %h3= "All Farms In " + @pg.name
+
+
+  %table.data
+    %tr
+      %th Name
+      %th Bushes
+      %th Workers
+      %th Latitude
+      %th Longitude
+      %th Notes
+      %th
+
+    - @farms.each do |farm|
+      %tr
+        %td= farm.name
+        %td= farm.bushes
+        %td= farm.workers
+        %td= farm.latitude
+        %td= farm.longitude
+        %td= farm.notes
+        %td.edit= link_to('Show', farm) + ' | ' +  link_to('Edit', edit_farm_path(farm), :id => "edit") + ' | ' + link_to('Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' })
+

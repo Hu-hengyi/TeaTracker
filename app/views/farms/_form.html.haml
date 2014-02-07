@@ -11,6 +11,9 @@
     = f.label :name
     = f.text_field :name
   .field
+    = f.label :pay_group
+    = f.select :payGroup_id, PayGroup.all.map {|f| [f.name, f.id] }
+  .field
     = f.label :bushes
     = f.number_field :bushes, :in => 0..10000000000000000000
   .field

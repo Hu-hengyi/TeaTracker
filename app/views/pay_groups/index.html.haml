@@ -1,0 +1,31 @@
+-content_for(:left_bar_title, "Pay Groups")
+-content_for(:left_bar_content) do
+  =link_to "New Pay Group", new_pay_group_path, :class=> "left_bar_button"
+  = link_to "Export Pay Group as CSV", pay_groups_path(format: "csv"), :class=> "left_bar_button", :id => "export_csv"
+  %div.left_bar_button
+    %h2 Import Pay Groups
+    = form_tag import_pay_groups_path, multipart: true do
+      = file_field_tag :file, :id=>"file"
+      = submit_tag "Import", :id=>"Import", :disabled=>true
+
+-content_for(:content) do
+  %table.data.sortable
+    %tr
+      %th= pay_group_header('Name', @sort_by)
+      %th= pay_group_header('Created', @sort_by)
+      %th= pay_group_header('Notes', @sort_by)
+      %th
+    -@pgs.each do |pg|
+      %tr
+        %td= link_to pg.name, pg
+        %td= link_to pg.updated_at, pg
+        %td= link_to pg.notes, pg
+        %td.edit= link_to('Edit', edit_pay_group_path(pg), :id => "edit #{pg.name}") + ' | ' + link_to('Destroy', pg, method: :delete, data: { confirm: 'Are you sure?' })
+
+:javascript
+$document.ready(function() {
+  $('#file').change(function() {
+    $('#Import').removeAttr('disabled');
+  });
+  console.log($("#map"));
+});

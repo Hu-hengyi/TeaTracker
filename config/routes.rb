@@ -1,5 +1,9 @@
 TeaTracker::Application.routes.draw do
 
+  resources :pay_groups do
+    collection { post :import }
+  end
+
   resources :deposits do
     collection { post :import }
   end

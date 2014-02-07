@@ -75,3 +75,6 @@ d.farm = unika
 d.cp = east
 d.save!
 
+# PAY GROUPS
+payGroupA = PayGroup.create!(name: "Pay Group A",
+  notes: "Nothing of note")
