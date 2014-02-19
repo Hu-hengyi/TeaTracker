@@ -15,6 +15,7 @@
       %th= deposit_header('Weight', @sort_by)
       %th= deposit_header('Quality', @sort_by)
       %th= deposit_header('Weighed At', @sort_by)
+      %th= deposit_header('Previous Deposit', @sort_by)
       %th= deposit_header('Farm', @sort_by)
       %th= deposit_header('Collection Point', @sort_by)
       %th= deposit_header 'Duplicate?', @sort_by
@@ -23,10 +24,12 @@
       %th
 
     - @deposits.each do |deposit|
+      - days_since = since_previous(deposit)
       %tr{class: ("unresolved" if deposit.possible_duplicate?)}
         %td= deposit.weight
         %td= deposit.quality
-        %td= deposit.weighed_at
+        %td= deposit.weighed_at.to_formatted_s(:long_ordinal)
+        %td= days_since
         -if deposit.farm
           %td= deposit.farm.name
         -else

@@ -19,6 +19,7 @@
       %th= sortable_header('Workers', @sort_by)
       %th= sortable_header('Latitude', @sort_by)
       %th= sortable_header('Longitude', @sort_by)
+      %th= sortable_header('Pay Group', @sort_by)
       %th= sortable_header('Notes', @sort_by)
       %th Options
     -@farms.each do |farm|
@@ -43,6 +44,10 @@
           %td
         -if farm.longitude
           %td.longitude= link_to farm.longitude, farm
+        -else
+          %td
+        -if farm.payGroup
+          %td.payGroup.name= link_to farm.payGroup.name, farm
         -else
           %td
         -if farm.notes

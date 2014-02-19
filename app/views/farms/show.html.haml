@@ -20,6 +20,11 @@
     Longitude:
     = @farm.longitude
 
+%p
+  -if @farm.payGroup
+    %b Pay Group:
+    = @farm.payGroup.name
+
   %p
     Yield:
     = @yield
