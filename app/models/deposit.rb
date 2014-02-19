@@ -12,6 +12,16 @@ class Deposit < ActiveRecord::Base
     ["Very Good","Good","OK", "Bad", "Very Bad" ]
   end
 
+  def days_since
+    next_td = Deposit.find(:first, :order => "weighed_at DESC", :conditions => [ "farm_id = ? AND weighed_at < ?", self.farm_id, self.weighed_at])
+    if next_td == nil
+      return -1
+    else
+      return (self.weighed_at - next_td.weighed_at).to_i / 1.day
+    end
+  end
+
+
   # Sets possible_duplicate to true if it finds another deposit entered within
   # a given time delta of this deposit **AND** have a weight within a given
   # weight delta of this deposit.

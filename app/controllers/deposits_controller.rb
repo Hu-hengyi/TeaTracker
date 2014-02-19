@@ -12,9 +12,10 @@ class DepositsController < ApplicationController
     order_by = "cp_id" if order_by == "collection point"
     @deposits = Deposit.all(:order => order_by)
     @csv_deposits = Deposit.order(:weighed_at)
-    @groupA = 0
-    @groupB = 0
-    @groupC = 0
+    @farm_totals = Hash.new
+    @farm_deps = Hash.new
+    @cut_a = 7
+    @cut_b = 10
     respond_to do |format|
       format.html #index.html.erb
       format.json {render json: @deposits}

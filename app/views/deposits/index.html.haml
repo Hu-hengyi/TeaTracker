@@ -29,7 +29,8 @@
         %td= deposit.weight
         %td= deposit.quality
         %td= deposit.weighed_at.to_formatted_s(:long_ordinal)
-        %td= days_since
+        %td= since_previous(deposit.days_since)
+        -change_farm_totals(deposit.days_since, deposit.farm.name)
         -if deposit.farm
           %td= deposit.farm.name
         -else
@@ -47,7 +48,19 @@
         %td= link_to 'Edit', edit_deposit_path(deposit)
         %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
+    -temp = calc_farm_totals
+    %tr
+      %td
+      %td= "Bracket A:"
+      %td= number_to_percentage(temp[:bracket_a]*100, precision: 2)
+      %td= "Bracket B:"
+      %td= number_to_percentage(temp[:bracket_b]*100, precision: 2)
+      %td= "Bracket C:"
+      %td= number_to_percentage(temp[:bracket_c]*100, precision: 2)
+
+
   %br
+
 
 :javascript
 $document.ready(function() {

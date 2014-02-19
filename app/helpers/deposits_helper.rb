@@ -9,22 +9,50 @@ module DepositsHelper
     end
   end
 
-  def since_previous(deposit)
-    next_td = Deposit.find(:first, :order => "weighed_at DESC", :conditions => [ "farm_id = ? AND weighed_at < ?", deposit.farm_id, deposit.weighed_at])
-    if next_td == nil
+  def since_previous(days_since)
+    if days_since == -1
       return "No previous deposit"
+    elsif days_since == 1
+      return "1 day ago"
     else
-      days_btwn = (deposit.weighed_at - next_td.weighed_at).to_i / 1.day
-      if days_btwn < 7
-        @groupA = @groupA + 1
-      elsif days_btwn < 13
-        @groupB = @groupB + 1
-      else
-        @groupC = @groupC + 1
-      end
-      return days_btwn.to_s << " day(s) ago"
+      return days_since.to_s << " days ago"
       #return next_td.weighed_at.to_formatted_s(:long_ordinal)
     end
+  end
+
+  def change_farm_totals(days_since, farm)
+    if days_since < 0
+      return
+    end
+    if @farm_totals.has_key?(farm)
+      @farm_totals[farm] = @farm_totals[farm] + days_since
+      @farm_deps[farm] = @farm_deps[farm] + 1
+    else
+      @farm_totals[farm] = days_since
+      @farm_deps[farm] = 1
+    end
+  end
+
+  def calc_farm_totals
+      bracket_a = 0
+      bracket_b = 0
+      bracket_c = 0
+      @farm_totals.each do |key, value|
+        avg = value.to_f/@farm_deps[key]
+        if avg < @cut_a
+          bracket_a += 1
+        elsif avg < @cut_b
+          bracket_b += 1
+        else
+          bracket_c += 1
+        end
+      end
+      total = (bracket_a + bracket_b + bracket_c).to_f
+      calc = Hash.new
+      calc[:bracket_a] = bracket_a/total
+      calc[:bracket_b] = bracket_b/total
+      calc[:bracket_c] = bracket_c/total
+      return calc
   end
 
 end
