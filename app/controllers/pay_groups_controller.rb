@@ -17,8 +17,8 @@ class PayGroupsController < ApplicationController
   end
 
   def show
-    @pg = PayGroup.find(params[:id])    
-    @farms = Farm.find_all_by_payGroup_id(@pg.id)  
+    @pg = PayGroup.find(params[:id])
+    @farms = Farm.find_all_by_payGroup_id(@pg.id)
   end
 
   def new
@@ -32,7 +32,7 @@ class PayGroupsController < ApplicationController
   def create
     @pg = PayGroup.create!(params[:pg])
     flash[:notice] = "#{@pg.name} was successfully created."
-    redirect_to pgs_path
+    redirect_to pay_groups_path
   end
 
   def update
@@ -46,16 +46,16 @@ class PayGroupsController < ApplicationController
     @pg = PayGroup.find(params[:id])
     @pg.destroy
     flash[:notice] = "Pay Group '#{@pg.name}' deleted."
-    redirect_to pgs_path
+    redirect_to pay_groups_path
   end
 
   def import
     if params[:file]
       PayGroup.import(params[:file])
-      redirect_to pgs_path, notice: "Products imported."
+      redirect_to pay_groups_path, notice: "Products imported."
     else
       flash[:notice] = "No file selected to import"
-      redirect_to pgs_path
+      redirect_to pay_groups_path
     end
   end
 end
