@@ -6,6 +6,8 @@ Feature: add a farm with its inputted data
 
 Background:
   Given I am logged in
+  When I create basic pay groups
+
 
 Scenario: add a new farm and its info
   And I am on the FarmList

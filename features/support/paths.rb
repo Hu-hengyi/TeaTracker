@@ -28,6 +28,10 @@ module NavigationHelpers
       '/deposits'
     when /^the Create New Tea Deposit page$/
       '/deposits/new'
+    when /^the Pay Group page$/
+      '/pay_groups'
+    when /^the Create New Pay Group page$/
+      '/pay_groups/new'
     when /^the Create New Collection Point page$/
       '/cps/new'
     when /^the login page$/

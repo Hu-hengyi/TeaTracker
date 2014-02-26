@@ -30,14 +30,14 @@ class PayGroupsController < ApplicationController
   end
 
   def create
-    @pg = PayGroup.create!(params[:pg])
+    @pg = PayGroup.create!(params[:pay_group])
     flash[:notice] = "#{@pg.name} was successfully created."
-    redirect_to pgs_path
+    redirect_to pay_groups_path
   end
 
   def update
     @pg = PayGroup.find params[:id]
-    @pg.update_attributes!(params[:pg])
+    @pg.update_attributes!(params[:pay_group])
     flash[:notice] = "#{@pg.name} was successfully updated."
     redirect_to pay_group_path(@pg)
   end
@@ -46,7 +46,7 @@ class PayGroupsController < ApplicationController
     @pg = PayGroup.find(params[:id])
     @pg.destroy
     flash[:notice] = "Pay Group '#{@pg.name}' deleted."
-    redirect_to pgs_path
+    redirect_to pay_groups_path
   end
 
   def import

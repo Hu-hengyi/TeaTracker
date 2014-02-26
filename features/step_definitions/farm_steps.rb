@@ -10,6 +10,7 @@ When /I enter in basic farm data A/ do
     | Latitude  | -15.928978       |
     | Notes     | Doing great work |
   })
+  And 'I select "Pay Group A" from "farm_payGroup_id"'
 end
 
 #need to add name of owner
@@ -23,6 +24,7 @@ When /I enter in basic farm data B/ do
     | Latitude  | -15.928970        |
     | Notes     | Doing pretty well |
   })
+  And 'I select "Pay Group A" from "farm_payGroup_id"'
 end
 
 When /^I create basic farms$/ do
