@@ -17,8 +17,8 @@ class PayGroupsController < ApplicationController
   end
 
   def show
-    @pg = PayGroup.find(params[:id])    
-    @farms = Farm.find_all_by_payGroup_id(@pg.id)  
+    @pg = PayGroup.find(params[:id])
+    @farms = Farm.find_all_by_payGroup_id(@pg.id)
   end
 
   def new
@@ -52,10 +52,10 @@ class PayGroupsController < ApplicationController
   def import
     if params[:file]
       PayGroup.import(params[:file])
-      redirect_to pgs_path, notice: "Products imported."
+      redirect_to pay_groups_path, notice: "Products imported."
     else
       flash[:notice] = "No file selected to import"
-      redirect_to pgs_path
+      redirect_to pay_groups_path
     end
   end
 end

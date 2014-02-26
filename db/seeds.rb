@@ -78,3 +78,6 @@ d.save!
 # PAY GROUPS
 payGroupA = PayGroup.create!(name: "Pay Group A",
   notes: "Nothing of note")
+
+payGroupB = PayGroup.create!(name: "Pay Group B",
+  notes: "Something of note")
