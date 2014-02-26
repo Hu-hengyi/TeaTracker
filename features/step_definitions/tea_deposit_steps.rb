@@ -24,6 +24,32 @@ When /I enter in basic tea deposit data B/ do
   And 'I select "59" from "deposit_weighed_at_6i"'
 end
 
+When /I enter in basic tea deposit data C/ do
+  When 'I fill in "deposit_weight" with "500"'
+  And 'I select "Basic Collection Point A" from "deposit_cp_id"'
+  And 'I select "Basic Farm A" from "deposit_farm_id"'
+  And 'I select "Good" from "deposit_quality"'
+  And 'I select "2009" from "deposit_weighed_at_1i"'
+  And 'I select "February" from "deposit_weighed_at_2i"'
+  And 'I select "5" from "deposit_weighed_at_3i"'
+  And 'I select "10" from "deposit_weighed_at_4i"'
+  And 'I select "09" from "deposit_weighed_at_5i"'
+  And 'I select "09" from "deposit_weighed_at_6i"'
+end
+
+When /I enter in basic tea deposit data D/ do
+  When 'I fill in "deposit_weight" with "400"'
+  And 'I select "Basic Collection Point B" from "deposit_cp_id"'
+  And 'I select "Basic Farm B" from "deposit_farm_id"'
+  And 'I select "OK" from "deposit_quality"'
+  And 'I select "2010" from "deposit_weighed_at_1i"'
+  And 'I select "December" from "deposit_weighed_at_2i"'
+  And 'I select "15" from "deposit_weighed_at_3i"'
+  And 'I select "09" from "deposit_weighed_at_4i"'
+  And 'I select "58" from "deposit_weighed_at_5i"'
+  And 'I select "58" from "deposit_weighed_at_6i"'
+end
+
 When /I edit the tea deposit weighing "(.*)"/ do |weight|
   temp = Deposit.find_by_weight("#{weight}").id
   visit "/deposits/#{temp}/edit"
@@ -35,6 +61,12 @@ When /^I create basic tea deposits$/ do
   And 'I press "create_deposit"'
   And 'I go to the Create New Tea Deposit page'
   And 'I enter in basic tea deposit data B'
+  And 'I press "create_deposit"'
+  And 'I go to the Create New Tea Deposit page'
+  And 'I enter in basic tea deposit data C'
+  And 'I press "create_deposit"'
+  And 'I go to the Create New Tea Deposit page'
+  And 'I enter in basic tea deposit data D'
   And 'I press "create_deposit"'
 end
 
