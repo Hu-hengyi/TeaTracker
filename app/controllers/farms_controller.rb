@@ -8,7 +8,17 @@ class FarmsController < ApplicationController
     if params[:search]
       @farms = Farm.where(name: params[:search])
     else
-      @farms = Farm.all(:order => order_by)
+      @paygroups = Hash.new
+      PayGroup.all.each do |paygroup|
+        @paygroups[paygroup.id] = "1"
+      end
+      if params.has_key?(:paygroups)
+        @paygroups = params[:paygroups]
+      elsif session.has_key?(:paygroups)
+        @paygroups = session[:paygroups]
+        redirect = true
+      end
+      @farms = Farm.where("paygroup_id in (?)", @paygroups.keys).order(order_by)
     end
 
     @bush_sum = 0
