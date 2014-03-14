@@ -1,4 +1,17 @@
-=hybridMap
+:css
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+  }
+
+
+-# =hybridMap
 
 -content_for(:left_bar_title, "Farms")
 -content_for(:left_bar_content) do
@@ -9,13 +22,21 @@
     = form_tag import_farms_path, multipart: true do
       = file_field_tag :file, :id=>"file"
       = submit_tag "Import", :id=>"Import", :disabled=>true
-
-= form_tag farms_path, :method => :get, "id" => "paygroups_form" do
-  Include:
-  - PayGroup.all.each do |paygroup|
-    = paygroup.name
-    = check_box_tag "paygroups[#{paygroup.id}]", paygroup.id, @paygroups[paygroup.id] ? true : false
-  = submit_tag 'Refresh', "id" => "paygroups_submit"
+  %div.left_bar_button
+    %h2 Filters
+    .ui-widget
+      %h2 Pay Groups:
+      %input#tags{:size => "15", :style => "font-size:17px"}
+    = form_tag farms_path, :method => :get, "id" => "paygroups_form" do
+      Include:
+      %br
+      - PayGroup.all.each do |paygroup|
+        %h3= paygroup.name
+        = check_box_tag "paygroups[#{paygroup.id}]", paygroup.id, @paygroups[paygroup.id] ? true : false
+        %br
+      %h2 Time window
+      = date_select farms_path, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
+      = submit_tag 'Refresh', "id" => "paygroups_submit"
 
 -content_for(:content) do
   %table.data.sortable.mapdata
@@ -79,4 +100,71 @@ $document.ready(function() {
   $('#file').change(function() {
     $('#Import').removeAttr('disabled');
   });
+
+
+              var availableTags = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+              ];
+              function split( val ) {
+                return val.split( /,\s*/ );
+              }
+              function extractLast( term ) {
+                return split( term ).pop();
+              }
+ 
+              $( "#tags" )
+                // don't navigate away from the field on tab when selecting an item
+                .bind( "keydown", function( event ) {
+                  if ( event.keyCode === $.ui.keyCode.TAB &&
+                      $( this ).data( "ui-autocomplete" ).menu.active ) {
+                    event.preventDefault();
+                  }
+                })
+                .autocomplete({
+                  minLength: 0,
+                  source: function( request, response ) {
+                    // delegate back to autocomplete, but extract the last term
+                    response( $.ui.autocomplete.filter(
+                      availableTags, extractLast( request.term ) ) );
+                  },
+                  focus: function() {
+                    // prevent value inserted on focus
+                    return false;
+                  },
+                  select: function( event, ui ) {
+                    var terms = split( this.value );
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push( ui.item.value );
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( ", " );
+                    return false;
+                  }
+                });
+
 });
+
+

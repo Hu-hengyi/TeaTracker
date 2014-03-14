@@ -31,6 +31,17 @@ h2 {
   color: $tea-green;
 }
 
+h3 {
+  text-transform: uppercase;
+  font-family: league-gothic, helvetica, sans-serif;
+  color: white;
+  font-size: 1.0em;
+}
+
+h3 {
+  color: $tea-green;
+}
+
 p {
   color: $dark-gray;
   font-family: 'Open Sans', helvetica, sans-serif;
@@ -247,6 +258,12 @@ table {
     }
     h2 {
       font-size: 23px;
+      color: white;
+    }
+    h3 {
+      text-transform: uppercase;
+      font-family: league-gothic, helvetica, sans-serif;
+      font-size: 17px;
       color: white;
     }
   }

@@ -2,11 +2,11 @@
 %html
   %head
     %title TeaTracker
-    = stylesheet_link_tag    "reset", :media => "all"
+    = stylesheet_link_tag    "reset", "jquery-ui-1.10.4.custom.min.css", :media => "all"
     = stylesheet_link_tag    "application", :media => "all"
     = favicon_link_tag "/favicon.ico"
     = controller_stylesheet_link_tag
-    = javascript_include_tag "application"
+    = javascript_include_tag "jquery-ui-1.10.4.custom.min.js", "application"
     = yield(:head)
 
     = csrf_meta_tags

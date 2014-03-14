@@ -37,6 +37,8 @@ TeaTracker::Application.routes.draw do
   get 'leaf-shadow.png', to: 'farms#shadow'
 
 
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
