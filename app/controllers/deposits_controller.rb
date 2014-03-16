@@ -10,12 +10,39 @@ class DepositsController < ApplicationController
     order_by = "created_at" if order_by == 'created'
     order_by = "farm_id" if order_by == "farm"
     order_by = "cp_id" if order_by == "collection point"
-    @deposits = Deposit.all(:order => order_by)
-    @csv_deposits = Deposit.order(:weighed_at)
+
+#controller for time window filter
+    if (params.has_key?("deposit_f"))
+      @weighed_from = Date.new(params["deposit_f"]["weighed_from(1i)"].to_i,params["deposit_f"]["weighed_from(2i)"].to_i,params["deposit_f"]["weighed_from(3i)"].to_i).to_datetime
+    else
+      @weighed_from = Deposit.minimum - 1.days - 5.hours #need to subtract a day here so to include all deposits by default
+    end
+    if (params.has_key?("deposit_t"))
+      @weighed_to = Date.new(params["deposit_t"]["weighed_to(1i)"].to_i,params["deposit_t"]["weighed_to(2i)"].to_i,params["deposit_t"]["weighed_to(3i)"].to_i).to_datetime
+    else
+      @weighed_to= Deposit.maximum
+    end
+
+#controller for bracket calculations
     @farm_totals = Hash.new
     @farm_deps = Hash.new
     @cut_a = 7
     @cut_b = 10
+
+#controller for pay group filter
+    @all_groups_filter = false
+    @vis_groups = ""
+    if params.has_key?(:pay_group_filter) and params[:pay_group_filter] != ""
+      @vis_groups = params[:pay_group_filter].split(", ")
+    else
+      @all_groups_filter = true
+    end
+    @all_groups = PayGroup.pluck(:name).join(",")
+    @deposits = Deposit.find(:all, :conditions => ["weighed_at > ? AND weighed_at <= ?", @weighed_from +1.days, @weighed_to+1.days], :order => order_by) #will limit deposits to a given time window
+
+
+#export csv
+    @csv_deposits = Deposit.order(:weighed_at)
     respond_to do |format|
       format.html #index.html.erb
       format.json {render json: @deposits}

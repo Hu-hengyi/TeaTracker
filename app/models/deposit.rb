@@ -8,9 +8,18 @@ class Deposit < ActiveRecord::Base
   validates :weight, :numericality => {:greater_than_or_equal_to => 0}
   validates_associated :cp, :farm
 
+  def self.minimum
+    return Deposit.calculate(:minimum, 'weighed_at') || Time.new(2000, "Jan", 1) #need to make inclusive?
+  end
+
+  def self.maximum
+    return Deposit.calculate(:maximum, 'weighed_at') || Time.new(2100, "Jan", 1)
+  end
+
   def self.all_qualities
     ["Very Good","Good","OK", "Bad", "Very Bad" ]
   end
+
 
   def days_since
     next_td = Deposit.find(:first, :order => "weighed_at DESC", :conditions => [ "farm_id = ? AND weighed_at < ?", self.farm_id, self.weighed_at])

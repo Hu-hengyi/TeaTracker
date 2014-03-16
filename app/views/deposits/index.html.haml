@@ -7,6 +7,16 @@
     = form_tag import_deposits_path, multipart: true do
       = file_field_tag :file, :id=>"file"
       = submit_tag "Import", :id=>"Import", :disabled=>true
+  %div.left_bar_button
+    %h2 Filters
+    = form_tag deposits_path, :method => :get, "id" => "filters_form" do
+      %h2 Pay Groups:
+      = text_field_tag 'pay_group_filter', "", style: 'font-size:15px; width:11em', class: 'ui-widget', value: @vis_groups
+      %h2 From: (Excluding)
+      =date_select 'deposit_f', 'weighed_from', :default => @weighed_from
+      %h2 To: (Including)
+      =date_select 'deposit_t', 'weighed_to', :default =>@weighed_to
+      = submit_tag 'Refresh', "id" => "filters_submit"
 
 
 -content_for(:content) do
@@ -24,29 +34,30 @@
       %th
 
     - @deposits.each do |deposit|
-      - days_since = since_previous(deposit)
-      %tr{class: ("unresolved" if deposit.possible_duplicate?)}
-        %td= deposit.weight
-        %td= deposit.quality
-        %td= deposit.weighed_at.to_formatted_s(:long_ordinal)
-        %td= since_previous(deposit.days_since)
-        -change_farm_totals(deposit.days_since, deposit.farm.name)
-        -if deposit.farm
-          %td= deposit.farm.name
-        -else
-          %td
-        -if deposit.cp
-          %td= deposit.cp.name
-        -else
-          %td
-        - if deposit.possible_duplicate?
-          %td= link_to 'Mark Resolved', resolve_path(deposit), method: :put
-        - else
-          %td
-            No
-        %td= link_to 'Show', deposit
-        %td= link_to 'Edit', edit_deposit_path(deposit)
-        %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      -if pay_group_valid(deposit)
+        - days_since = since_previous(deposit)
+        %tr{class: ("unresolved" if deposit.possible_duplicate?)}
+          %td= deposit.weight
+          %td= deposit.quality
+          %td= deposit.weighed_at.to_formatted_s(:long_ordinal)
+          %td= since_previous(deposit.days_since)
+          -change_farm_totals(deposit.days_since, deposit.farm.name)
+          -if deposit.farm
+            %td= deposit.farm.name
+          -else
+            %td
+          -if deposit.cp
+            %td= deposit.cp.name
+          -else
+            %td
+          - if deposit.possible_duplicate?
+            %td= link_to 'Mark Resolved', resolve_path(deposit), method: :put
+          - else
+            %td
+              No
+          %td= link_to 'Show', deposit
+          %td= link_to 'Edit', edit_deposit_path(deposit)
+          %td= link_to 'Destroy', deposit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     -temp = calc_farm_totals
     %tr
@@ -67,4 +78,46 @@ $document.ready(function() {
   $('#file').change(function() {
     $('#Import').removeAttr('disabled');
   });
+
+              var availableTags = "#{@all_groups}".split(",");
+              function split( val ) {
+                return val.split( /,\s*/ );
+              }
+              function extractLast( term ) {
+                return split( term ).pop();
+              }
+ 
+              $( "#pay_group_filter" )
+                // don't navigate away from the field on tab when selecting an item
+                .bind( "keydown", function( event ) {
+                  if ( event.keyCode === $.ui.keyCode.TAB &&
+                      $( this ).data( "ui-autocomplete" ).menu.active ) {
+                    event.preventDefault();
+                  }
+                })
+                .autocomplete({
+                  minLength: 0,
+                  source: function( request, response ) {
+                    // delegate back to autocomplete, but extract the last term
+                    response( $.ui.autocomplete.filter(
+                      availableTags, extractLast( request.term ) ) );
+                  },
+                  focus: function() {
+                    // prevent value inserted on focus
+                    return false;
+                  },
+                  select: function( event, ui ) {
+                    var terms = split( this.value );
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push( ui.item.value );
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( ", " );
+                    return false;
+                  }
+                });
+
 });
+

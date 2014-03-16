@@ -12,4 +12,7 @@ module FarmsHelper
   def fertilizer(bushes)
     return bushes * 3
   end
+
+
+
 end

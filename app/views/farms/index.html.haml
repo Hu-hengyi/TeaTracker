@@ -1,16 +1,3 @@
-:css
-  .ui-autocomplete {
-    max-height: 100px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: default;
-  }
-
-
 -# =hybridMap
 
 -content_for(:left_bar_title, "Farms")
@@ -24,19 +11,10 @@
       = submit_tag "Import", :id=>"Import", :disabled=>true
   %div.left_bar_button
     %h2 Filters
-    .ui-widget
+    = form_tag farms_path, :method => :get, "id" => "filters_form" do
       %h2 Pay Groups:
-      %input#tags{:size => "15", :style => "font-size:17px"}
-    = form_tag farms_path, :method => :get, "id" => "paygroups_form" do
-      Include:
-      %br
-      - PayGroup.all.each do |paygroup|
-        %h3= paygroup.name
-        = check_box_tag "paygroups[#{paygroup.id}]", paygroup.id, @paygroups[paygroup.id] ? true : false
-        %br
-      %h2 Time window
-      = date_select farms_path, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
-      = submit_tag 'Refresh', "id" => "paygroups_submit"
+      = text_field_tag 'pay_group_filter', "", style: 'font-size:15px; width:11em', class: 'ui-widget', value: @vis_groups
+      = submit_tag 'Refresh', "id" => "filters_submit"
 
 -content_for(:content) do
   %table.data.sortable.mapdata
@@ -101,31 +79,7 @@ $document.ready(function() {
     $('#Import').removeAttr('disabled');
   });
 
-
-              var availableTags = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-              ];
+              var availableTags = "#{@all_groups}".split(",");
               function split( val ) {
                 return val.split( /,\s*/ );
               }
@@ -133,7 +87,7 @@ $document.ready(function() {
                 return split( term ).pop();
               }
  
-              $( "#tags" )
+              $( "#pay_group_filter" )
                 // don't navigate away from the field on tab when selecting an item
                 .bind( "keydown", function( event ) {
                   if ( event.keyCode === $.ui.keyCode.TAB &&

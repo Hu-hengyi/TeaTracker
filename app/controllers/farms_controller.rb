@@ -3,8 +3,9 @@ class FarmsController < ApplicationController
     @sort_by = params[:sort_by] || 'Name'
     order_by = @sort_by.downcase
     order_by = "bushes" if order_by == 'fertilizer'
-    @csv_farms = Farm.order(:name)
 
+#search parameters/group filter ver 1
+=begin
     if params[:search]
       @farms = Farm.where(name: params[:search])
     else
@@ -20,10 +21,37 @@ class FarmsController < ApplicationController
       end
       @farms = Farm.where("paygroup_id in (?)", @paygroups.keys).order(order_by)
     end
+=end
 
+#controller for pay group filter
+    @table_groups = []
+    @all_groups_filter = false
+    @vis_groups = ""
+    if params.has_key?(:pay_group_filter) and params[:pay_group_filter] != ""
+      @vis_groups = params[:pay_group_filter].split(", ")
+      @vis_groups.each do |group_name|
+        temp = PayGroup.find_by_name(group_name)
+        if temp != nil
+          @table_groups << temp
+        end
+      end
+    else
+      @all_groups_filter = true
+    end
+    @all_groups = PayGroup.pluck(:name).join(",")
+    if @all_groups_filter
+      @farms = Farm.order(order_by)
+    else
+      @farms = Farm.where("paygroup_id in (?)", @table_groups).order(order_by)
+    end
+
+
+#total bushes calculations
     @bush_sum = 0
     @farms.each { |farm| @bush_sum += (farm.bushes || 0) }
 
+#export feature
+    @csv_farms = Farm.order(:name)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @farms }

@@ -55,4 +55,23 @@ module DepositsHelper
       return calc
   end
 
+def pay_group_valid(input)
+    if input.instance_of? Deposit
+      my_group = input.farm.payGroup
+    elsif input.instance_of? Farm
+      my_group = farm.payGroup
+    end
+    if @all_groups_filter == true
+      return true
+    elsif  @vis_groups == nil
+      return false
+    elsif my_group == nil
+      return false
+    elsif not @vis_groups.include?(my_group.name)
+      return false
+    end
+    #return = Farm.find_by(self.farm_id)
+    return true
+  end
+
 end
