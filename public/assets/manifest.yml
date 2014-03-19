@@ -17,6 +17,8 @@ two-leaves.png: two-leaves-381f89de1caeb90a3b4ce0389bd451e3.png
 two-leaves/index.png: two-leaves-381f89de1caeb90a3b4ce0389bd451e3.png
 application.js: application-6d91881647056c58fb262a73ca7a51ab.js
 application/index.js: application-6d91881647056c58fb262a73ca7a51ab.js
+jquery-ui-1.10.4.custom.min.js: jquery-ui-1.10.4.custom.min-9e96689c53727762214aa24500987212.js
+jquery-ui-1/index.10.4.custom.min.js: jquery-ui-1.10.4.custom.min-9e96689c53727762214aa24500987212.js
 application.css: application-9e5b1b02845670b1be8086afe5bf4df9.css
 application/index.css: application-9e5b1b02845670b1be8086afe5bf4df9.css
 devise/sessions.css: devise/sessions-1b13569e9620782f423d4cd3ce931750.css
