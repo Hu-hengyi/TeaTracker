@@ -27,8 +27,10 @@ class FarmsController < ApplicationController
     @table_groups = []
     @all_groups_filter = false
     @vis_groups = ""
+    @val_groups = ""
     if params.has_key?(:pay_group_filter) and params[:pay_group_filter] != ""
-      @vis_groups = params[:pay_group_filter].split(", ")
+      @val_groups = params[:pay_group_filter]
+      @vis_groups = @val_groups.split(", ")
       @vis_groups.each do |group_name|
         temp = PayGroup.find_by_name(group_name)
         if temp != nil
@@ -42,7 +44,7 @@ class FarmsController < ApplicationController
     if @all_groups_filter
       @farms = Farm.order(order_by)
     else
-      @farms = Farm.where("paygroup_id in (?)", @table_groups).order(order_by)
+      @farms = Farm.where("payGroup_id in (?)", @table_groups).order(order_by)
     end
 
 

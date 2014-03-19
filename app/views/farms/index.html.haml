@@ -13,7 +13,7 @@
     %h2 Filters
     = form_tag farms_path, :method => :get, "id" => "filters_form" do
       %h2 Pay Groups:
-      = text_field_tag 'pay_group_filter', "", style: 'font-size:15px; width:11em', class: 'ui-widget', value: @vis_groups
+      = text_field_tag 'pay_group_filter', "", style: 'font-size:15px; width:11em', class: 'ui-widget', value: @val_groups
       = submit_tag 'Refresh', "id" => "filters_submit"
 
 -content_for(:content) do

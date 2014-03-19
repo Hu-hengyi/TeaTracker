@@ -31,9 +31,11 @@ class DepositsController < ApplicationController
 
 #controller for pay group filter
     @all_groups_filter = false
+    @val_groups = ""
     @vis_groups = ""
     if params.has_key?(:pay_group_filter) and params[:pay_group_filter] != ""
-      @vis_groups = params[:pay_group_filter].split(", ")
+      @val_groups = params[:pay_group_filter]
+      @vis_groups = @val_groups.split(", ")
     else
       @all_groups_filter = true
     end
