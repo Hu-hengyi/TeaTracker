@@ -47,6 +47,8 @@ module TeaTracker
 
     config.assets.precompile += ['reset.css']
     config.assets.precompile += ['devise/sessions.css']
+    config.assets.precompile += %w( jquery-ui-1.10.4.custom.min.css)
+
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
